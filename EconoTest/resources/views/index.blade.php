@@ -8,9 +8,9 @@
     <meta charset="utf-8">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic%7CLato:300,300italic,400,400italic,700,900%7CMerriweather:700italic">
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="{{ asset('/css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
   </head>
   <body>
@@ -21,7 +21,7 @@
             <div class="rd-navbar-inner">
               <div class="rd-navbar-group">
                 <div class="rd-navbar-panel">
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="index.html"><img src="../images/econotest-logo.png" alt="" width="143" height="27"/></a>
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="index.html"><img src="{{ asset('images/econotest-logo.png') }}" alt="" width="143" height="27"/></a>
                 </div>
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-nav-inner">
@@ -604,7 +604,7 @@
 
     </div>
     <div class="snackbars" id="form-output-global"></div>
-    <script src="../js/core.min.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="{{ asset('/js/core.min.js') }}"></script>
+    <script src="{{ asset('/js/script.js') }}"></script>
   </body>
 </html>
