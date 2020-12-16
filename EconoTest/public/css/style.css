@@ -6398,24 +6398,7 @@ dt {
 	margin-top: 0;
 }
 
-.bg-displaced-wrap {
-	position: relative;
-	z-index: 0;
-}
 
-.bg-displaced-wrap .bg-displaced-body {
-	position: relative;
-	z-index: 1;
-}
-
-.bg-displaced-wrap .bg-displaced {
-	position: absolute;
-	top: 50px;
-	right: 0;
-	bottom: 50px;
-	left: 0;
-	z-index: 0;
-}
 
 .divider {
 	width: 49px;
@@ -12491,19 +12474,13 @@ html.boxed .rd-navbar--is-clone {
 	}
 }
 
-/**
- * @subsection   Swiper 3.1.7
- * @description  Most modern mobile touch slider and framework with
- *               hardware accelerated transitions
- * @author       Vladimir Kharlampidi
- * @see          http://www.idangero.us/swiper/
- * @licesne      MIT License
- */
+  /*---------------------------------------
+     SLIDER
+  -----------------------------------------*/
 .swiper-container {
 	margin: 0 auto;
 	position: relative;
 	overflow: hidden;
-	/* Fix of Webkit flickering */
 	z-index: 1;
 	height: auto;
 	min-height: 36.25vw;
@@ -14048,3 +14025,88 @@ html.boxed .rd-navbar--is-clone {
 .select2.select2-container .form-label {
 	display: none;
 }
+
+
+
+
+
+
+
+
+
+	.medium-text-primary{
+		opacity: 1;
+	}
+
+
+
+
+
+  /*---------------------------------------
+     INFO            
+  -----------------------------------------*/
+	.bg-displaced-wrap {
+		position: relative;
+		z-index: 0;
+	}
+
+	.bg-displaced-wrap .bg-displaced-body {
+		margin-bottom: 5em;
+		position: relative;
+		z-index: 1;
+	}
+
+	.bg-displaced-wrap .bg-displaced {
+		position: absolute;
+		top: 50px;
+		right: 0;
+		bottom: 50px;
+		left: 0;
+		z-index: 0;
+	}
+
+
+
+
+
+
+  /*---------------------------------------
+     FOOTER              
+  -----------------------------------------*/
+	footer {
+		background: #ffffff;
+		text-align: center;
+	}
+
+	footer {
+		background-color: #F15F0D;
+		padding: 20px;
+	}
+
+	.copyright-text p {
+		margin: 5px;
+	}
+
+  /*---------------------------------------
+     ICONOS             
+  -----------------------------------------*/
+	.social-icon li {
+		display: inline-block;
+		list-style: none;
+	}
+
+	.social-icon li a {
+		border-radius: 50px;
+		color: #ffffff;
+		font-size: 17px;
+		width: 35px;
+		height: 35px;
+		line-height: 35px;
+		text-align: center;
+		position: relative;
+	}
+
+	.social-icon li a:hover {
+		background: #ffffff;
+		color: #000000;
+	}
