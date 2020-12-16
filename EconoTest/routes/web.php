@@ -22,5 +22,11 @@ Route::get('/', function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//ruta para ingresar a Admin
 Route::get('/admin', [App\Http\Controllers\AdministradorController::class, 'index']);
+
+//rutas internas de admin
+Route::get('/admin/usuarios', [App\Http\Controllers\AdministradorController::class, 'indexUsuarios']);
+Route::get('/admin/preguntas', [App\Http\Controllers\AdministradorController::class, 'indexPreguntas']);
+Route::get('/admin/cromos', [App\Http\Controllers\AdministradorController::class, 'indexCromos']);
+
