@@ -7,7 +7,5 @@
                 class="fas fa-download fa-sm text-white-50"></i> Agregar pregunta</a>
     </div>
 
-    <!-- Content Row -->
-    <div class="row">
 
 @endsection
