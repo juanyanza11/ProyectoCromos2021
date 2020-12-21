@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
+
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +10,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo e(asset('/dash/vendor/fontawesome-free/css/all.min.css')); ?>" rel="stylesheet" type="text/css">
@@ -106,6 +106,8 @@
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
 
+    <!-- Scripts -->
+    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
     <!-- Page level custom scripts -->
     <script src="<?php echo e(asset('/dash/js/demo/chart-area-demo.js')); ?>"></script>
     <script src="<?php echo e(asset('/dash/js/demo/chart-pie-demo.js')); ?>"></script>

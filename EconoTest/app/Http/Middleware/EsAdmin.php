@@ -17,13 +17,17 @@ class EsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $user=Auth::user();
-            // en caso de que el usuario NO sea admin
+            $user=Auth::user();
+            // en caso de que el usuario SI sea admin
+            if ($user && $user->esAdmin()){
+                return $next($request);
+            }
+            // en caso de que el usuario NO sea admin 
             if ($user && !$user->esAdmin()){
-                return redirect('/');
-        }
-        // en caso de que el usuario SI sea admin 
-        return $next($request);
+                return redirect('home');
+            }
+            return redirect('/');
+
 
     }
 }
