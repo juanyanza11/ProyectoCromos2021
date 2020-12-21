@@ -22,6 +22,7 @@
   </head>
   <body>
     
+      <!-- NAVBAR -->
       <header class="page-head">
         <div class="rd-navbar-wrap">
           <nav class="rd-navbar rd-navbar-default" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="53px" data-xl-stick-up-offset="53px" data-xxl-stick-up-offset="53px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
@@ -36,7 +37,11 @@
                     <ul class="rd-navbar-nav">
                       <li class="active"><a href="#inicio">Inicio</a>
                       </li>
-                      <li><a href="#">Iniciar Sesión</a>
+                      <li><a href="#info">Sobre ECONOTEST</a>
+                      </li>
+                      <li><a href="#beneficios">Beneficios</a>
+                      </li>
+                      <li><a href="<?php echo e(url('usuario/quiz.blade.php')); ?>">Iniciar Sesión</a>
                       </li>
                     </ul>
                   </div>
@@ -46,6 +51,7 @@
           </nav>
         </div>
       </header>
+      <!-- FIN NAVBAR -->
 
       <!-- INICIO -->
       <section id=inicio>
@@ -107,6 +113,7 @@
           </div>
         </div>
       </section>
+      <!-- FIN INICIO -->
       
       <!-- INFO -->
       <section id="info" class="bg-displaced-wrap">
@@ -131,6 +138,7 @@
         </div>
         <div class="bg-displaced bg-image" style="background-color: #BBC7A4;"></div>
       </section>
+      <!-- FIN INFO -->
 
        <!-- BENEFICIOS -->
        <section id="beneficios" class="section-50 section-md-75 section-lg-100">
@@ -182,6 +190,7 @@
           </div>
         </div>
       </section>
+      <!-- FIN BENEFICIOS -->
 
       <!-- FOOTER -->
       <footer id="footer">
@@ -198,6 +207,7 @@
 
           </div>
       </footer>
+      <!-- FIN FOOTER -->
 
     </div>
     <script src="<?php echo e(asset('/js/core.min.js')); ?>"></script>

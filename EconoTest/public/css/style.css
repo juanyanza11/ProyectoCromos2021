@@ -13911,19 +13911,6 @@ html:not(.lt-ie10) .not-animated {
 	}
 
   /*---------------------------------------
-     BENEFICIOS            
-  -----------------------------------------*/
-
-	.section-50 {
-		padding-top: 50px;
-		padding-bottom: 50px;
-		text-align: center;
-	}
-
-
-
-
-  /*---------------------------------------
      INFO            
   -----------------------------------------*/
 	.bg-displaced-wrap {
@@ -13946,10 +13933,18 @@ html:not(.lt-ie10) .not-animated {
 		z-index: 0;
 	}
 
+	/*---------------------------------------
+     BENEFICIOS            
+	-----------------------------------------*/
 
-  /*---------------------------------------
+  .section-50 {
+	margin: 5em;
+	text-align: center;
+}
+
+	/*---------------------------------------
      FOOTER              
-  -----------------------------------------*/
+	-----------------------------------------*/
 	footer {
 		background: #ffffff;
 		text-align: center;
@@ -13957,7 +13952,7 @@ html:not(.lt-ie10) .not-animated {
 
 	footer {
 		background-color: #F15F0D;
-		padding: 20px;
+		padding: 30px;
 	}
 
 	.copyright-text p {
