@@ -17,8 +17,6 @@ Route::get('/', function(){
     return view('index');
 });
 
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -31,6 +29,6 @@ Route::post('/admin/usuarios', [App\Http\Controllers\AdministradorController::cl
 
 
 
-Route::get('/admin/preguntas', [App\Http\Controllers\AdministradorController::class, 'indexPreguntas']);
+Route::resource('/admin/preguntas', "App\Http\Controllers\PreguntasController");
 Route::get('/admin/cromos', [App\Http\Controllers\AdministradorController::class, 'indexCromos']);
 

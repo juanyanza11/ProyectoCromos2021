@@ -1,18 +1,18 @@
-@extends('layouts.main')
 
-@section('contenido')
+
+<?php $__env->startSection('contenido'); ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">USUARIOS</h1>
+        <h1 class="h3 mb-0 text-gray-800">USUARIOSSSS</h1>
         <a  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  data-toggle="modal" data-target="#modalAgregar"><i
                 class="fas fa-download fa-sm text-white-50"></i> Agregar usuarios</a>
     </div>
     <div class ="row">
-        @if($message = Session::get('Listo')) 
+        <?php if($message = Session::get('Listo')): ?> 
             <div class = "col-12 alert alert-success alert-dismissable fade show" role = "alert">
                 <h5>Mensaje: </h5>            
-                <span>{{$message}}</span>
+                <span><?php echo e($message); ?></span>
             </div>
-        @endif
+        <?php endif; ?>
 
         <table class = "table col-12 table-resposive">
             <thead>
@@ -26,17 +26,17 @@
             </thead>
             <tbody>
 
-                @foreach ($usuarios as $usuario)
+                <?php $__currentLoopData = $usuarios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $usuario): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td>{{ $usuario -> id }}</td>
-                        <td>{{ $usuario -> name }}</td>
-                        <td>{{ $usuario -> email }}</td>
-                        <td>{{ $usuario -> nombre_rol }}</td>
+                        <td><?php echo e($usuario -> id); ?></td>
+                        <td><?php echo e($usuario -> name); ?></td>
+                        <td><?php echo e($usuario -> email); ?></td>
+                        <td><?php echo e($usuario -> nombre_rol); ?></td>
                         <td>
                             <button class= "btn btn-round"> <i class = "fa fa-trash"></i></button>
                         </td>
                     </tr>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         
         </table>
@@ -55,23 +55,23 @@
             </button>
         </div>
         <form action ="/admin/usuarios" method ="post">
-            @csrf
+            <?php echo csrf_field(); ?>
             <div class="modal-body">
-                @if($message = Session::get('ErrorInsert')) 
+                <?php if($message = Session::get('ErrorInsert')): ?> 
                     <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                         <h5>Errores: </h5>            
                             <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                     </div>
-                @endif
+                <?php endif; ?>
                 <div class = "form-group">
-                    <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="{{ old('nombre') }}">
+                    <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="<?php echo e(old('nombre')); ?>">
                 </div>
                 <div class = "form-group">
-                    <input  type = "email" class ="form-control" name ="email" placeholder="Email" value="{{ old('email') }}">
+                    <input  type = "email" class ="form-control" name ="email" placeholder="Email" value="<?php echo e(old('email')); ?>">
                 </div>
                 <div class = "form-group">
                     <input  type = "password" class ="form-control" name ="pass1" placeholder="Password">
@@ -103,14 +103,15 @@
     </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
+<?php $__env->startSection('scripts'); ?>
     <script>
     $(document).ready(function(){
-        @if($message = Session::get('ErrorInsert')) 
+        <?php if($message = Session::get('ErrorInsert')): ?> 
             $('#modalAgregar').modal('show');
-        @endif
+        <?php endif; ?>
     });      
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\aplicaciones\IntegradorV1\ProyectoCromos2021\EconoTest\resources\views/usuarios.blade.php ENDPATH**/ ?>
