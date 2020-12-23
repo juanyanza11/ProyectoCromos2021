@@ -29,6 +29,6 @@ Route::post('/admin/usuarios', [App\Http\Controllers\AdministradorController::cl
 
 
 
-Route::resource('/admin/preguntas', "App\Http\Controllers\PreguntasController");
+Route::resource('/admin/preguntas', "App\Http\Controllers\PreguntaController");
 Route::get('/admin/cromos', [App\Http\Controllers\AdministradorController::class, 'indexCromos']);
 
