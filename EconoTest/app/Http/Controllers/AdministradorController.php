@@ -26,6 +26,7 @@ class AdministradorController extends Controller
                 ->get();
     return view('usuarios')->with('usuarios', $usuarios) ;  
     }
+    
     //metodo para agregar usuarios
     public function aggUsuarios(Request $request){
 
@@ -50,6 +51,12 @@ class AdministradorController extends Controller
             return back()->with('Listo', 'Se ha insertado correctamente');
         }
     }
+    
+    public function eliminarUsuarios($id){
+            $user = User::find($id);
+            $user-> delete();
+            return back()-> with('Listo', 'El usuario se eliminó correctamente');
+        }
 
 
 

@@ -25,7 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //rutas internas de admin/usuarios
 Route::get('/admin', [App\Http\Controllers\AdministradorController::class, 'indexUsuarios']);
 Route::post('/admin', [App\Http\Controllers\AdministradorController::class, 'aggUsuarios']);
-
+Route::delete('admin/{id}', [App\Http\Controllers\AdministradorController::class, 'eliminarUsuarios']); 
 
 
 Route::resource('/admin/preguntas', "App\Http\Controllers\PreguntaController");

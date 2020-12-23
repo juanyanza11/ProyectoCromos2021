@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <?php echo $__env->yieldContent('css'); ?>
 </head>
 <body>
     <div id="app">
