@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="<?php echo e(asset('/css/fonts.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('/css/style.css')); ?>">
+
+
+    
     <?php echo $__env->yieldContent('css'); ?>
 
   </head>
@@ -34,23 +37,15 @@
                 </div>
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-nav-inner">
+                  <div class="rd-navbar-btn-wrap"><a class="button button-smaller button-primary-outline" href="register">REGISTRARSE</a></div>
                     <ul class="rd-navbar-nav">
-                      <li class="active"><a href="#">Quiz</a>
+                      <li class="active"><a href="#">Inicio</a>
                       </li>
-                      <li><a href="#">Mi Colección</a>
+                      <li><a href="#info">Sobre Econotest</a>
                       </li>
-                      <li><a href="#">Perfil</a>
+                      <li><a href="#beneficios">Beneficios</a>
                       </li>
-                      <li>
-                        <a href="<?php echo e(route('logout')); ?>"
-                          onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            <img src="<?php echo e(asset('images/logout.png')); ?>" width="27" height="27">
-                        </a>
-                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
-                          <?php echo csrf_field(); ?>
-                        </form>
-                      </li>
+                      <li><a href="/login">Iniciar Sesión</a>
                     </ul>
                   </div>
                 </div>
@@ -61,6 +56,9 @@
         <?php echo $__env->yieldContent('header'); ?>
       </header>
       <!-- FIN NAVBAR -->
+        <main class="py-4">
+            <?php echo $__env->yieldContent('content'); ?>
+        </main>
 
       <!-- FOOTER -->
       <footer id="footer">
@@ -85,4 +83,4 @@
     <script src="<?php echo e(asset('/js/script.js')); ?>"></script>
     <?php echo $__env->yieldContent('scripts'); ?>
   </body>
-</html><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/usuario/mainUser.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/auth/logLayout.blade.php ENDPATH**/ ?>

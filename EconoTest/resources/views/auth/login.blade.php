@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('auth.logLayout')
 
 @section('content')
-<div class="container">
+<div class="container" style="padding: 4.1em 0em;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

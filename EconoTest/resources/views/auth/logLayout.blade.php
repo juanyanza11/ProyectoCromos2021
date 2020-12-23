@@ -15,10 +15,13 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic%7CLato:300,300italic,400,400italic,700,900%7CMerriweather:700italic">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="<?php echo e(asset('/css/fonts.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('/css/style.css')); ?>">
-    <?php echo $__env->yieldContent('css'); ?>
+    <link rel="stylesheet" href="{{ asset('/css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+
+
+    
+    @yield('css')
 
   </head>
   <body>
@@ -30,27 +33,19 @@
             <div class="rd-navbar-inner">
               <div class="rd-navbar-group">
                 <div class="rd-navbar-panel">
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="/"><img src="<?php echo e(asset('images/econotest-logo.png')); ?>" alt="" width="143" height="27"/></a>
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="/"><img src="{{ asset('images/econotest-logo.png') }}" alt="" width="143" height="27"/></a>
                 </div>
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-nav-inner">
+                  <div class="rd-navbar-btn-wrap"><a class="button button-smaller button-primary-outline" href="register">REGISTRARSE</a></div>
                     <ul class="rd-navbar-nav">
-                      <li class="active"><a href="#">Quiz</a>
+                      <li class="active"><a href="#">Inicio</a>
                       </li>
-                      <li><a href="#">Mi Colección</a>
+                      <li><a href="#info">Sobre Econotest</a>
                       </li>
-                      <li><a href="#">Perfil</a>
+                      <li><a href="#beneficios">Beneficios</a>
                       </li>
-                      <li>
-                        <a href="<?php echo e(route('logout')); ?>"
-                          onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            <img src="<?php echo e(asset('images/logout.png')); ?>" width="27" height="27">
-                        </a>
-                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
-                          <?php echo csrf_field(); ?>
-                        </form>
-                      </li>
+                      <li><a href="/login">Iniciar Sesión</a>
                     </ul>
                   </div>
                 </div>
@@ -58,9 +53,12 @@
             </div>
           </nav>
         </div>
-        <?php echo $__env->yieldContent('header'); ?>
+        @yield('header')
       </header>
       <!-- FIN NAVBAR -->
+        <main class="py-4">
+            @yield('content')
+        </main>
 
       <!-- FOOTER -->
       <footer id="footer">
@@ -76,13 +74,13 @@
             </div>
 
           </div>
-          <?php echo $__env->yieldContent('footer'); ?>
+          @yield('footer')
       </footer>
       <!-- FIN FOOTER -->
 
     </div>
-    <script src="<?php echo e(asset('/js/core.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('/js/script.js')); ?>"></script>
-    <?php echo $__env->yieldContent('scripts'); ?>
+    <script src="{{ asset('/js/core.min.js') }}"></script>
+    <script src="{{ asset('/js/script.js') }}"></script>
+    @yield('scripts')
   </body>
-</html><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/usuario/mainUser.blade.php ENDPATH**/ ?>
+</html>

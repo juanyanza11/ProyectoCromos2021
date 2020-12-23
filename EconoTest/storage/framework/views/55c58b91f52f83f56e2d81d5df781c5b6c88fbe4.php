@@ -33,6 +33,17 @@
                 </div>
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-nav-inner">
+                    <?php if(Auth::check()): ?>
+                      <ul class="rd-navbar-nav">
+                      <li class="active"><a href="#inicio">Inicio</a>
+                      </li>
+                      <li><a href="#info">Sobre Econotest</a>
+                      </li>
+                      <li><a href="#beneficios">Beneficios</a>
+                      </li>
+                      <li><a href="/login">Quiz</a>
+                      </li>
+                    <?php else: ?>
                     <div class="rd-navbar-btn-wrap"><a class="button button-smaller button-primary-outline" href="register">REGISTRARSE</a></div>
                     <ul class="rd-navbar-nav">
                       <li class="active"><a href="#inicio">Inicio</a>
@@ -44,6 +55,7 @@
                       <li><a href="/login">Iniciar Sesión</a>
                       </li>
                     </ul>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>

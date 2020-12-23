@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('content'); ?>
-<div class="container">
+<div class="container" style="padding: 4.1em 0em;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -103,4 +103,4 @@ unset($__errorArgs, $__bag); ?>
 </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/auth/login.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('auth.logLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/auth/login.blade.php ENDPATH**/ ?>
