@@ -4,10 +4,9 @@
 
     <section id="quiz" class="section-50 section-md-75 section-lg-100">
         <div class="container">
-        <h3>BENEFICIOS</h3>
           <div class="row row-40">
             <div class="col-md-6 col-lg-4 height-fill">
-              <article class="icon-box">
+              <article class="icon-box"><a href="#">
                 <div class="box-top">
                 <div class="box-icon"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
                   <div class="box-header">
@@ -16,41 +15,83 @@
                 </div>
                 <div class="divider bg-accent"></div>
                 <div class="box-body">
-                  <p>Obten diversas recompensan en forma de cromos.</p>
-                </div>
+                  <h5>ECONOMETRICA</h5>
+                </div></a>
               </article>
             </div>
             <div class="col-md-6 col-lg-4 height-fill">
-              <article class="icon-box">
+              <article class="icon-box"><a href="#">
                 <div class="box-top">
-                  <div class="box-icon"><img src="images/beneficios2.jfif" alt="" width="300" height="300"/></div>
+                  <div class="box-icon"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
                   <div class="box-header">
                     <h5><a href="#"></a></h5>
                   </div>
                 </div>
                 <div class="divider bg-accent"></div>
                 <div class="box-body">
-                  <p>Mide tus conocimientos sobre temáticas centrales de la economía</p>
-                </div>
+                  <h5>MACROECONOMIA</h5>
+                </div></a>
               </article>
             </div>
             <div class="col-md-6 col-lg-4 height-fill">
-              <article class="icon-box">
+              <article class="icon-box"><a href="#">
                 <div class="box-top">
-                <div class="box-icon"><img src="images/beneficios3.jfif" alt="" width="300" height="300"/></div>
+                <div class="box-icon"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
                   <div class="box-header">
                     <h5><a href="#"></a></h5>
                   </div>
                 </div>
                 <div class="divider bg-accent"></div>
                 <div class="box-body">
-                  <p>Aprendizaje interactivo</p>
+                  <h5>MICROECONOMIA</h5>
+                </div></a>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4 height-fill">
+              <article class="icon-box"><a href="#">
+                <div class="box-top">
+                <div class="box-icon"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
+                  <div class="box-header">
+                    <h5><a href="#"></a></h5>
+                  </div>
                 </div>
+                <div class="divider bg-accent"></div>
+                <div class="box-body">
+                  <h5>HISTORIA</h5>
+                </div></a>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4 height-fill">
+              <article class="icon-box"><a href="#">
+                <div class="box-top">
+                <div class="box-icon"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
+                  <div class="box-header">
+                    <h5><a href="#"></a></h5>
+                  </div>
+                </div>
+                <div class="divider bg-accent"></div>
+                <div class="box-body">
+                  <h5>ECONOMÍA ACTUAL</h5>
+                </div></a>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4 height-fill">
+              <article class="icon-box"><a href="#">
+                <div class="box-top">
+                <div class="box-icon"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
+                  <div class="box-header">
+                    <h5><a href="#"></a></h5>
+                  </div>
+                </div>
+                <div class="divider bg-accent"></div>
+                <div class="box-body">
+                  <h5>FINANZAS</h5>
+                </div></a>
               </article>
             </div>
           </div>
         </div>
     </section>
 
-<?php $__env->stopSection(); ?>
+    <?php $__env->stopSection(); ?>
 <?php echo $__env->make('usuario.mainUser', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/home.blade.php ENDPATH**/ ?>

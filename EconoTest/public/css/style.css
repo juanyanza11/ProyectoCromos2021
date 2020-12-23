@@ -4121,6 +4121,7 @@ blockquote cite {
 }
 
 .icon-box {
+	background-color: #BBC7A4;
 	position: relative;
 	display: -webkit-inline-box;
 	display: -webkit-inline-flex;
@@ -4146,6 +4147,17 @@ blockquote cite {
 	text-align: center;
 	cursor: default;
 }
+
+
+.icon-box:hover {
+	color: #ffffff;
+	background-color: #2C363F;
+}
+.icon-box:hover h5{
+	color: #ffffff;
+
+}
+
 
 .icon-box:before, .icon-box:after {
 	content: '';
@@ -13938,7 +13950,7 @@ html:not(.lt-ie10) .not-animated {
 	-----------------------------------------*/
 
   .section-50 {
-	margin: 5em;
+	margin: 5em 0em;
 	text-align: center;
 }
 
@@ -13981,4 +13993,20 @@ html:not(.lt-ie10) .not-animated {
 	.social-icon li a:hover {
 		background: #ffffff;
 		color: #000000;
+	}
+
+
+
+
+
+
+
+
+
+ /*---------------------------------------
+     VISTA USUARIO             
+  -----------------------------------------*/
+
+	#quiz{
+		background-color: #D6DBD2;
 	}
