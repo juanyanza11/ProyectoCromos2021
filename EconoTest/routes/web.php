@@ -21,11 +21,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //ruta para ingresar a Admin
-Route::get('/admin', [App\Http\Controllers\AdministradorController::class, 'index']);
 
 //rutas internas de admin/usuarios
-Route::get('/admin/usuarios', [App\Http\Controllers\AdministradorController::class, 'indexUsuarios']);
-Route::post('/admin/usuarios', [App\Http\Controllers\AdministradorController::class, 'aggUsuarios']);
+Route::get('/admin', [App\Http\Controllers\AdministradorController::class, 'indexUsuarios']);
+Route::post('/admin', [App\Http\Controllers\AdministradorController::class, 'aggUsuarios']);
 
 
 

@@ -2,14 +2,14 @@
 
 <?php $__env->startSection('contenido'); ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">USUARIOSSSS</h1>
+        <h1 class="h3 mb-0 text-gray-800">USUARIOS</h1>
         <a  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  data-toggle="modal" data-target="#modalAgregar"><i
                 class="fas fa-download fa-sm text-white-50"></i> Agregar usuarios</a>
     </div>
     <div class ="row">
         <?php if($message = Session::get('Listo')): ?> 
             <div class = "col-12 alert alert-success alert-dismissable fade show" role = "alert">
-                <h5>Errores: </h5>            
+                <h5>Mensaje: </h5>            
                 <span><?php echo e($message); ?></span>
             </div>
         <?php endif; ?>
@@ -59,7 +59,7 @@
             <div class="modal-body">
                 <?php if($message = Session::get('ErrorInsert')): ?> 
                     <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
-                        <h5>Mensaje: </h5>            
+                        <h5>Errores: </h5>            
                             <ul>
                             <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <li><?php echo e($error); ?></li>
