@@ -21,13 +21,15 @@
 
   </head>
   <body>
+
+      <!-- NAVBAR -->
       <header class="page-head">
         <div class="rd-navbar-wrap">
           <nav class="rd-navbar rd-navbar-default" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="53px" data-xl-stick-up-offset="53px" data-xxl-stick-up-offset="53px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
             <div class="rd-navbar-inner">
               <div class="rd-navbar-group">
                 <div class="rd-navbar-panel">
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="index.html"><img src="<?php echo e(asset('images/econotest-logo.png')); ?>" alt="" width="143" height="27"/></a>
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="#"><img src="<?php echo e(asset('images/econotest-logo.png')); ?>" alt="" width="143" height="27"/></a>
                 </div>
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-nav-inner">
@@ -35,9 +37,9 @@
                     <ul class="rd-navbar-nav">
                       <li class="active"><a href="#inicio">Inicio</a>
                       </li>
-                      <li><a href="#beneficios">Beneficios</a>
-                      </li>
                       <li><a href="#info">Sobre Econotest</a>
+                      </li>
+                      <li><a href="#beneficios">Beneficios</a>
                       </li>
                       <li><a href="/login">Iniciar Sesión</a>
                       </li>
@@ -49,6 +51,7 @@
           </nav>
         </div>
       </header>
+      <!-- FIN NAVBAR -->
 
       <!-- INICIO -->
       <section id=inicio>
@@ -110,9 +113,37 @@
           </div>
         </div>
       </section>
+      <!-- FIN INICIO -->
+      
+      <!-- INFO -->
+      <section id="info" class="bg-displaced-wrap">
+        <div class="bg-displaced-body">
+          <div class="container">
+            <div class="inset-xl-left-70 inset-xl-right-70">
+              <article class="box-cart bg-ebony-clay">
+                <div class="box-cart-image"><img src="images/about.jfif" alt="" width="342" height="338"/>
+                </div>
+                <div class="box-cart-body">
+                  <blockquote class="blockquote-complex blockquote-complex-inverse">
+                    <h3>Sobre ECONOTEST</h3>
+                    <p>
+                      <q>ECONOTEST es una solución software con fines educativos que ofrece un aprendizaje basado en la resolución de preguntas con fines de ganar cromos e ir coleccionandolos en un álbum digital.</q>
+                    </p>
+                  </blockquote>
+                  <div class="button-wrap inset-md-left-70"><a class="button button-responsive button-medium button-primary-outline-v2" href="#">Empezar</a></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="bg-displaced bg-image" style="background-color: #BBC7A4;"></div>
+      </section>
+      <!-- FIN INFO -->
 
-      <section id="beneficios" class="section-50 section-md-75 section-lg-100">
+       <!-- BENEFICIOS -->
+       <section id="beneficios" class="section-50 section-md-75 section-lg-100">
         <div class="container">
+        <h3>BENEFICIOS</h3>
           <div class="row row-40">
             <div class="col-md-6 col-lg-4 height-fill">
               <article class="icon-box">
@@ -159,30 +190,7 @@
           </div>
         </div>
       </section>
-      
-      <!-- INFO -->
-      <section id="info" class="bg-displaced-wrap">
-        <div class="bg-displaced-body">
-          <div class="container">
-            <div class="inset-xl-left-70 inset-xl-right-70">
-              <article class="box-cart bg-ebony-clay">
-                <div class="box-cart-image"><img src="images/about.jfif" alt="" width="342" height="338"/>
-                </div>
-                <div class="box-cart-body">
-                  <blockquote class="blockquote-complex blockquote-complex-inverse">
-                    <h3>Sobre ECONOTEST</h3>
-                    <p>
-                      <q>ECONOTEST es una solución software con fines educativos que ofrece un aprendizaje basado en la resolución de preguntas con fines de ganar cromos e ir coleccionandolos en un álbum digital.</q>
-                    </p>
-                  </blockquote>
-                  <div class="button-wrap inset-md-left-70"><a class="button button-responsive button-medium button-primary-outline-v2" href="#">Empezar</a></div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-        <div class="bg-displaced bg-image" style="background-color: #BBC7A4;"></div>
-      </section>
+      <!-- FIN BENEFICIOS -->
 
       <!-- FOOTER -->
       <footer id="footer">
@@ -199,9 +207,9 @@
 
           </div>
       </footer>
+      <!-- FIN FOOTER -->
 
     </div>
-    <div class="snackbars" id="form-output-global"></div>
     <script src="<?php echo e(asset('/js/core.min.js')); ?>"></script>
     <script src="<?php echo e(asset('/js/script.js')); ?>"></script>
   </body>

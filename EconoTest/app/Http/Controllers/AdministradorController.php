@@ -15,7 +15,7 @@ class AdministradorController extends Controller
     }
 
     public function index(){
-       return view('admin');
+       return view('usuarios');
     }
     //metodo para debolver la vista de admin/usuarios 
     public function indexUsuarios(){

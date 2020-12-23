@@ -11,13 +11,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <li class="nav-item">
-        <a class="nav-link" href="/admin/">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Admin</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/admin/usuarios">
+        <a class="nav-link" href="/admin">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Usuarios</span>
         </a>

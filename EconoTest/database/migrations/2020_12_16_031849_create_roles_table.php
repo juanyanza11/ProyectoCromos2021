@@ -18,6 +18,10 @@ class CreateRolesTable extends Migration
             $table->string('nombre_rol');
             $table->timestamps();
         });
+         DB::table('roles')->insert([
+            ['nombre_rol' => 'administrador'],
+            ['nombre_rol' => 'estudiante'],
+        ]);
     }
 
     /**
