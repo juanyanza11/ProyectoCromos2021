@@ -18,10 +18,11 @@
     <link rel="stylesheet" href="{{ asset('/css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    @yield('css')
 
   </head>
   <body>
-    
+
       <!-- NAVBAR -->
       <header class="page-head">
         <div class="rd-navbar-wrap">
@@ -29,17 +30,26 @@
             <div class="rd-navbar-inner">
               <div class="rd-navbar-group">
                 <div class="rd-navbar-panel">
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="index.html"><img src="{{ asset('images/econotest-logo.png') }}" alt="" width="143" height="27"/></a>
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="#"><img src="{{ asset('images/econotest-logo.png') }}" alt="" width="143" height="27"/></a>
                 </div>
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-nav-inner">
-                    <div class="rd-navbar-btn-wrap"><a class="button button-smaller button-primary-outline" href="#">REGISTRARSE</a></div>
                     <ul class="rd-navbar-nav">
-                      <li class="active"><a href="#quiz">Quiz</a>
+                      <li class="active"><a href="#">Quiz</a>
                       </li>
-                      <li><a href="#">Mi Perfil</a>
+                      <li><a href="#">Mi Colección</a>
                       </li>
                       <li><a href="#">Perfil</a>
+                      </li>
+                      <li>
+                        <a href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            <img src="{{ asset('images/logout.png') }}" width="27" height="27">
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                        </form>
                       </li>
                     </ul>
                   </div>
@@ -48,60 +58,9 @@
             </div>
           </nav>
         </div>
+        @yield('header')
       </header>
       <!-- FIN NAVBAR -->
-
-       <!-- BENEFICIOS -->
-       <section id="beneficios" class="section-50 section-md-75 section-lg-100">
-        <div class="container">
-        <h3>BENEFICIOS</h3>
-          <div class="row row-40">
-            <div class="col-md-6 col-lg-4 height-fill">
-              <article class="icon-box">
-                <div class="box-top">
-                <div class="box-icon"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
-                  <div class="box-header">
-                    <h5><a href="#"></a></h5>
-                  </div>
-                </div>
-                <div class="divider bg-accent"></div>
-                <div class="box-body">
-                  <p>Obten diversas recompensan en forma de cromos.</p>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6 col-lg-4 height-fill">
-              <article class="icon-box">
-                <div class="box-top">
-                  <div class="box-icon"><img src="images/beneficios2.jfif" alt="" width="300" height="300"/></div>
-                  <div class="box-header">
-                    <h5><a href="#"></a></h5>
-                  </div>
-                </div>
-                <div class="divider bg-accent"></div>
-                <div class="box-body">
-                  <p>Mide tus conocimientos sobre temáticas centrales de la economía</p>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6 col-lg-4 height-fill">
-              <article class="icon-box">
-                <div class="box-top">
-                <div class="box-icon"><img src="images/beneficios3.jfif" alt="" width="300" height="300"/></div>
-                  <div class="box-header">
-                    <h5><a href="#"></a></h5>
-                  </div>
-                </div>
-                <div class="divider bg-accent"></div>
-                <div class="box-body">
-                  <p>Aprendizaje interactivo</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- FIN BENEFICIOS -->
 
       <!-- FOOTER -->
       <footer id="footer">
@@ -117,11 +76,13 @@
             </div>
 
           </div>
+          @yield('footer')
       </footer>
       <!-- FIN FOOTER -->
 
     </div>
     <script src="{{ asset('/js/core.min.js') }}"></script>
     <script src="{{ asset('/js/script.js') }}"></script>
+    @yield('scripts')
   </body>
 </html>

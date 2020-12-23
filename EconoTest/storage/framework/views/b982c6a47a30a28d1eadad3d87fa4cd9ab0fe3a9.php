@@ -1,6 +1,6 @@
-@extends('usuario.mainUser')
 
-@section('header')
+
+<?php $__env->startSection('header'); ?>
 
     <section id="quiz" class="section-50 section-md-75 section-lg-100">
         <div class="container">
@@ -52,4 +52,5 @@
         </div>
     </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('usuario.mainUser', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/home.blade.php ENDPATH**/ ?>

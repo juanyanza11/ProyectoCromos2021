@@ -21,7 +21,7 @@
 
   </head>
   <body>
-    
+
       <!-- NAVBAR -->
       <header class="page-head">
         <div class="rd-navbar-wrap">
@@ -29,19 +29,19 @@
             <div class="rd-navbar-inner">
               <div class="rd-navbar-group">
                 <div class="rd-navbar-panel">
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="index.html"><img src="<?php echo e(asset('images/econotest-logo.png')); ?>" alt="" width="143" height="27"/></a>
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="#"><img src="<?php echo e(asset('images/econotest-logo.png')); ?>" alt="" width="143" height="27"/></a>
                 </div>
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-nav-inner">
-                    <div class="rd-navbar-btn-wrap"><a class="button button-smaller button-primary-outline" href="#">REGISTRARSE</a></div>
+                    <div class="rd-navbar-btn-wrap"><a class="button button-smaller button-primary-outline" href="register">REGISTRARSE</a></div>
                     <ul class="rd-navbar-nav">
                       <li class="active"><a href="#inicio">Inicio</a>
                       </li>
-                      <li><a href="#info">Sobre ECONOTEST</a>
+                      <li><a href="#info">Sobre Econotest</a>
                       </li>
                       <li><a href="#beneficios">Beneficios</a>
                       </li>
-                      <li><a href="<?php echo e(url('usuario/quiz.blade.php')); ?>">Iniciar Sesión</a>
+                      <li><a href="/login">Iniciar Sesión</a>
                       </li>
                     </ul>
                   </div>
