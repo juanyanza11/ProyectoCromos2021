@@ -12,14 +12,14 @@
 
 
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('/dash/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="<?php echo e(asset('/dash/vendor/fontawesome-free/css/all.min.css')); ?>" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{ asset('/dash/css/sb-admin-2.min.css')}}" rel="stylesheet">
-    @yield('css')
+    <link href="<?php echo e(asset('/dash/css/sb-admin-2.min.css')); ?>" rel="stylesheet">
+    <?php echo $__env->yieldContent('css'); ?>
 </head>
 
 <body id="page-top">
@@ -28,7 +28,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.sidebar')
+        <?php echo $__env->make('layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -38,29 +38,12 @@
             <div id="content">
 
                 <!-- Topbar -->
-                
-                <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                <?php echo $__env->make('layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    @yield('contenido')
+                    <?php echo $__env->yieldContent('contenido'); ?>
 
 
                 </div>
@@ -111,24 +94,24 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('/dash/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="<?php echo e(asset('/dash/vendor/jquery/jquery.min.js')); ?>"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{ asset('/dash/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="<?php echo e(asset('/dash/vendor/jquery-easing/jquery.easing.min.js')); ?>"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('/dash/js/sb-admin-2.min.js')}}"></script>
+    <script src="<?php echo e(asset('/dash/js/sb-admin-2.min.js')); ?>"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
     <!-- Page level custom scripts -->
-    <script src="{{ asset('/dash/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{ asset('/dash/js/demo/chart-pie-demo.js')}}"></script>
-    @yield('scripts')
+    <script src="<?php echo e(asset('/dash/js/demo/chart-area-demo.js')); ?>"></script>
+    <script src="<?php echo e(asset('/dash/js/demo/chart-pie-demo.js')); ?>"></script>
+    <?php echo $__env->yieldContent('scripts'); ?>
 </body>
 
-</html>
+</html><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/layouts/main.blade.php ENDPATH**/ ?>
