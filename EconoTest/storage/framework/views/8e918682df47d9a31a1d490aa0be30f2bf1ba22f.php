@@ -1,7 +1,6 @@
 
 
 <?php $__env->startSection('header'); ?>
-
     <section id="quiz" class="section-50 section-md-75 section-lg-100">
         <div class="container">
         <h3>BENEFICIOS</h3>
@@ -51,5 +50,5 @@
           </div>
         </div>
     </section>
-
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('usuario.mainUser', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ProyectoCromos2021\EconoTest\resources\views/home.blade.php ENDPATH**/ ?>

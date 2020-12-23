@@ -52,5 +52,10 @@ class User extends Authenticatable
         }   
         return false;
     }
-
+    public function esUsuario(){
+        if ($this->role->nombre_rol == 'estudiante'){
+            return true;
+        }   
+        return false;
+    }
 }

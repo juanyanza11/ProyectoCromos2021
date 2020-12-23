@@ -30,7 +30,7 @@
             <div class="rd-navbar-inner">
               <div class="rd-navbar-group">
                 <div class="rd-navbar-panel">
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="#"><img src="<?php echo e(asset('images/econotest-logo.png')); ?>" alt="" width="143" height="27"/></a>
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="/"><img src="<?php echo e(asset('images/econotest-logo.png')); ?>" alt="" width="143" height="27"/></a>
                 </div>
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-nav-inner">
