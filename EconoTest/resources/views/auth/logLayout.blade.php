@@ -39,11 +39,11 @@
                   <div class="rd-navbar-nav-inner">
                   <div class="rd-navbar-btn-wrap"><a class="button button-smaller button-primary-outline" href="register">REGISTRARSE</a></div>
                     <ul class="rd-navbar-nav">
-                      <li class="active"><a href="#">Inicio</a>
+                      <li class="active"><a href="/">Inicio</a>
                       </li>
-                      <li><a href="#info">Sobre Econotest</a>
+                      <li><a href="/#info">Sobre Econotest</a>
                       </li>
-                      <li><a href="#beneficios">Beneficios</a>
+                      <li><a href="/#beneficios">Beneficios</a>
                       </li>
                       <li><a href="/login">Iniciar Sesión</a>
                     </ul>
