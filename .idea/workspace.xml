@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9bbef9dd-2599-4ac5-9682-a2ea574c381c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/EconoTest/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/resources/views/layouts/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/1b7b52adc4a0a144af8afa3d3cf84f3349cd1e5b.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/1b7b52adc4a0a144af8afa3d3cf84f3349cd1e5b.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/8e918682df47d9a31a1d490aa0be30f2bf1ba22f.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/8e918682df47d9a31a1d490aa0be30f2bf1ba22f.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/936e5772a25ebde8e467b37c2a8cd75982722cc2.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/936e5772a25ebde8e467b37c2a8cd75982722cc2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/a0ae6a002e43fef5cf028462e788f39b2b54e723.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/a0ae6a002e43fef5cf028462e788f39b2b54e723.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1mbnsNKZ73dJM6Tejl2ci9LiDQm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9bbef9dd-2599-4ac5-9682-a2ea574c381c" name="Default Changelist" comment="" />
+      <created>1609771374751</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609771374751</updated>
+      <workItem from="1609771641792" duration="16000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1609771658896">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1609771658896" />
+  </component>
+</project>
