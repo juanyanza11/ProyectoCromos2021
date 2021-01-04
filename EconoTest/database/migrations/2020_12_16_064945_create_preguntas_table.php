@@ -18,9 +18,9 @@ class CreatePreguntasTable extends Migration
             $table->string('idTematica');
             $table->string('enunciado');
             $table->string('respuesta');
-            $table->string('alternativa1');
-            $table->string('alternativa2');
-            $table->string('alternativa3');
+            $table->string('alternativa1')-> nullable();
+            $table->string('alternativa2')-> nullable();
+            $table->string('alternativa3')-> nullable();
             $table->timestamps();
 
         });

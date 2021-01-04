@@ -26,6 +26,7 @@ class PreguntaController extends Controller
         $request->validate([
             'enunciado' => 'required',
             'respuesta' => 'required',
+            'alternativa1' => 'required'
         ]);
     
         Pregunta::create($request->all());
