@@ -21,6 +21,10 @@ class CreatePreguntasTable extends Migration
             $table->string('alternativa1')-> nullable();
             $table->string('alternativa2')-> nullable();
             $table->string('alternativa3')-> nullable();
+           
+            $table->foreign('idTematica')->references('id')->on('tematicas')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
 
         });
