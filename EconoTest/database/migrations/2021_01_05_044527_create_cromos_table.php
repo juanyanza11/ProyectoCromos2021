@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateCromosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre_rol');
+        Schema::create('cromos', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('descripcion')->nullable();
+            $table->string('imagen')->nullable();
+            $table->bigInteger('estado');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('cromos');
     }
 }

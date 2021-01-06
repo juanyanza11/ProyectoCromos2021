@@ -21,27 +21,33 @@
    
     <table class="table table-bordered">
         <tr>
-            <th>IdTematica</th>
+
             <th>Id</th>
             <th>Pregunta</th>
             <th>Respuesta</th>
             <th>Alternativa 1</th>
             <th>Alternativa 2</th>
             <th>Alternativa 3</th>
+            <th>Alternativa 4</th>
 
+            <th>Tematica</th>
 
             <th width="280px">Accion</th>
         </tr>
-        @foreach ($preguntas as $pregunta)
+        @foreach ($preguntas2 as $pregunta)
         <tr>
-        
-            <td>{{ $pregunta-> idTematica }}</td>
             <td>{{ $pregunta-> id }}</td>
             <td>{{ $pregunta->enunciado }}</td>
-            <td>{{ $pregunta->respuesta }}</td>
-            <td>{{ $pregunta->alternativa1 }}</td>
-            <td>{{ $pregunta->alternativa2 }}</td>
-            <td>{{ $pregunta->alternativa3 }}</td>
+            <td>{{ $pregunta->opcion_correcta}}</td>
+            <td>{{ $pregunta->opcion_1 }}</td>
+            <td>{{ $pregunta->opcion_2 }}</td>
+            <td>{{ $pregunta->opcion_3 }}</td>
+            <td>{{ $pregunta->opcion_4 }}</td>
+            
+            
+            
+            <td>{{ $pregunta->nombre }}</td>
+
 
             <td>
                 <form action="{{ route('preguntas.destroy',$pregunta->id) }}" method="POST">

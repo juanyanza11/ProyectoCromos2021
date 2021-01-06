@@ -1,31 +1,31 @@
-@extends('layouts.main')
-@extends('preguntas.layout')
 
-@section('contenido')
+
+
+<?php $__env->startSection('contenido'); ?>
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2>Agregar preguntas</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('preguntas.index') }}"> Back</a>
+            <a class="btn btn-primary" href="<?php echo e(route('preguntas.index')); ?>"> Back</a>
         </div>
     </div>
 </div>
    
-@if ($errors->any())
+<?php if($errors->any()): ?>
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
         <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <li><?php echo e($error); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
     </div>
-@endif
+<?php endif; ?>
    
-<form action="{{ route('preguntas.store') }}" method="POST">
-    @csrf
+<form action="<?php echo e(route('preguntas.store')); ?>" method="POST">
+    <?php echo csrf_field(); ?>
   
      <div class="row">
     <br>
@@ -33,9 +33,9 @@
             <div class="form-group">
                 <strong>TEMATICA:</strong>
                 <select name="tematica_id" id="tematica_id">
-                @foreach($tematicas as $tematica)
-                    <option value= "{{ $tematica->id }}">{{ $tematica->nombre }}</option>
-                @endforeach
+                <?php $__currentLoopData = $tematicas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value= "<?php echo e($tematica->id); ?>"><?php echo e($tematica->nombre); ?></option>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>
         </div>
@@ -81,4 +81,6 @@
     </div>
    
 </form>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('preguntas.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\JuanJ\Desktop\ECONOTEST ACTUAL\ProyectoCromos2021\EconoTest\resources\views/preguntas/create.blade.php ENDPATH**/ ?>

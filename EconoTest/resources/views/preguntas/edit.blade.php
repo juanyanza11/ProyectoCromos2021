@@ -27,7 +27,16 @@
     <form action="{{ route('preguntas.update',$pregunta->id) }}" method="POST">
         @csrf
         @method('PUT')
-   
+             <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>TEMATICA:</strong>
+                <select name="tematica_id" id="tematica_id">
+                @foreach($tematicas as $tematica)
+                    <option value= "{{ $tematica->id }}">{{ $tematica->nombre }}</option>
+                @endforeach
+                </select>
+            </div>
+        </div>
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -38,28 +47,28 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Respuesta:</strong>
-                    <textarea class="form-control" style="height:150px" name="respuesta" placeholder="Detail">{{ $pregunta->respuesta }}</textarea>
+                    <textarea class="form-control" style="height:150px" name="opcion_correcta" placeholder="Digite la opcion correcta">{{ $pregunta->opcion_correcta }}</textarea>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Alternativa 1:</strong>
-                    <input type="text" name="alternativa1" value="{{ $pregunta->alternativa1 }}" class="form-control" >
+                    <input type="text" name="opcion_1" value="{{ $pregunta->opcion_1}}" class="form-control" >
                 </div>
             </div>
             
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Alternativa 2:</strong>
-                    <input type="text" name="alternativa2" value="{{ $pregunta->alternativa2 }}" class="form-control" >
+                    <input type="text" name="opcion_2" value="{{ $pregunta->opcion_2 }}" class="form-control" >
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Alternativa 3:</strong>
-                    <input type="text" name="alternativa3" value="{{ $pregunta->alternativa3 }}" class="form-control" >
+                    <input type="text" name="opcion_3" value="{{ $pregunta->opcion_3 }}" class="form-control" >
                 </div>
             </div>
             

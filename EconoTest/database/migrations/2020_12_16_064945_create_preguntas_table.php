@@ -13,20 +13,25 @@ class CreatePreguntasTable extends Migration
      */
     public function up()
     {
-        Schema::create('preguntas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('idTematica');
-            $table->string('enunciado');
-            $table->string('respuesta');
-            $table->string('alternativa1')-> nullable();
-            $table->string('alternativa2')-> nullable();
-            $table->string('alternativa3')-> nullable();
-           
-            $table->foreign('idTematica')->references('id')->on('tematicas')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->timestamps();
 
+        Schema::create('tematicas', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('codigo');
+            $table->string('nombre');
+            $table->string('imagen')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('preguntas', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('enunciado');
+            $table->string("opcion_correcta");
+            $table->string('opcion_1');
+            $table->string('opcion_2');
+            $table->string('opcion_3');
+            $table->string('opcion_4');
+            $table->foreignId('tematica_id')->constrained();
+            $table->timestamps();
         });
     }
 
@@ -38,5 +43,6 @@ class CreatePreguntasTable extends Migration
     public function down()
     {
         Schema::dropIfExists('preguntas');
+        Schema::dropIfExists('tematica');
     }
 }

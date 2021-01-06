@@ -18,9 +18,9 @@
           href="//fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic%7CLato:300,300italic,400,400italic,700,900%7CMerriweather:700italic">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('/css/fonts.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/fonts.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/style.css')); ?>">
 
 
 </head>
@@ -41,7 +41,7 @@
                             <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span>
                             </button>
                             <a class="rd-navbar-brand brand" href="/"><img
-                                    src="{{ asset('images/econotest-logo.png') }}" alt="" width="143" height="27"/></a>
+                                    src="<?php echo e(asset('images/econotest-logo.png')); ?>" alt="" width="143" height="27"/></a>
                         </div>
                         <div class="rd-navbar-nav-wrap">
                             <div class="rd-navbar-nav-inner">
@@ -53,14 +53,14 @@
                                     <li><a href="#">Perfil</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="<?php echo e(route('logout')); ?>"
                                            onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                                            <img src="{{ asset('images/logout.png') }}" width="27" height="27">
+                                            <img src="<?php echo e(asset('images/logout.png')); ?>" width="27" height="27">
                                         </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
                                               class="d-none">
-                                            @csrf
+                                            <?php echo csrf_field(); ?>
                                         </form>
                                     </li>
                                 </ul>
@@ -75,7 +75,7 @@
     <!-- FIN NAVBAR -->
 
     <main  >
-        @yield('contenido')
+        <?php echo $__env->yieldContent('contenido'); ?>
     </main>
 
     <!-- FOOTER -->
@@ -93,14 +93,14 @@
             </div>
 
         </div>
-        @yield('footer')
+        <?php echo $__env->yieldContent('footer'); ?>
     </footer>
     <!-- FIN FOOTER -->
 
-<script src="{{ asset('/js/core.min.js') }}"></script>
-<script src="{{ asset('/js/script.js') }}"></script>
+<script src="<?php echo e(asset('/js/core.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/script.js')); ?>"></script>
 
-@yield('scripts')
+<?php echo $__env->yieldContent('scripts'); ?>
 </div>
 </body>
-</html>
+</html><?php /**PATH C:\Users\JuanJ\Desktop\ECONOTEST ACTUAL\ProyectoCromos2021\EconoTest\resources\views/usuario/mainUser.blade.php ENDPATH**/ ?>
