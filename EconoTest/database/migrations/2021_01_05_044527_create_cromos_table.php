@@ -18,7 +18,7 @@ class CreateCromosTable extends Migration
             $table->string('nombre');
             $table->string('descripcion')->nullable();
             $table->string('imagen')->nullable();
-            $table->bigInteger('estado');
+            $table->bigInteger('estado')->nullable();
             $table->timestamps();
         });
     }

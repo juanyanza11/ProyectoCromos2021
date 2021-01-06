@@ -21,27 +21,33 @@
    
     <table class="table table-bordered">
         <tr>
-            <th>IdTematica</th>
+
             <th>Id</th>
             <th>Pregunta</th>
             <th>Respuesta</th>
             <th>Alternativa 1</th>
             <th>Alternativa 2</th>
             <th>Alternativa 3</th>
+            <th>Alternativa 4</th>
 
+            <th>Tematica</th>
 
             <th width="280px">Accion</th>
         </tr>
-        <?php $__currentLoopData = $preguntas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pregunta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $preguntas2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pregunta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
-        
-            <td><?php echo e($pregunta-> idTematica); ?></td>
             <td><?php echo e($pregunta-> id); ?></td>
             <td><?php echo e($pregunta->enunciado); ?></td>
-            <td><?php echo e($pregunta->respuesta); ?></td>
-            <td><?php echo e($pregunta->alternativa1); ?></td>
-            <td><?php echo e($pregunta->alternativa2); ?></td>
-            <td><?php echo e($pregunta->alternativa3); ?></td>
+            <td><?php echo e($pregunta->opcion_correcta); ?></td>
+            <td><?php echo e($pregunta->opcion_1); ?></td>
+            <td><?php echo e($pregunta->opcion_2); ?></td>
+            <td><?php echo e($pregunta->opcion_3); ?></td>
+            <td><?php echo e($pregunta->opcion_4); ?></td>
+            
+            
+            
+            <td><?php echo e($pregunta->nombre); ?></td>
+
 
             <td>
                 <form action="<?php echo e(route('preguntas.destroy',$pregunta->id)); ?>" method="POST">

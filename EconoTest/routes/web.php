@@ -30,8 +30,7 @@ Route::delete('admin/{id}', [App\Http\Controllers\AdministradorController::class
 
 
 Route::resource('/admin/preguntas', "App\Http\Controllers\PreguntaController");
-Route::get('/admin/cromos', [App\Http\Controllers\AdministradorController::class, 'indexCromos']);
-
+Route::resource('/admin/cromos', "App\Http\Controllers\CromoController");
 
 Route::get('/preguntas/{id}', [\App\Http\Controllers\PreguntaController::class, 'mostrarPreguntas'])->name('preguntas.usuario.index');
 Route::post('/preguntas/quiz', [\App\Http\Controllers\PreguntaController::class, 'validarPreguntas'])->name('preguntas.usuario.quiz');
