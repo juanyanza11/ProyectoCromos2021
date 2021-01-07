@@ -30,6 +30,8 @@ Route::delete('admin/{id}', [App\Http\Controllers\AdministradorController::class
 
 
 Route::resource('/admin/preguntas', "App\Http\Controllers\PreguntaController");
+
+
 Route::resource('/admin/cromos', "App\Http\Controllers\CromoController");
 
 Route::get('/preguntas/{id}', [\App\Http\Controllers\PreguntaController::class, 'mostrarPreguntas'])->name('preguntas.usuario.index');

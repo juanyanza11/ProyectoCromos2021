@@ -1,59 +1,61 @@
+@extends('layouts.main')
 
-
-<?php $__env->startSection('contenido'); ?>
+@section('contenido')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">USUARIOS</h1>
+        <h1 class="h3 mb-0 text-gray-800">CROMOS</h1>
         <a  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  data-toggle="modal" data-target="#modalAgregar"><i
-                class="fas fa-download fa-sm text-white-50"></i> Agregar usuarios</a>
+                class="fas fa-download fa-sm text-white-50"></i> Agregar Cromos</a>
     </div>
     <div class ="row">
-        <?php if($message = Session::get('Listo')): ?> 
+        @if($message = Session::get('Listo')) 
             <div class = "col-12 alert alert-success alert-dismissable fade show" role = "alert">
                 <h5>Mensaje: </h5>            
-                <span><?php echo e($message); ?></span>
+                <span>{{$message}}</span>
             </div>
-        <?php endif; ?>
+        @endif
 
+
+
+        
         <table class = "table col-12 table-resposive">
             <thead>
                 <tr>
                     <td>Id</td>
                     <td>Nombre</td>
-                    <td>Email</td>
-                    <td>Rol</td>
+                    <td>Descripción</td>
+                    <td>Imagen</td>
                     <td>&nbsp;</td>
                 </tr>
             </thead>
             <tbody>
 
-                <?php $__currentLoopData = $usuarios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $usuario): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                @foreach ($cromos as $cromo)
                     <tr>
-                        <td><?php echo e($usuario -> id); ?></td>
-                        <td><?php echo e($usuario -> name); ?></td>
-                        <td><?php echo e($usuario -> email); ?></td>
-                        <td><?php echo e($usuario -> nombre_rol); ?></td>
+                        <td>{{ $cromo -> id }}</td>
+                        <td>{{ $cromo -> nombre }}</td>
+                        <td>{{ $cromo -> descripcion }}</td>
+                        <td><img src='{{asset("/img/cromos/{$cromo->imagen}")}}' alt="" style="width:70px"></td>
                         <td>
-                            <button class= "btn btn-round btnEliminar" data-id ="<?php echo e($usuario->id); ?>" data-toggle="modal" data-target="#modalEliminar"> 
+                            <button class= "btn btn-round btnEliminar" data-id ="{{ $cromo->id}}" data-toggle="modal" data-target="#modalEliminar"> 
                             <i class = "fa fa-trash"></i></button>
                             <button class= "btn btn-round btnEditar" 
-                            data-id ="<?php echo e($usuario->id); ?>" 
-                            data-name ="<?php echo e($usuario->name); ?>" 
-                            data-email ="<?php echo e($usuario->email); ?>" 
+                            data-id ="{{ $cromo->id}}" 
+                            data-name ="{{ $cromo->nombre}}" 
+                            data-email ="{{ $cromo->descripcion}}" 
                             data-toggle="modal" data-target="#modalEditar"> 
                             <i class = "fa fa-edit"></i></button>
-                            <form action = "<?php echo e(url('/admin', ['id'=>$usuario->id])); ?>" method="post" id= "formEli_<?php echo e($usuario->id); ?>">
-                                <?php echo csrf_field(); ?>
-                                <input type ="hidden" name="id" value="<?php echo e($usuario->id); ?>">
+                            <form action = "{{ url('/admin', ['id'=>$cromo->id]) }}" method="post" id= "formEli_{{ $cromo->id }}">
+                                @csrf
+                                <input type ="hidden" name="id" value="{{ $cromo->id}}">
                                 <input type ="hidden" name="_method" value="delete">
 
                             </form>
                         </td>
                     </tr>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                @endforeach
             </tbody>
         
         </table>
-
 
 
     </div>
@@ -62,49 +64,34 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar usuarios</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar cromos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action ="/admin" method ="post">
-                <?php echo csrf_field(); ?>
+            <form action ="/admin/cromos" method ="post" enctype="multipart/form-data">
+                @csrf
                 <div class="modal-body">
-                    <?php if($message = Session::get('ErrorInsert')): ?> 
+                    @if($message = Session::get('ErrorInsert')) 
                         <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                             <h5>Errores: </h5>            
                                 <ul>
-                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><?php echo e($error); ?></li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
                                 </ul>
                         </div>
-                    <?php endif; ?>
+                    @endif
                     <div class = "form-group">
-                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="<?php echo e(old('nombre')); ?>">
+                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="{{ old('nombre') }}">
                     </div>
                     <div class = "form-group">
-                        <input  type = "email" class ="form-control" name ="email" placeholder="Email" value="<?php echo e(old('email')); ?>">
+                    <p>Descripción:</p>
+                    <p><textarea name="descripcion" cols="62" rows="5" required></textarea></p>
                     </div>
                     <div class = "form-group">
-                        <input  type = "password" class ="form-control" name ="pass1" placeholder="Password">
-                    </div>
-                    <div class = "form-group">
-                        <input  type = "password" class ="form-control" name ="pass2" placeholder="Confirmar Password">
-                    </div>
-                    <div class = "form-group">
-                        <p>Seleccione su Rol:</p>
-
-                        <div>
-                        <input type="radio" id="administrador" name="rol" value="1"
-                                checked>
-                        <label for="huey">Administrador</label>
-                        </div>
-
-                        <div>
-                        <input type="radio" id="estudiante" name="rol" value="2">
-                        <label for="dewey">Estudiante</label>
-                        </div>
+                        <p>Imagen del cromo:</p>
+                        <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -116,18 +103,21 @@
         </div>
     </div>
 
+
+
+
     <!-- Modal Eliminar -->
     <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar usuarios</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar cromos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
                 <div class="modal-body">
-                    <h5>¿Desea eliminar el usuario?</h5>
+                    <h5>¿Desea eliminar el cromo?</h5>
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -142,30 +132,30 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar usuarios</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar cromos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form action ="/admin/edit" method ="post">
-                <?php echo csrf_field(); ?>
+                @csrf
                 <div class="modal-body">
-                    <?php if($message = Session::get('ErrorInsert')): ?> 
+                    @if($message = Session::get('ErrorInsert')) 
                         <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                             <h5>Errores: </h5>            
                                 <ul>
-                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><?php echo e($error); ?></li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
                                 </ul>
                         </div>
-                    <?php endif; ?>
+                    @endif
                     <input type = "hidden" name = "id" id= "idEdit">
                     <div class = "form-group">
-                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="<?php echo e(old('nombre')); ?>" id= "nameEdit">
+                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="{{ old('nombre') }}" id= "nameEdit">
                     </div>
                     <div class = "form-group">
-                        <input  type = "email" class ="form-control" name ="email" placeholder="Email" value="<?php echo e(old('email')); ?>" id = "emailEdit">
+                        <input  type = "email" class ="form-control" name ="email" placeholder="Email" value="{{ old('email') }}" id = "emailEdit">
                     </div>
                     <div class = "form-group">
                         <input  type = "password" class ="form-control" name ="pass1" placeholder="Password">
@@ -196,15 +186,15 @@
             </div>
         </div>
     </div>
-<?php $__env->stopSection(); ?>
+@endsection
 
-<?php $__env->startSection('scripts'); ?>
+@section('scripts')
     <script>
     var idEliminar = 0; 
     $(document).ready(function(){
-        <?php if($message = Session::get('ErrorInsert')): ?>
+        @if($message = Session::get('ErrorInsert')) 
             $('#modalAgregar').modal('show');
-        <?php endif; ?>
+        @endif
         $(".btnEliminar").click(function(){
             idEliminar = $(this).data('id');
         });
@@ -221,5 +211,4 @@
         });
     });      
     </script>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ProyectoCromos2021\EconoTest\resources\views/usuarios.blade.php ENDPATH**/ ?>
+@endsection

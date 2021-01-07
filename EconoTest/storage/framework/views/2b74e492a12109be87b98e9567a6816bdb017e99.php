@@ -32,15 +32,15 @@
      <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>TEMATICA:</strong>
-                <select name="idTematica" id="idTematica">
-                    <option value="EC-MACRO">MACROECONOMIA</option>
-                    <option value="EC-METRIA">ECONOMETRIA</option>
-                    <option value="EC-MICRO">MICROECONOMIA</option>
+                <select name="tematica_id" id="tematica_id">
+                <?php $__currentLoopData = $tematicas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value= "<?php echo e($tematica->id); ?>"><?php echo e($tematica->nombre); ?></option>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>
         </div>
 
-     
+
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Pregunta:</strong>
@@ -50,14 +50,14 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Respuesta:</strong>
-                <input type="text" class="form-control" style="height:150px" name="respuesta" placeholder="Respuesta"></input>
+                <input type="text" class="form-control" style="height:150px" name="opcion_correcta" placeholder="Respuesta"></input>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Alternativa 1:</strong>
-                <input type="text" class="form-control" style="height:75px" name="alternativa1" placeholder=""></input>
+                <input type="text" class="form-control" style="height:75px" name="opcion_1" placeholder=""></input>
             </div>
         </div>
 
@@ -65,14 +65,14 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Alternativa 2:</strong>
-                <input type="text" class="form-control" style="height:75px" name="alternativa2" placeholder=""></input>
+                <input type="text" class="form-control" style="height:75px" name="opcion_2" placeholder=""></input>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Alternativa 3:</strong>
-                <input type="text" class="form-control" style="height:75px" name="alternativa3" placeholder=""></input>
+                <input type="text" class="form-control" style="height:75px" name="opcion_3" placeholder=""></input>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Str;
 use Validator;
 use App\Models\Cromo;
 use Illuminate\Http\Request;
@@ -14,7 +15,11 @@ class CromoController extends Controller
      */
     public function index()
     {
-        return view('cromos');
+        $cromos = \DB::table('cromos')
+                ->select('cromos.id','cromos.nombre', 'cromos.descripcion', 'cromos.imagen')
+                ->orderBy('cromos.id')
+                ->get();
+                return view('cromos.index')->with('cromos', $cromos) ;  
     }
 
     /**
@@ -48,7 +53,9 @@ class CromoController extends Controller
             ->withErrors($validator);
         }else{
             $imagen = $request->file('img');
-            $nombre = time().'.'.$imagen->getClientOriginalExtension();
+            $rand = rand(0,100);
+            $nombre_imagen = Str::lower($imagen->getClientOriginalName());
+            $nombre = "0{$rand}{$nombre_imagen}";
             $destino = public_path('img/cromos');
             $request->img->move($destino, $nombre);
 
@@ -81,7 +88,7 @@ class CromoController extends Controller
      */
     public function edit(Cromo $cromo)
     {
-        //
+       
     }
 
     /**
@@ -93,7 +100,27 @@ class CromoController extends Controller
      */
     public function update(Request $request, Cromo $cromo)
     {
-        //
+        $cromo = Cromo::find($request->id);
+        $validator = Validator::make($request->all(),[
+        'nombre'=> 'required|min:3|max:50',
+        'descripcion'=> 'required',
+        'img'=> 'required|image|mimes:jpg,png,jpeg,svg|max:3000',
+        ]);
+        if($validator -> fails()){
+            return back()
+            ->withInput()
+            ->with('ErrorInsert', 'Error de inserción, complete los datos correctamente')
+            ->withErrors($validator);
+        }else{
+            $cromo->nombre = $request->nombre;
+            $cromo->descripcion = $request->descripcion;
+            $cromo->imagen = $request->imagen;
+            
+            unlink(public_path('img/cromos'.$cromo->imagen));
+            
+            $cromo->save();
+            return back()->with('Listo', 'El cromo se actualizó correctamente');
+        }
     }
 
     /**

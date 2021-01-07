@@ -43,9 +43,6 @@
             <td><?php echo e($pregunta->opcion_2); ?></td>
             <td><?php echo e($pregunta->opcion_3); ?></td>
             <td><?php echo e($pregunta->opcion_4); ?></td>
-            
-            
-            
             <td><?php echo e($pregunta->nombre); ?></td>
 
 
@@ -63,9 +60,6 @@
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </table>
-  
-    <?php echo $preguntas->links(); ?>
-
       
 <?php $__env->stopSection(); ?>
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCromosTable extends Migration
+class CreateCromosUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateCromosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cromos', function (Blueprint $table) {
+        Schema::create('cromos_users', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('descripcion')->nullable();
-            $table->string('imagen')->nullable();
+            $table->bigInteger('estado');
+            $table->foreignId('cromo_id')->constrained();
+            $table->foreignId('album_id')->constrained();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateCromosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cromos');
+        Schema::dropIfExists('cromos_users');
     }
 }

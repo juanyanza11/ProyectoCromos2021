@@ -202,7 +202,7 @@
     <script>
     var idEliminar = 0; 
     $(document).ready(function(){
-        @if($message = Session::get('ErrorInsert')) 
+        @if($message = Session::get('ErrorInsert'))
             $('#modalAgregar').modal('show');
         @endif
         $(".btnEliminar").click(function(){

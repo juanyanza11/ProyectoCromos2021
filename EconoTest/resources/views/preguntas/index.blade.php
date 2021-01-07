@@ -43,9 +43,6 @@
             <td>{{ $pregunta->opcion_2 }}</td>
             <td>{{ $pregunta->opcion_3 }}</td>
             <td>{{ $pregunta->opcion_4 }}</td>
-            
-            
-            
             <td>{{ $pregunta->nombre }}</td>
 
 
@@ -63,8 +60,6 @@
         </tr>
         @endforeach
     </table>
-  
-    {!! $preguntas->links() !!}
       
 @endsection
 
