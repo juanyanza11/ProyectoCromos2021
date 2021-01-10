@@ -49,7 +49,7 @@
             <td>
                 <form action="<?php echo e(route('preguntas.destroy',$pregunta->id)); ?>" method="POST">
    
-                    <a class="btn btn-primary" href="<?php echo e(route('preguntas.edit',$pregunta->id)); ?>">Editar</a>
+                    <a class="btn btn-primary editar" href="<?php echo e(route('preguntas.edit',$pregunta->id)); ?>">Editar</a>
    
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>

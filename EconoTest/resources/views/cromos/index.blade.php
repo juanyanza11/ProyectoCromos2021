@@ -166,7 +166,7 @@
                     <div class = "form-group">
                         <p>Seleccione su Rol:</p>
 
-                        <div>
+                        <div>   
                         <input type="radio" id="administrador" name="rol" value="1" id = "rolEdit"
                                 checked>
                         <label for="huey">Administrador</label>

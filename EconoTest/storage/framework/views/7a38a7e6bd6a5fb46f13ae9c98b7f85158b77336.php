@@ -33,14 +33,14 @@
                         <td><?php echo e($usuario -> email); ?></td>
                         <td><?php echo e($usuario -> nombre_rol); ?></td>
                         <td>
-                            <button class= "btn btn-round btnEliminar" data-id ="<?php echo e($usuario->id); ?>" data-toggle="modal" data-target="#modalEliminar"> 
-                            <i class = "fa fa-trash"></i></button>
-                            <button class= "btn btn-round btnEditar" 
+                            <button class= "btn btn-primary editar btnEditar" 
                             data-id ="<?php echo e($usuario->id); ?>" 
                             data-name ="<?php echo e($usuario->name); ?>" 
                             data-email ="<?php echo e($usuario->email); ?>" 
                             data-toggle="modal" data-target="#modalEditar"> 
-                            <i class = "fa fa-edit"></i></button>
+                            Editar</button>
+                            <button class= "btn btn-danger btnEliminar" data-id ="<?php echo e($usuario->id); ?>" data-toggle="modal" data-target="#modalEliminar"> Borrar</button>
+
                             <form action = "<?php echo e(url('/admin', ['id'=>$usuario->id])); ?>" method="post" id= "formEli_<?php echo e($usuario->id); ?>">
                                 <?php echo csrf_field(); ?>
                                 <input type ="hidden" name="id" value="<?php echo e($usuario->id); ?>">
@@ -137,12 +137,12 @@
         </div>
     </div>
 
-        <!-- Modal Editar -->
+          <!-- Modal Editar -->
     <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar usuarios</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar cromos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -176,7 +176,7 @@
                     <div class = "form-group">
                         <p>Seleccione su Rol:</p>
 
-                        <div>
+                        <div>   
                         <input type="radio" id="administrador" name="rol" value="1" id = "rolEdit"
                                 checked>
                         <label for="huey">Administrador</label>
@@ -202,7 +202,7 @@
     <script>
     var idEliminar = 0; 
     $(document).ready(function(){
-        <?php if($message = Session::get('ErrorInsert')): ?>
+        <?php if($message = Session::get('ErrorInsert')): ?> 
             $('#modalAgregar').modal('show');
         <?php endif; ?>
         $(".btnEliminar").click(function(){

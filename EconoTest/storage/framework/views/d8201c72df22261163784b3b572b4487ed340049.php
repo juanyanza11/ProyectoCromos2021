@@ -137,7 +137,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action ="/admin/edit" method ="store">
+            <form action ="/admin/edit" method ="post">
                 <?php echo csrf_field(); ?>
                 <div class="modal-body">
                     <?php if($message = Session::get('ErrorInsert')): ?> 
@@ -150,16 +150,32 @@
                                 </ul>
                         </div>
                     <?php endif; ?>
+                    <input type = "hidden" name = "id" id= "idEdit">
                     <div class = "form-group">
-                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="<?php echo e(old('nombre')); ?>">
+                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="<?php echo e(old('nombre')); ?>" id= "nameEdit">
                     </div>
                     <div class = "form-group">
-                    <p>Descripción:</p>
-                    <p><textarea name="descripcion" cols="62" rows="5" required></textarea></p>
+                        <input  type = "email" class ="form-control" name ="email" placeholder="Email" value="<?php echo e(old('email')); ?>" id = "emailEdit">
                     </div>
                     <div class = "form-group">
-                        <p>Imagen del cromo:</p>
-                        <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
+                        <input  type = "password" class ="form-control" name ="pass1" placeholder="Password">
+                    </div>
+                    <div class = "form-group">
+                        <input  type = "password" class ="form-control" name ="pass2" placeholder="Confirmar Password">
+                    </div>
+                    <div class = "form-group">
+                        <p>Seleccione su Rol:</p>
+
+                        <div>   
+                        <input type="radio" id="administrador" name="rol" value="1" id = "rolEdit"
+                                checked>
+                        <label for="huey">Administrador</label>
+                        </div>
+
+                        <div>
+                        <input type="radio" id="estudiante" name="rol" value="2" id = "rolEdit">
+                        <label for="dewey">Estudiante</label>
+                        </div>
                     </div>
                 </div>
                     <div class="modal-footer">

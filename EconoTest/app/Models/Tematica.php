@@ -10,6 +10,6 @@ class Tematica extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'nombreTematica'
+        'codigo', 'nombre','imagen'
     ];
 }

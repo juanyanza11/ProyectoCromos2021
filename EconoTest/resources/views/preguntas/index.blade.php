@@ -49,7 +49,7 @@
             <td>
                 <form action="{{ route('preguntas.destroy',$pregunta->id) }}" method="POST">
    
-                    <a class="btn btn-primary" href="{{ route('preguntas.edit',$pregunta->id) }}">Editar</a>
+                    <a class="btn btn-primary editar" href="{{ route('preguntas.edit',$pregunta->id) }}">Editar</a>
    
                     @csrf
                     @method('DELETE')
