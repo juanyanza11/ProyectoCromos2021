@@ -1,30 +1,30 @@
-@extends('usuario.mainUser')
 
-@section('contenido')
+
+<?php $__env->startSection('contenido'); ?>
     <section class="section-md-75 ">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <h4>Resultado del examen:</h4>
-                    <p>Total de preguntas : {{$total_preguntas}}</p>
-                    <p>Correctas: {{$correctas}}</p>
-                    <p>Erroneas: {{$erroneas}}</p>
+                    <p>Total de preguntas : <?php echo e($total_preguntas); ?></p>
+                    <p>Correctas: <?php echo e($correctas); ?></p>
+                    <p>Erroneas: <?php echo e($erroneas); ?></p>
                 </div>
-                @if($paso)
+                <?php if($paso): ?>
                     <p>Obtubiste premios y creaste tu album</p>
-                @else
+                <?php else: ?>
                     <p>No pasaste </p>
-                @endif
+                <?php endif; ?>
 
             </div>
-            @if($mostrarAlerta)
+            <?php if($mostrarAlerta): ?>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-                @if($paso)
+                <?php if($paso): ?>
                     <script type="application/javascript">
                         Swal.fire({
                             title: 'Pasaste el Quiz',
                             html: `
-                                <p>Acertaste {{$correctas}} preguntas de {{$total_preguntas}} totales</p>
+                                <p>Acertaste <?php echo e($correctas); ?> preguntas de <?php echo e($total_preguntas); ?> totales</p>
                                 <p>Obtuviste 3 cromos para tu album</p>
                             `,
                             icon: 'success',
@@ -35,13 +35,13 @@
                             cancelButtonText: 'Volver a las temáticas'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.replace('/album/{{$newAlbumId}}');
+                                window.location.replace('/album/<?php echo e($newAlbumId); ?>');
                             }else{
                                 window.location.replace('/home');
                             }
                         })
                     </script>
-                @else
+                <?php else: ?>
                     <script type="application/javascript" >
                         Swal.fire({
                             icon: 'error',
@@ -53,10 +53,10 @@
 
 
                     </script>
-                @endif
+                <?php endif; ?>
 
 
-            @endif
+            <?php endif; ?>
         </div>
 
         <style>
@@ -66,4 +66,6 @@
         </style>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('usuario.mainUser', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\JuanJ\Desktop\ECONOTEST ACTUAL\ProyectoCromos2021\EconoTest\resources\views/cuestionario/resultado.blade.php ENDPATH**/ ?>

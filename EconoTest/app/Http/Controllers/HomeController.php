@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use App\Models\Tematica;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $tematicas = Tematica::all();
-        return view('home', compact('user' , 'tematicas'));
+        $album = Album::firstWhere('user_id', Auth::user()->id);
+        return view('home', compact('user', 'tematicas', 'album'));
     }
 }

@@ -36,3 +36,5 @@ Route::resource('/admin/cromos', "App\Http\Controllers\CromoController");
 
 Route::get('/preguntas/{id}', [\App\Http\Controllers\PreguntaController::class, 'mostrarPreguntas'])->name('preguntas.usuario.index');
 Route::post('/preguntas/quiz', [\App\Http\Controllers\PreguntaController::class, 'validarPreguntas'])->name('preguntas.usuario.quiz');
+
+Route::get('/album/{album}', [\App\Http\Controllers\AlbumController::class, 'index'])->name('album.index');

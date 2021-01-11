@@ -11,4 +11,8 @@ class CromosUser extends Model
         protected $fillable = [
         'estado', 'cromo_id', 'album_id'
     ];
+
+    public function cromo(){
+        return $this->belongsTo(Cromo::class);
+    }
 }

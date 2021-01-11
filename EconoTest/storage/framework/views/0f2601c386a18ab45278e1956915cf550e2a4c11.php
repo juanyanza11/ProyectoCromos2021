@@ -1,5 +1,9 @@
 
 
+<?php $__env->startSection('coleccionMenu'); ?>
+
+<?php $__env->stopSection(); ?>
+
 
 <?php $__env->startSection('contenido'); ?>
     <section class="section-md-75 ">
@@ -12,40 +16,39 @@
                             <h4><?php echo e($pregunta->enunciado); ?></h4>
                             <input type="hidden" name="pregunta_<?php echo e($pregunta->id); ?>_response" value="<?php echo e($pregunta->opcion_correcta); ?>">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="pregunta_<?php echo e($pregunta->id); ?>" id="exampleRadios1" value="<?php echo e($pregunta->opcion_1); ?>" checked>
-                                <label class="form-check-label" for="exampleRadios1">
+                                <input class="form-check-input" type="radio" name="pregunta_<?php echo e($pregunta->id); ?>" value="<?php echo e($pregunta->opcion_1); ?>" checked>
+                                <label class="form-check-label">
                                     <?php echo e($pregunta->opcion_1); ?>
 
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="pregunta_<?php echo e($pregunta->id); ?>" id="exampleRadios2" value="<?php echo e($pregunta->opcion_2); ?>">
-                                <label class="form-check-label" for="exampleRadios2">
+                                <input class="form-check-input" type="radio" name="pregunta_<?php echo e($pregunta->id); ?>"  value="<?php echo e($pregunta->opcion_2); ?>">
+                                <label class="form-check-label">
                                     <?php echo e($pregunta->opcion_2); ?>
 
                                 </label>
                             </div>
                             <div class="form-check disabled">
-                                <input class="form-check-input" type="radio" name="pregunta_<?php echo e($pregunta->id); ?>" id="exampleRadios3" value="<?php echo e($pregunta->opcion_3); ?>">
-                                <label class="form-check-label" for="exampleRadios3">
+                                <input class="form-check-input" type="radio" name="pregunta_<?php echo e($pregunta->id); ?>" value="<?php echo e($pregunta->opcion_3); ?>">
+                                <label class="form-check-label">
                                     <?php echo e($pregunta->opcion_3); ?>
 
                                 </label>
                             </div>
                             <div class="form-check disabled">
-                                <input class="form-check-input" type="radio" name="pregunta_<?php echo e($pregunta->id); ?>" id="exampleRadios3" value="<?php echo e($pregunta->opcion_4); ?>">
-                                <label class="form-check-label" for="exampleRadios3">
+                                <input class="form-check-input" type="radio" name="pregunta_<?php echo e($pregunta->id); ?>" value="<?php echo e($pregunta->opcion_4); ?>">
+                                <label class="form-check-label">
                                     <?php echo e($pregunta->opcion_4); ?>
 
                                 </label>
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        <button type="submit">Entregar</button>
+                        <button type="submit">Terminar Quiz</button>
                     </form>
                 </div>
             </div>
         </div>
-
 
 <?php $__env->stopSection(); ?>
 

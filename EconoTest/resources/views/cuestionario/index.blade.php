@@ -1,5 +1,9 @@
 @extends('usuario.mainUser')
 
+@section('coleccionMenu')
+
+@endsection
+
 
 @section('contenido')
     <section class="section-md-75 ">

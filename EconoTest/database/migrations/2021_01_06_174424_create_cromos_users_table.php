@@ -16,7 +16,7 @@ class CreateCromosUsersTable extends Migration
         Schema::create('cromos_users', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('estado');
-            $table->foreignId('cromo_id')->constrained();
+            $table->foreignId('cromo_id')->constrained()->onDelete('cascade');
             $table->foreignId('album_id')->constrained();
             $table->timestamps();
         });

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\Cromo;
+use App\Models\CromosUser;
 use Illuminate\Http\Request;
 
 class AlbumController extends Controller
@@ -12,9 +14,11 @@ class AlbumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Album $album)
     {
-        //
+        $cromosGanados = CromosUser::all()->where('album_id', '=', $album->id);
+        $cromos = Cromo::all();
+        return view('album.index', compact('cromosGanados', 'cromos', 'album'));
     }
 
     /**

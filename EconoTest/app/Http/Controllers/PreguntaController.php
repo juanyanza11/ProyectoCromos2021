@@ -34,13 +34,13 @@ class PreguntaController extends Controller
         return view('preguntas.index',compact('preguntas','preguntas2', $preguntas2))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-     
+
     public function create()
     {
         $tematicas = Tematica::all();
         return view('preguntas.create', compact('tematicas'));
     }
-    
+
     public function store(Request $request)
     {
         $request->validate([
@@ -49,7 +49,7 @@ class PreguntaController extends Controller
             'opcion_1' => 'required',
             'opcion_2' => 'required'
         ]);
-    
+
         $pregunta = new Pregunta();
 
         $opciones = array(
@@ -58,7 +58,7 @@ class PreguntaController extends Controller
             $request->input('opcion_3'),
             $request->input('opcion_correcta')
         );
-        
+
         shuffle($opciones);
 
         $pregunta->enunciado = $request->input('enunciado');
@@ -73,14 +73,14 @@ class PreguntaController extends Controller
         return redirect()->route('preguntas.index')
                         ->with('success','Pregunta ingresada correctamente.');
     }
-          
+
 
     public function edit(Pregunta $pregunta)
     {
         $tematicas = Tematica::all();
         return view('preguntas.edit',compact('pregunta', 'tematicas'));
     }
-    
+
 
     public function update(Request $request, Pregunta $pregunta)
     {
@@ -90,9 +90,9 @@ class PreguntaController extends Controller
             'opcion_1' => 'required',
             'opcion_2' => 'required'
         ]);
-    
+
         $pregunta->update($request->all());
-    
+
         return redirect()->route('preguntas.index')
                         ->with('success','Pregunta actualizada exitosamente');
     }
@@ -100,20 +100,21 @@ class PreguntaController extends Controller
     public function destroy(Pregunta $pregunta)
     {
         $pregunta->delete();
-    
+
         return redirect()->route('preguntas.index')
                         ->with('success','Pregunta borrada exitosamente');
     }
 
     public function mostrarPreguntas($id){
         $preguntas = Pregunta::all()->where('tematica_id', '=', $id);
-        
+
         if(count($preguntas)==0){
             return redirect()->action([HomeController::class, 'index']);
 
         }
-
-        return view('cuestionario.index', compact('preguntas'));
+        
+        $album = Album::firstWhere('user_id', Auth::user()->id);
+        return view('cuestionario.index', compact('preguntas', 'album'));
     }
 
     public function validarPreguntas(Request $request){
@@ -146,6 +147,8 @@ class PreguntaController extends Controller
 
         $paso = false;
 
+        $newAlbumId = null;
+
         if($correctas >= $minimo_pasar){
             $paso = true;
             // Validar si tiene un album o sino creale
@@ -174,7 +177,9 @@ class PreguntaController extends Controller
                 $newCromoAlbum->save();
             }
         }
-        return view('cuestionario.resultado', compact('total_preguntas','correctas', 'erroneas', 'paso'));
+
+        $mostrarAlerta = true;
+        return view('cuestionario.resultado', compact('total_preguntas','correctas', 'erroneas', 'newAlbumId', 'paso','mostrarAlerta'));
     }
 
 }
