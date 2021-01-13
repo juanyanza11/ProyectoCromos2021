@@ -12049,9 +12049,6 @@ section {
     }
 }
 
-/*
-	* @subsection General Styles
-	*/
 .rd-navbar-wrap,
 .rd-navbar-static .rd-navbar-megamenu,
 .rd-navbar-fullwidth .rd-navbar-megamenu,
@@ -12178,9 +12175,9 @@ section {
     display: none;
 }
 
-/*
-	* Navbar components
-	*/
+/*---------------------------------------
+	NAVBAR COMPONENTS          
+-----------------------------------------*/
 .rd-navbar {
     display: none;
     background: #f15f0d;
@@ -12195,7 +12192,7 @@ section {
     height: 48px;
     line-height: 48px;
     cursor: pointer;
-    color: #000;
+    color: rgb(0, 0, 0);
     background-color: transparent;
     border: none;
     display: none;
@@ -12226,7 +12223,7 @@ section {
 .rd-navbar-toggle span {
     width: 24px;
     height: 4px;
-    background-color: #000;
+    background-color: rgb(255, 255, 255);
     backface-visibility: hidden;
     border-radius: 2px;
 }
@@ -12266,6 +12263,7 @@ section {
 }
 
 .rd-navbar-brand {
+    margin-top: -10px;
     transition: none !important;
 }
 
@@ -12983,7 +12981,7 @@ section {
     font-size: 16px;
     line-height: 34px;
     color: #00030a;
-    background: #fff;
+    background: #f15f0d;
     z-index: 998;
 }
 
@@ -13099,7 +13097,7 @@ section {
     width: 270px;
     padding: 112px 0 56px;
     color: #fff;
-    background: #fff;
+    background: #f15f0d;
     border-right: 1px solid #e5e7e9;
     overflow-x: hidden;
     overflow-y: auto;
@@ -13161,7 +13159,7 @@ section {
     display: block;
     font-size: 16px;
     padding: 14px 56px 14px 16px;
-    color: #535457;
+    color: rgb(255, 255, 255);
 }
 
 .rd-navbar-fixed .rd-navbar-nav li:hover > a,
@@ -13173,6 +13171,7 @@ section {
 .rd-navbar-fixed .rd-navbar-nav li.opened > a,
 .rd-navbar-fixed .rd-navbar-nav li.opened > a:hover {
     color: #fff;
+    font-weight: bold;
     background: #b49465;
 }
 
@@ -14982,6 +14981,7 @@ html.boxed .rd-navbar--is-clone {
     }
 }
 
+
 /*---------------------------------------
      INFO            
   -----------------------------------------*/
@@ -15005,6 +15005,7 @@ html.boxed .rd-navbar--is-clone {
     z-index: 0;
 }
 
+
 /*---------------------------------------
      BENEFICIOS            
 	-----------------------------------------*/
@@ -15014,10 +15015,12 @@ html.boxed .rd-navbar--is-clone {
     text-align: center;
 }
 
+
 /*---------------------------------------
      FOOTER              
 	-----------------------------------------*/
 footer {
+    width: 100%;
     background: #ffffff;
     text-align: center;
 }

@@ -57,8 +57,8 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
+                                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
                                                 <img src="{{ asset('images/logout.png') }}" width="27" height="27">
                                             </a>
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
