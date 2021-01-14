@@ -59,6 +59,17 @@ class PreguntasSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('preguntas')->insert([
+            'enunciado' => 'El continente europeo utiliza la moneda oficial',
+            'tematica_id' => 1,
+            'opcion_correcta' => 'euro',
+            'opcion_1' => 'peso',
+            'opcion_2' => 'euro',
+            'opcion_3' => 'sol',
+            'opcion_4' => 'dolar',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 
         DB::table('preguntas')->insert([
             'enunciado' => 'La acuñacion de la moneda es mediante el respaldo de?',
