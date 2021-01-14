@@ -1,6 +1,5 @@
 
 
-
 <?php $__env->startSection('contenido'); ?>
     <section class="section-md-75 ">
         <div class="container">
@@ -16,8 +15,55 @@
                 <?php else: ?>
                     <p>No pasaste </p>
                 <?php endif; ?>
+
             </div>
+            <?php if($mostrarAlerta): ?>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                <?php if($paso): ?>
+                    <script type="application/javascript">
+                        Swal.fire({
+                            title: 'Pasaste el Quiz',
+                            html: `
+                                <p>Acertaste <?php echo e($correctas); ?> preguntas de <?php echo e($total_preguntas); ?> totales</p>
+                                <p>Obtuviste 3 cromos para tu album</p>
+                            `,
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ir a mi Album',
+                            cancelButtonText: 'Volver a las temáticas'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.replace('/album/<?php echo e($newAlbumId); ?>');
+                            }else{
+                                window.location.replace('/home');
+                            }
+                        })
+                    </script>
+                <?php else: ?>
+                    <script type="application/javascript" >
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Lo sentimos no pasaste el examen',
+                        }).then(res =>{
+                            window.location.replace('/home');
+                        });
+
+
+                    </script>
+                <?php endif; ?>
+
+
+            <?php endif; ?>
         </div>
+
+        <style>
+            .swal2-popup{
+                font-size: 1.6rem !important;
+            }
+        </style>
 
 
 <?php $__env->stopSection(); ?>

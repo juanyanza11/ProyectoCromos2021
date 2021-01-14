@@ -36,15 +36,22 @@
                             <td><?php echo e($cromo -> descripcion); ?></td>
                             <td><img src='<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>' alt="" style="width:70px"></td>
                             <td>
-                                <button class= "btn btn-round btnEliminar" data-id ="<?php echo e($cromo->id); ?>" data-toggle="modal" data-target="#modalEliminar"> 
-                                <i class = "fa fa-trash"></i></button>
-                                <button class= "btn btn-round btnEditar" 
-                                data-id ="<?php echo e($cromo->id); ?>" 
-                                data-name ="<?php echo e($cromo->nombre); ?>" 
-                                data-description ="<?php echo e($cromo->descripcion); ?>"
-                                data-imagen="<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>"
-                                data-toggle="modal" data-target="#modalEditar"> 
-                                <i class = "fa fa-edit"></i></button>
+                                
+                                <button class= "btn btn-primary btnEditar" 
+                                
+                                    data-id ="<?php echo e($cromo->id); ?>" 
+                                    data-name ="<?php echo e($cromo->nombre); ?>" 
+                                    data-description ="<?php echo e($cromo->descripcion); ?>"
+                                    data-imagen="<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>"
+                                    data-toggle="modal" data-target="#modalEditar"
+                                >Editar</button>
+                                
+                                
+
+                                <button class= "btn btn-danger btnEliminar" data-id ="<?php echo e($cromo->id); ?>" data-toggle="modal" data-target="#modalEliminar"> 
+                                Eliminar
+                                </button>
+                                
                                 <form action = "<?php echo e(url('/admin', ['id'=>$cromo->id])); ?>" method="post" id= "formEli_<?php echo e($cromo->id); ?>">
                                     <?php echo csrf_field(); ?>
                                     <input type ="hidden" name="id" value="<?php echo e($cromo->id); ?>">

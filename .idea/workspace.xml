@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9bbef9dd-2599-4ac5-9682-a2ea574c381c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/EconoTest/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/resources/views/layouts/main.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/1b7b52adc4a0a144af8afa3d3cf84f3349cd1e5b.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/1b7b52adc4a0a144af8afa3d3cf84f3349cd1e5b.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EconoTest/database/seeders/PreguntasSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/database/seeders/PreguntasSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/15c1666311ca77843d893e085cbeb06ac6672c91.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/15c1666311ca77843d893e085cbeb06ac6672c91.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/3855b00998a95b86e089594c2b395c0a57fc6d06.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/3855b00998a95b86e089594c2b395c0a57fc6d06.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/4a245fd3f561163a2fee3c3bb2381cddc118a1b8.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/4a245fd3f561163a2fee3c3bb2381cddc118a1b8.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/8e918682df47d9a31a1d490aa0be30f2bf1ba22f.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/8e918682df47d9a31a1d490aa0be30f2bf1ba22f.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/936e5772a25ebde8e467b37c2a8cd75982722cc2.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/936e5772a25ebde8e467b37c2a8cd75982722cc2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/a0ae6a002e43fef5cf028462e788f39b2b54e723.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/a0ae6a002e43fef5cf028462e788f39b2b54e723.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/d2bd95627d9518e0cfd69ff50b9c388c67d61e3f.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/d2bd95627d9518e0cfd69ff50b9c388c67d61e3f.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EconoTest/storage/framework/views/d8201c72df22261163784b3b572b4487ed340049.php" beforeDir="false" afterPath="$PROJECT_DIR$/EconoTest/storage/framework/views/d8201c72df22261163784b3b572b4487ed340049.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,13 +42,15 @@
       <option name="presentableId" value="Default" />
       <updated>1609771374751</updated>
       <workItem from="1609771641792" duration="16000" />
+      <workItem from="1610348248829" duration="10000" />
+      <workItem from="1610586218402" duration="23000" />
     </task>
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1609771658896">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1610586231328">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1609771658896" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1610586231328" />
   </component>
 </project>

@@ -1,5 +1,8 @@
 
 
+<?php $__env->startSection('coleccionMenu'); ?>
+
+<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
     <section id="quiz" class="section-md-75 ">
