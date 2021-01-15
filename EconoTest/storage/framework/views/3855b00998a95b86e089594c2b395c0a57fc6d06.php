@@ -57,8 +57,8 @@
                                         </li>
                                         <li>
                                             <a href="<?php echo e(route('logout')); ?>"
-                                               onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
+                                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
                                                 <img src="<?php echo e(asset('images/logout.png')); ?>" width="27" height="27">
                                             </a>
                                             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"

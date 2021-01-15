@@ -28,8 +28,9 @@
                 <th>Alternativa 1</th>
                 <th>Alternativa 2</th>
                 <th>Alternativa 3</th>
-                <th>Tematica</th>
-                <th width="280px">Accion</th>
+                <th>Alternativa 4</th>
+                <th>Temática</th>
+                <th width="280px">Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -41,6 +42,7 @@
                     <td><?php echo e($pregunta->opcion_1); ?></td>
                     <td><?php echo e($pregunta->opcion_2); ?></td>
                     <td><?php echo e($pregunta->opcion_3); ?></td>
+                    <td><?php echo e($pregunta->opcion_4); ?></td>
                     <td><?php echo e($pregunta->nombre); ?></td>
 
 
