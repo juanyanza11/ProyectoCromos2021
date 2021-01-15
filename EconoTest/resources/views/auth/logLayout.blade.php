@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
 
+    
+    @yield('css')
+
   </head>
   <body>
 
@@ -50,6 +53,7 @@
             </div>
           </nav>
         </div>
+        @yield('header')
       </header>
       <!-- FIN NAVBAR -->
         <main class="py-4">
@@ -57,7 +61,7 @@
         </main>
 
       <!-- FOOTER -->
-      <footer id="footer" style="position: sticky; bottom: 0; margin-top: 3%">
+      <footer id="footer">
           <div class="container">
 
             <div class="copyright-text">
@@ -70,11 +74,13 @@
             </div>
 
           </div>
+          @yield('footer')
       </footer>
       <!-- FIN FOOTER -->
 
     </div>
     <script src="{{ asset('/js/core.min.js') }}"></script>
     <script src="{{ asset('/js/script.js') }}"></script>
+    @yield('scripts')
   </body>
 </html>

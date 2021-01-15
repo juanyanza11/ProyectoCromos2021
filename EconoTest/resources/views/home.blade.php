@@ -2,6 +2,7 @@
 
 @section('coleccionMenu')
 
+
 @endsection
 
 @section('contenido')

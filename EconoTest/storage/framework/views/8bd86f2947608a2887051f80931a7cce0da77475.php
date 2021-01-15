@@ -20,9 +20,6 @@
     <link rel="stylesheet" href="<?php echo e(asset('/css/style.css')); ?>">
 
 
-    
-    <?php echo $__env->yieldContent('css'); ?>
-
   </head>
   <body>
 
@@ -53,7 +50,6 @@
             </div>
           </nav>
         </div>
-        <?php echo $__env->yieldContent('header'); ?>
       </header>
       <!-- FIN NAVBAR -->
         <main class="py-4">
@@ -61,7 +57,7 @@
         </main>
 
       <!-- FOOTER -->
-      <footer id="footer">
+      <footer id="footer" style="position: sticky; bottom: 0; margin-top: 3%">
           <div class="container">
 
             <div class="copyright-text">
@@ -74,13 +70,11 @@
             </div>
 
           </div>
-          <?php echo $__env->yieldContent('footer'); ?>
       </footer>
       <!-- FIN FOOTER -->
 
     </div>
     <script src="<?php echo e(asset('/js/core.min.js')); ?>"></script>
     <script src="<?php echo e(asset('/js/script.js')); ?>"></script>
-    <?php echo $__env->yieldContent('scripts'); ?>
   </body>
 </html><?php /**PATH C:\Users\JuanJ\Desktop\ECONOTEST ACTUAL\ProyectoCromos2021\EconoTest\resources\views/auth/logLayout.blade.php ENDPATH**/ ?>

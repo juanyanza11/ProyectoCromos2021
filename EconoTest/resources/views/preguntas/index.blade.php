@@ -2,13 +2,24 @@
 @extends('preguntas.layout')
 
 @section('contenido')
-    <div class="row p-3">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>LISTADO DE PREGUNTAS ECONOTEST</h2>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        en este modulo se hace el crud de preguntas
+    </div>
+    <div class="row">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('preguntas.create') }}"> Añadir pregunta</a>
+        @endif
+
+
+        <div class="card mb-2 w-100">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <i class="fas fa-tasks"></i>
+                    Preguntas
+                </div>
+                <a class="btn btn-primary btn-round " href="{{ route('preguntas.create') }}"> Añadir pregunta</a>
             </div>
         </div>
     </div>
@@ -46,22 +57,28 @@
                     <td>{{ $pregunta->nombre }}</td>
 
 
-                    <td>
-                        <form action="{{ route('preguntas.destroy',$pregunta->id) }}" method="POST">
+                                    <td class="d-flex justify-content-around" >
+                                        <a class="btn btn-primary" href="{{ route('preguntas.edit',$pregunta->id) }}">Editar</a>
+                                        <form action="{{ route('preguntas.destroy',$pregunta->id) }}" method="POST">
 
-                            <a class="btn btn-primary" href="{{ route('preguntas.edit',$pregunta->id) }}">Editar</a>
+                                            @csrf
+                                            @method('DELETE')
 
-                            @csrf
-                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
 
-                            <button type="submit" class="btn btn-danger">Borrar</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    </table>
-      
+
+
+
 @endsection
 
