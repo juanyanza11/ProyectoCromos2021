@@ -2,7 +2,7 @@
 
 @section('contenido')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        descripciuion de los cromos
+        descripcion de las temáticas
 
     </div>
     <div class ="row">
@@ -17,10 +17,10 @@
             <div class="card-header d-flex justify-content-between">
                 <div>
                     <i class="fas fa-table mr-1"></i>
-                    Cromos
+                    Temáticas
                 </div>
                 <a  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  data-toggle="modal" data-target="#modalAgregar"><i
-                    class="fas fa-download fa-sm text-white-50"></i> Agregar Cromos</a>
+                    class="fas fa-download fa-sm text-white-50"></i> Agregar Temática</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -29,7 +29,6 @@
                             <tr>
                                 <td>Id</td>
                                 <td>Nombre</td>
-                                <td>Descripción</td>
                                 <td>Imagen</td>
                                 <td width="200px" >Acciones</td>
                             </tr>
@@ -38,35 +37,32 @@
                             <tr>
                                 <td>Id</td>
                                 <td>Nombre</td>
-                                <td>Descripción</td>
                                 <td>Imagen</td>
                                 <td width="200px" >Acciones</td>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @if(count($cromos) > 0)
-                                @foreach ($cromos as $cromo)
+                            @if(count($tematicas) > 0)
+                                @foreach ($tematicas as $tematica)
                                     <tr>
-                                        <td>{{ $cromo -> id }}</td>
-                                        <td>{{ $cromo -> nombre }}</td>
-                                        <td>{{ $cromo -> descripcion }}</td>
-                                        <td><img src='{{asset("/img/cromos/{$cromo->imagen}")}}' alt="" style="width:70px"></td>
+                                        <td>{{ $tematica -> id }}</td>
+                                        <td>{{ $tematica -> nombre }}</td>
+                                        <td><img src='{{asset("/img/tematicas/{$tematica->imagen}")}}' alt="" style="width:70px"></td>
                                         <td class="d-flex justify-content-around" >
                                             <button class= "btn btn-round  btn-primary btnEditar"
-                                                    data-id ="{{ $cromo->id}}"
-                                                    data-name ="{{ $cromo->nombre}}"
-                                                    data-description ="{{ $cromo->descripcion}}"
-                                                    data-imagen="{{ $cromo->imagen ? asset("/img/cromos/{$cromo->imagen}"): ''}}"
+                                                    data-id ="{{ $tematica->id}}"
+                                                    data-name ="{{ $tematica->nombre}}"
+                                                    data-imagen="{{ $tematica->imagen ? asset("/img/tematicas/{$tematica->imagen}"): ''}}"
                                                     data-toggle="modal" data-target="#modalEditar"
                                             >
                                                 Editar
                                             </button>
-                                            <button class= "btn btn-round btn-danger btnEliminar" data-id ="{{ $cromo->id}}" data-toggle="modal" data-target="#modalEliminar">
+                                            <button class= "btn btn-round btn-danger btnEliminar" data-id ="{{ $tematica->id}}" data-toggle="modal" data-target="#modalEliminar">
                                                 Eliminar
                                             </button>
-                                            <form action = "{{ url('/admin', ['id'=>$cromo->id]) }}" method="post" id= "formEli_{{ $cromo->id }}">
+                                            <form action = "{{ url('/admin', ['id'=>$tematica->id]) }}" method="post" id= "formEli_{{ $tematica->id }}">
                                                 @csrf
-                                                <input type ="hidden" name="id" value="{{ $cromo->id}}">
+                                                <input type ="hidden" name="id" value="{{ $tematica->id}}">
                                                 <input type ="hidden" name="_method" value="delete">
                                             </form>
                                         </td>
@@ -88,12 +84,12 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar cromos</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar temáticas</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action ="/admin/cromos" method ="post" enctype="multipart/form-data">
+            <form action ="/admin/tematicas" method ="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     @if($message = Session::get('ErrorInsert'))
@@ -109,12 +105,9 @@
                     <div class = "form-group">
                         <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="{{ old('nombre') }}">
                     </div>
+                    
                     <div class = "form-group">
-                    <p>Descripción:</p>
-                    <textarea name="descripcion" cols="62" rows="5" required class ="form-control" style="width: 100%; min-height: 200px; max-height: 200px" ></textarea>
-                    </div>
-                    <div class = "form-group">
-                        <p>Imagen del cromo:</p>
+                        <p>Imagen de la temática:</p>
                         <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
                     </div>
                 </div>
@@ -131,18 +124,18 @@
 
 
     <!-- Modal Eliminar -->
-    @if(count($cromos) > 0)
+    @if(count($tematicas) > 0)
         <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Eliminar cromos</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar temáticas</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h5>¿Desea eliminar el cromo?</h5>
+                        <h5>¿Desea eliminar la temática?</h5>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -163,7 +156,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar cromos</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar temáticas</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -186,13 +179,9 @@
                     <div class = "form-group">
                         <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre"  id= "nameEdit">
                     </div>
-                    <div class = "form-group">
-                        <textarea name="descripcion" cols="62" rows="5" class ="form-control" required id="descripcionEdit" style="width: 100%; min-height: 200px; max-height: 200px" ></textarea>
-
-                    </div>
-                    <img src="" alt="" id="imagen_edit" width="100" height="100">
+                    <img src="" alt="" id="imagen_edit" width="250" style="display:none">
                     <div class = "form-group"  id="subir_imagen_input" style="display:none" >
-                        <p>Imagen del cromo:</p>
+                        <p>Imagen de la temática:</p>
                         <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
                     </div>
                 </div>
@@ -211,14 +200,12 @@
     <script>
     $(document).ready(function(){
 
-
-
         @if($message = Session::get('ErrorInsert'))
             $('#modalAgregar').modal('show');
         @endif
         $(".btnEliminar").click(function(){
             let id = $(this).data('id');
-            $('#formEliminar').attr('action', `/admin/cromos/${id}`);
+            $('#formEliminar').attr('action', `/admin/tematicas/${id}`);
 
         });
         $(".btnModalEliminar").click(function(){
@@ -226,14 +213,12 @@
         });
 
         $(".btnEditar").click(function(){
-            $('#subir_imagen_input').hide();
+            let id = $(this).data('id');
             $('#imagen_edit').hide();
             $('#imagen_edit').attr( 'src','');
-            let id = $(this).data('id');
-            $('#fromEditar').attr('action', `/admin/cromos/${id}`);
+            $('#fromEditar').attr('action', `/admin/tematicas/${id}`);
             $("#idEdit").val($(this).data('id'));
             $("#nameEdit").val($(this).data('name'));
-            $("#descripcionEdit").val($(this).data('description'));
             let urlImagen = $(this).data('imagen');
             if(urlImagen !== ''){
                 $('#imagen_edit').show();

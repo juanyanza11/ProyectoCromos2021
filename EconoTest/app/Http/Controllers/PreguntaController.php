@@ -114,6 +114,7 @@ class PreguntaController extends Controller
         }
         
         $album = Album::firstWhere('user_id', Auth::user()->id);
+
         return view('cuestionario.index', compact('preguntas', 'album'));
     }
 

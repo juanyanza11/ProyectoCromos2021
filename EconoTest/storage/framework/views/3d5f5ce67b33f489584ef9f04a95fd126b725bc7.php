@@ -1,7 +1,8 @@
 
 
 <?php $__env->startSection('coleccionMenu'); ?>
-
+    <li><a href="<?php echo e(route('album.index', ['album' => $album->id])); ?>">Mi Colección</a>
+    </li>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
