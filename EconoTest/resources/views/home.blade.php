@@ -14,12 +14,9 @@
                         <article class="icon-box1">
                             <a href="{{ route('preguntas.usuario.index', ['id' => $tematica->id])  }}">
                                 <div class="box-top">
-                                    <div class="box-icon1"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
-                                    <div class="box-header">
-                                        <h5><a href="#"></a></h5>
-                                    </div>
+                                    <div class="box-icon1"><img src="images/beneficios1.jfif" alt="" width="200" height="200"/></div>
                                 </div>
-                                <div class="divider bg-accent"></div>
+                                <div class="divider bg-accent1"></div>
                                 <div class="box-body">
                                     <h5>{{ $tematica->nombre }}</h5>
                                 </div>

@@ -12263,8 +12263,13 @@ section {
 }
 
 .rd-navbar-brand {
-    margin-top: -10px;
     transition: none !important;
+}
+
+@media screen and (max-width: 1200px) {
+    .rd-navbar-brand{
+        margin-top: -10px;
+    }
 }
 
 .rd-navbar-brand svg {
@@ -15033,6 +15038,14 @@ footer {
 .copyright-text p {
     margin: 5px;
 }
+@media (min-width: 1500px){
+    #footer-log {
+        bottom: 0;
+        display: inline-block;
+        position: absolute;
+    }
+
+}
 
 /*---------------------------------------
      ICONOS             
@@ -15063,7 +15076,12 @@ footer {
   -----------------------------------------*/
 
 #quiz {
-    background-color: #d6dbd2;
+    background-color: #ebebeb;
+}
+
+.bg-accent1 {
+    background: #F15F0D;
+    fill: #F15F0D;
 }
 
 .icon-box1 {
@@ -15119,12 +15137,12 @@ footer {
 }
 
 .icon-box1:before,
-.icon-box:after {
+.icon-box1:after {
     content: "";
     position: absolute;
-    width: calc(100% - 35px);
-    height: calc(100% - 35px);
-    border: 1px solid #e5e7e9;
+    width: calc(100%);
+    height: calc(100%);
+    border: 1px solid rgb(94, 94, 94);
     pointer-events: none;
     transition: 0.33s all ease;
 }
@@ -15132,13 +15150,12 @@ footer {
 .icon-box1:before {
     top: 0;
     left: 0;
-    border-width: 1px 0 0 1px;
+    border-width: 2px 2px 2px 2px;
 }
 
 .icon-box1:after {
     bottom: 0;
     right: 0;
-    border-width: 0 1px 1px 0;
 }
 
 .icon-box1 .box-top .box-header > * {
@@ -15148,7 +15165,8 @@ footer {
 
 .icon-box1 .divider {
     max-width: 100%;
-    margin: 13px auto;
+    margin-top: 15px;
+    margin-bottom: 5px;
     transition: 0.33s all ease;
 }
 
@@ -15192,42 +15210,43 @@ footer {
     justify-content: center;
 }
 
-.icon-box1 * + .box-header {
-    margin-top: 5px;
-}
-
-.icon-box1.hover:before,
-.icon-box1.hover:after,
 .icon-box1:hover:before,
 .icon-box1:hover:after {
     width: 100%;
     height: 100%;
-    border-color: #cca876;
+    border-color: #F15F0D;
 }
 
-.icon-box1.hover .box-top,
 .icon-box1:hover .box-top {
-    -webkit-transform: translateY(-9px);
-    transform: translateY(-9px);
+    transform: translateY(-5px);
 }
 
-.icon-box1.hover .box-body,
 .icon-box1:hover .box-body {
-    -webkit-transform: translateY(9px);
-    transform: translateY(9px);
+    transform: translateY(5px);
 }
 
-.icon-box1.hover .divider,
 .icon-box1:hover .divider {
-    width: 168px;
+    width: 200px;
 }
 
-@media (min-width: 768px) {
-    .icon-box1 {
-        max-width: 308px;
-        padding: 67px 40px 61px;
+@media (min-width: 100px) {
+
+    #quiz{
+        padding: 50px 0px;
     }
+
+    .icon-box1 {
+        max-width: 300px;
+        max-height: 230px;
+
+    }
+
     .icon-box1 .box-top .box-header > * {
         font-size: 22px;
+    }
+}
+@media screen and (max-width: 280px) {
+    .icon-box1:hover .divider {
+        width: 170px;
     }
 }
