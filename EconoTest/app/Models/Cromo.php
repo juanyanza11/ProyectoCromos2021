@@ -9,6 +9,10 @@ class Cromo extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nombre', 'descripcion','imagen', 'estado'
+        'nombre', 'descripcion','imagen', 'estado', 'album_id'
     ];
+
+    public function album(){
+        return $this->belongsTo(Album::class);
+    }
 }

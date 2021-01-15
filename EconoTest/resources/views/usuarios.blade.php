@@ -1,12 +1,17 @@
 @extends('layouts.main')
 
 @section('contenido')
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        descripciuion de los usuarios
-    </div>
     <div class ="row">
         @if($message = Session::get('Listo'))
             <div class = "col-12 alert alert-success alert-dismissable fade show" role = "alert">
+                <h5>Mensaje: </h5>
+                <span>{{$message}}</span>
+            </div>
+        @endif
+
+
+        @if($message = Session::get('eliminado'))
+            <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                 <h5>Mensaje: </h5>
                 <span>{{$message}}</span>
             </div>
@@ -56,7 +61,10 @@
                                                     data-email ="{{ $usuario->email}}"
                                                     data-toggle="modal" data-target="#modalEditar">
                                                 Editar</button>
-                                            <button class= "btn btn-round btn-danger btnEliminar" data-id ="{{ $usuario->id}}" data-toggle="modal" data-target="#modalEliminar">
+                                            <button class= "btn btn-round btn-danger btnEliminar" 
+                                            data-id ="{{ $usuario->id}}" 
+                                            data-toggle="modal" 
+                                            data-target="#modalEliminar">
                                                 Eliminar</button>
                                             <form action = "{{ url('/admin', ['id'=>$usuario->id]) }}" method="post" id= "formEli_{{ $usuario->id }}">
                                                 @csrf
@@ -218,16 +226,17 @@
     </div>
 @endsection
 
-@section('scripts')
+@section('scripts-admin')
     <script>
     var idEliminar = 0;
     $(document).ready(function(){
         @if($message = Session::get('ErrorInsert'))
             $('#modalAgregar').modal('show');
         @endif
-        $(".btnEliminar").click(function(){
+         $(".btnEliminar").click(function(){
             idEliminar = $(this).data('id');
         });
+
         $(".btnModalEliminar").click(function(){
             $("#formEli_"+idEliminar).submit();
         });

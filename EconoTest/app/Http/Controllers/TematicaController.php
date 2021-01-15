@@ -138,6 +138,6 @@ class TematicaController extends Controller
          $tematica->delete();
 
         return redirect()->route('tematicas.index')
-            ->with('success','Cromo borrada exitosamente');
+            ->with('eliminado','Tematica borrada exitosamente');
     }
 }

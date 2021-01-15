@@ -1,30 +1,29 @@
-@extends('layouts.main')
 
-@section('contenido')
+
+<?php $__env->startSection('contenido'); ?>
     <div class ="row">
-        @if($message = Session::get('Listo'))
+        <?php if($message = Session::get('Listo')): ?>
             <div class = "col-12 alert alert-success alert-dismissable fade show" role = "alert">
                 <h5>Mensaje: </h5>
-                <span>{{$message}}</span>
+                <span><?php echo e($message); ?></span>
             </div>
-        @endif
+        <?php endif; ?>
 
-
-        @if($message = Session::get('eliminado'))
+        <?php if($message = Session::get('eliminado')): ?>
             <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                 <h5>Mensaje: </h5>
-                <span>{{$message}}</span>
+                <span><?php echo e($message); ?></span>
             </div>
-        @endif
+        <?php endif; ?>
 
         <div class="card mb-2 w-100">
             <div class="card-header d-flex justify-content-between">
                 <div>
                     <i class="fas fa-table mr-1"></i>
-                    Cromos
+                    Temáticas
                 </div>
                 <a  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  data-toggle="modal" data-target="#modalAgregar"><i
-                    class="fas fa-download fa-sm text-white-50"></i> Agregar Cromos</a>
+                    class="fas fa-download fa-sm text-white-50"></i> Agregar Temática</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -33,9 +32,7 @@
                             <tr>
                                 <td>Id</td>
                                 <td>Nombre</td>
-                                <td>Descripción</td>
                                 <td>Imagen</td>
-                                <td>Album</td>
                                 <td width="200px" >Acciones</td>
                             </tr>
                         </thead>
@@ -43,47 +40,38 @@
                             <tr>
                                 <td>Id</td>
                                 <td>Nombre</td>
-                                <td>Descripción</td>
                                 <td>Imagen</td>
-                                <td>Album</td>
                                 <td width="200px" >Acciones</td>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @if(count($cromos) > 0)
-                                @foreach ($cromos as $cromo)
+                            <?php if(count($tematicas) > 0): ?>
+                                <?php $__currentLoopData = $tematicas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td>{{ $cromo -> id }}</td>
-                                        <td>{{ $cromo -> nombre }}</td>
-                                        <td>{{ $cromo -> descripcion }}</td>
-                                        
-                                        <td><img src='{{asset("/img/cromos/{$cromo->imagen}")}}' alt="" style="width:70px"></td>
-                                       
-                                        <td>{{ $cromo->album->nombre }}</td>
-                                        
+                                        <td><?php echo e($tematica -> id); ?></td>
+                                        <td><?php echo e($tematica -> nombre); ?></td>
+                                        <td><img src='<?php echo e(asset("/img/tematicas/{$tematica->imagen}")); ?>' alt="" style="width:70px"></td>
                                         <td class="d-flex justify-content-around" >
                                             <button class= "btn btn-round  btn-primary btnEditar"
-                                                    data-id ="{{ $cromo->id}}"
-                                                    data-name ="{{ $cromo->nombre}}"
-                                                    data-description ="{{ $cromo->descripcion}}"
-                                                    data-album_id ="{{ $cromo->album_id}}"
-                                                    data-imagen="{{ $cromo->imagen ? asset("/img/cromos/{$cromo->imagen}"): ''}}"
+                                                    data-id ="<?php echo e($tematica->id); ?>"
+                                                    data-name ="<?php echo e($tematica->nombre); ?>"
+                                                    data-imagen="<?php echo e($tematica->imagen ? asset("/img/tematicas/{$tematica->imagen}"): ''); ?>"
                                                     data-toggle="modal" data-target="#modalEditar"
                                             >
                                                 Editar
                                             </button>
-                                            <button class= "btn btn-round btn-danger btnEliminar" data-id ="{{ $cromo->id}}" data-toggle="modal" data-target="#modalEliminar">
+                                            <button class= "btn btn-round btn-danger btnEliminar" data-id ="<?php echo e($tematica->id); ?>" data-toggle="modal" data-target="#modalEliminar">
                                                 Eliminar
                                             </button>
-                                            <form action = "{{ url('/admin', ['id'=>$cromo->id]) }}" method="post" id= "formEli_{{ $cromo->id }}">
-                                                @csrf
-                                                <input type ="hidden" name="id" value="{{ $cromo->id}}">
+                                            <form action = "<?php echo e(url('/admin', ['id'=>$tematica->id])); ?>" method="post" id= "formEli_<?php echo e($tematica->id); ?>">
+                                                <?php echo csrf_field(); ?>
+                                                <input type ="hidden" name="id" value="<?php echo e($tematica->id); ?>">
                                                 <input type ="hidden" name="_method" value="delete">
                                             </form>
                                         </td>
                                     </tr>
-                                @endforeach
-                            @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
 
                         </tbody>
                     </table>
@@ -99,41 +87,30 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar cromos</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar temáticas</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action ="/admin/cromos" method ="post" enctype="multipart/form-data">
-                @csrf
+            <form action ="/admin/tematicas" method ="post" enctype="multipart/form-data">
+                <?php echo csrf_field(); ?>
                 <div class="modal-body">
-                    @if($message = Session::get('ErrorInsert'))
+                    <?php if($message = Session::get('ErrorInsert')): ?>
                         <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                             <h5>Errores: </h5>
                                 <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><?php echo e($error); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                         </div>
-                    @endif
+                    <?php endif; ?>
                     <div class = "form-group">
-                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="{{ old('nombre') }}">
+                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="<?php echo e(old('nombre')); ?>">
                     </div>
+                    
                     <div class = "form-group">
-                    <p>Descripción:</p>
-                    <textarea name="descripcion" cols="62" rows="5" required class ="form-control" style="width: 100%; min-height: 200px; max-height: 200px" ></textarea>
-                    </div>
-                    <div class="form-group">
-                        <strong>ALBUM:</strong>
-                        <select name="album_id" id="album_id">
-                        @foreach($albums as $album)
-                            <option value= "{{ $album->id }}">{{ $album->nombre }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                    <div class = "form-group">
-                        <p>Imagen del cromo:</p>
+                        <p>Imagen de la temática:</p>
                         <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
                     </div>
                 </div>
@@ -150,31 +127,31 @@
 
 
     <!-- Modal Eliminar -->
-    @if(count($cromos) > 0)
+    <?php if(count($tematicas) > 0): ?>
         <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Eliminar cromos</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar temáticas</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h5>¿Desea eliminar el cromo?</h5>
+                        <h5>¿Desea eliminar la temática?</h5>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <form action="" method="POST" id="formEliminar" >
-                            @csrf
-                            @method('DELETE')
+                            <?php echo csrf_field(); ?>
+                            <?php echo method_field('DELETE'); ?>
                             <button type="submit" class="btn btn-danger btnModalEliminar">Eliminar</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    @endif
+    <?php endif; ?>
 
 
         <!-- Modal Editar -->
@@ -182,44 +159,32 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar cromos</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar temáticas</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form action="" method ="post" id="fromEditar" enctype="multipart/form-data">
-                @method('PUT')
-                @csrf
+                <?php echo method_field('PUT'); ?>
+                <?php echo csrf_field(); ?>
                 <div class="modal-body">
-                    @if($message = Session::get('ErrorInsert'))
+                    <?php if($message = Session::get('ErrorInsert')): ?>
                         <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                             <h5>Errores: </h5>
                                 <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><?php echo e($error); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                         </div>
-                    @endif
+                    <?php endif; ?>
                     <input type = "hidden" name = "id" id= "idEdit">
                     <div class = "form-group">
                         <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre"  id= "nameEdit">
                     </div>
-                    <div class = "form-group">
-                        <textarea name="descripcion" cols="62" rows="5" class ="form-control" required id="descripcionEdit" style="width: 100%; min-height: 200px; max-height: 200px" ></textarea>
-
-                    </div>
-                    <div class="form-group">
-                        <strong>ALBUM:</strong>
-                        <select name="album_id" id="album_id">
-                        @foreach($albums as $album)
-                            <option value= "{{ $album->id }}">{{ $album->nombre }}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                    <img src="" alt="" id="imagen_edit" width="100" height="100">
+                    <img src="" alt="" id="imagen_edit" width="250" style="display:none">
                     <div class = "form-group"  id="subir_imagen_input" style="display:none" >
-                        <p>Imagen del cromo:</p>
+                        <p>Imagen de la temática:</p>
                         <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
                     </div>
                 </div>
@@ -231,21 +196,19 @@
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts-admin')
+<?php $__env->startSection('scripts-admin'); ?>
 
     <script>
     $(document).ready(function(){
 
-
-
-        @if($message = Session::get('ErrorInsert'))
+        <?php if($message = Session::get('ErrorInsert')): ?>
             $('#modalAgregar').modal('show');
-        @endif
+        <?php endif; ?>
         $(".btnEliminar").click(function(){
             let id = $(this).data('id');
-            $('#formEliminar').attr('action', `/admin/cromos/${id}`);
+            $('#formEliminar').attr('action', `/admin/tematicas/${id}`);
 
         });
         $(".btnModalEliminar").click(function(){
@@ -257,12 +220,12 @@
             $('#imagen_edit').hide();
             $('#imagen_edit').attr( 'src','');
             let id = $(this).data('id');
-            $('#fromEditar').attr('action', `/admin/cromos/${id}`);
+            $('#fromEditar').attr('action', `/admin/tematicas/${id}`);
             $("#idEdit").val($(this).data('id'));
             $("#nameEdit").val($(this).data('name'));
             $("#descripcionEdit").val($(this).data('description'));
-            //$("#album_id").val($(this).data('album_id'))
             let urlImagen = $(this).data('imagen');
+            console.log(urlImagen);
             if(urlImagen !== ''){
                 $('#imagen_edit').show();
                 $('#imagen_edit').attr( 'src', urlImagen);
@@ -274,4 +237,7 @@
         });
     });
     </script>
-@endsection
+    
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ProyectoCromos2021\EconoTest\resources\views/tematicas/index.blade.php ENDPATH**/ ?>

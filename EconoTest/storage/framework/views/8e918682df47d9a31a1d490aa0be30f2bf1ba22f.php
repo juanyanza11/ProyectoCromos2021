@@ -2,6 +2,7 @@
 
 <?php $__env->startSection('coleccionMenu'); ?>
 
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>

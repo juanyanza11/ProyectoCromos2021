@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cromo;
 use App\Models\Pregunta;
 use App\Models\Tematica;
+use App\Models\Album;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\User;
@@ -58,7 +59,7 @@ class AdministradorController extends Controller
     public function eliminarUsuarios($id){
             $user = User::find($id);
             $user-> delete();
-            return back()-> with('Listo', 'El usuario se eliminó correctamente');
+            return back()-> with('eliminado', 'El usuario se eliminó correctamente');
         }
 
     public function editarUsuario(Request $request){
@@ -95,7 +96,9 @@ class AdministradorController extends Controller
         $cromos = Cromo::all();
         $tematicas = Tematica::all();
         $preguntas = Pregunta::all();
-        return view('dashboard', compact('usuarios', 'cromos', 'tematicas', 'preguntas'));
+        $albums = Album::all();
+
+        return view('dashboard', compact('usuarios', 'cromos', 'tematicas', 'preguntas', 'albums'));
     }
 
 

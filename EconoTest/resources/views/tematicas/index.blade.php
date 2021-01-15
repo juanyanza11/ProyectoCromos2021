@@ -1,13 +1,16 @@
 @extends('layouts.main')
 
 @section('contenido')
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        descripcion de las temáticas
-
-    </div>
     <div class ="row">
         @if($message = Session::get('Listo'))
             <div class = "col-12 alert alert-success alert-dismissable fade show" role = "alert">
+                <h5>Mensaje: </h5>
+                <span>{{$message}}</span>
+            </div>
+        @endif
+
+        @if($message = Session::get('eliminado'))
+            <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                 <h5>Mensaje: </h5>
                 <span>{{$message}}</span>
             </div>
@@ -213,13 +216,16 @@
         });
 
         $(".btnEditar").click(function(){
-            let id = $(this).data('id');
+            $('#subir_imagen_input').hide();
             $('#imagen_edit').hide();
             $('#imagen_edit').attr( 'src','');
+            let id = $(this).data('id');
             $('#fromEditar').attr('action', `/admin/tematicas/${id}`);
             $("#idEdit").val($(this).data('id'));
             $("#nameEdit").val($(this).data('name'));
+            $("#descripcionEdit").val($(this).data('description'));
             let urlImagen = $(this).data('imagen');
+            console.log(urlImagen);
             if(urlImagen !== ''){
                 $('#imagen_edit').show();
                 $('#imagen_edit').attr( 'src', urlImagen);
@@ -231,4 +237,5 @@
         });
     });
     </script>
+    
 @endsection

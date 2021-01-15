@@ -1,6 +1,6 @@
-@extends('layouts.main')
 
-@section('contenido')
+
+<?php $__env->startSection('contenido'); ?>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard Econotest</h1>
@@ -18,7 +18,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Usuarios Totales</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{count($usuarios)}}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo e(count($usuarios)); ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -36,7 +36,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Tematicas</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{count($tematicas)}}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo e(count($tematicas)); ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-file-alt fa-2x text-gray-300"></i>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{count($cromos)}}</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo e(count($cromos)); ?></div>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{count($albums)}}</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo e(count($albums)); ?></div>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Preguntas</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{count($preguntas)}}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo e(count($preguntas)); ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-tasks fa-2x text-gray-300"></i>
@@ -108,4 +108,6 @@
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ProyectoCromos2021\EconoTest\resources\views/dashboard.blade.php ENDPATH**/ ?>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Validator;
 use App\Models\Cromo;
+use App\Models\Album;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\isNull;
 
@@ -16,11 +17,9 @@ class CromoController extends Controller
      */
     public function index()
     {
-        $cromos = \DB::table('cromos')
-                ->select('cromos.id','cromos.nombre', 'cromos.descripcion', 'cromos.imagen')
-                ->orderBy('cromos.id')
-                ->get();
-                return view('cromos.index')->with('cromos', $cromos);
+        $albums = Album::all();
+        $cromos = Cromo::all();
+        return view('cromos.index',compact('cromos','albums'));
     }
 
     /**
@@ -64,7 +63,7 @@ class CromoController extends Controller
                 'nombre' => $request->nombre,
                 'descripcion' => $request->descripcion,
                 'imagen' =>$nombre,
-
+                'album_id' =>$request->album_id,
             ]);
         return back()->with('Listo', 'Se ha insertado correctamente');
         }
@@ -105,6 +104,7 @@ class CromoController extends Controller
         $validacionArray = array(
             'nombre'=> 'required|min:3|max:50',
             'descripcion'=> 'required',
+            'album_id'=> 'required',
         );
         $imagen = $request->file('img');
         if($imagen !== null){
@@ -119,6 +119,7 @@ class CromoController extends Controller
         }else{
             $cromo->nombre = $request->nombre;
             $cromo->descripcion = $request->descripcion;
+            $cromo->album_id = $request->album_id;
             if($imagen !== null){
                 $rand = rand(0,100);
                 $nombre_imagen = Str::lower($imagen->getClientOriginalName());
@@ -144,6 +145,7 @@ class CromoController extends Controller
         $cromo->delete();
 
         return redirect()->route('cromos.index')
-            ->with('success','Cromo borrada exitosamente');
+            ->with('eliminado','Cromo borrado exitosamente');
+            
     }
 }
