@@ -16,7 +16,6 @@ class CreatePreguntasTable extends Migration
 
         Schema::create('tematicas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('codigo');
             $table->string('nombre');
             $table->string('imagen')->nullable();
             $table->timestamps();

@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TematicaSeeder::class);
         $this->call(PreguntasSeeder::class);
         $this->call(RolSeeder::class);
+        $this->call(AlbumSeeder::class);
         $this->call(CromoSeeder::class);
+
     }
 }
