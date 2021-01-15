@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cromo;
+use App\Models\Pregunta;
+use App\Models\Tematica;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\User;
@@ -17,16 +20,16 @@ class AdministradorController extends Controller
     public function index(){
        return view('admin');
     }
-    //metodo para debolver la vista de admin/usuarios 
+    //metodo para debolver la vista de admin/usuarios
     public function indexUsuarios(){
         $usuarios = \DB::table('users')
                 ->join('roles', 'roles.id', '=', 'users.role_id')
                 ->select('users.id','users.name', 'users.email', 'roles.nombre_rol')
                 ->orderBy('users.id')
                 ->get();
-    return view('usuarios')->with('usuarios', $usuarios) ;  
+    return view('usuarios')->with('usuarios', $usuarios) ;
     }
-    
+
     //metodo para agregar usuarios
     public function aggUsuarios(Request $request){
 
@@ -51,7 +54,7 @@ class AdministradorController extends Controller
             return back()->with('Listo', 'Se ha insertado correctamente');
         }
     }
-    
+
     public function eliminarUsuarios($id){
             $user = User::find($id);
             $user-> delete();
@@ -73,7 +76,7 @@ class AdministradorController extends Controller
             $user-> name = $request->nombre;
             $user-> email = $request->email;
             $user-> role_id = $request->rol;
-            
+
             $validator2 = Validator::make($request->all(),[
             'pass1'=> 'required|min:8|required_with:pass2|same:pass2',
             'pass2'=> 'required|min:8',
@@ -87,13 +90,20 @@ class AdministradorController extends Controller
     }// llave funcion
 
 
+    public function dashboard(){
+        $usuarios = User::all();
+        $cromos = Cromo::all();
+        $tematicas = Tematica::all();
+        $preguntas = Pregunta::all();
+        return view('dashboard', compact('usuarios', 'cromos', 'tematicas', 'preguntas'));
+    }
 
 
-    
+
     public function indexPreguntas(){
-    return view('preguntas');  
+        return view('preguntas');
     }
     public function indexCromos(){
-    return view('cromos');  
+        return view('cromos');
     }
 }

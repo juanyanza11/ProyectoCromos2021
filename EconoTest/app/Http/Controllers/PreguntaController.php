@@ -112,10 +112,9 @@ class PreguntaController extends Controller
             return redirect()->action([HomeController::class, 'index']);
 
         }
-        
-        $album = Album::firstWhere('user_id', Auth::user()->id);
 
-        return view('cuestionario.index', compact('preguntas', 'album'));
+
+        return view('cuestionario.index', compact('preguntas', ));
     }
 
     public function validarPreguntas(Request $request){
@@ -133,17 +132,22 @@ class PreguntaController extends Controller
         $correctas = 0;
 
         for ($i = 1; $i < count($request_data); $i++){
+            // en valor impar esta la respuesta y en el par la pregunta
+            // entrar a la pregunta
             if($i % 2 == 0){
+                // obtiene la llave de la pregunta
                 $key = $preguntas_keys[$i];
+                // obtiene la llave de la respuesta
                 $key_response = $preguntas_keys[$i - 1];
+                // si la respuesta del usuario es igual a la opcion correcta de la pregunta
                 if($request_data[$key] == $request_data[$key_response]){
                     $correctas++;
                 }
             }
         }
-
+        // total de los errores
         $erroneas = $total_preguntas - $correctas;
-
+        // se obtiene el valor minimo para pasar
         $minimo_pasar = intval($total_preguntas * 0.75);
 
         $paso = false;
@@ -154,7 +158,6 @@ class PreguntaController extends Controller
             $paso = true;
             // Validar si tiene un album o sino creale
             $existeAlbum = Album::firstWhere('user_id', Auth::user()->id);
-            $newAlbumId = null;
 
             if($existeAlbum == null){
                 // Crear el album al usuario
@@ -179,7 +182,10 @@ class PreguntaController extends Controller
             }
         }
 
+
+
         $mostrarAlerta = true;
+
         return view('cuestionario.resultado', compact('total_preguntas','correctas', 'erroneas', 'newAlbumId', 'paso','mostrarAlerta'));
     }
 

@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $tematicas = Tematica::all();
-        $album = Album::firstWhere('user_id', Auth::user()->id);
-        return view('home', compact('user', 'tematicas', 'album'));
+
+        return view('home', compact('user', 'tematicas'));
     }
 }

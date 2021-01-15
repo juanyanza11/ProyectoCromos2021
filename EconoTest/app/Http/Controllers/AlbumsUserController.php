@@ -2,25 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Album;
-use App\Models\Cromo;
-use App\Models\CromosUser;
+use App\Models\AlbumsUser;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
-class AlbumController extends Controller
+class AlbumsUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Album $album)
+    public function index()
     {
-        $cromosGanados = CromosUser::all()->where('album_id', '=', $album->id);
-        $cromos = Cromo::all();
-        return view('album.index', compact('cromosGanados', 'cromos', 'album'));
+        //
     }
 
     /**
@@ -47,10 +41,10 @@ class AlbumController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Album  $album
+     * @param  \App\Models\AlbumsUser  $albumsUser
      * @return \Illuminate\Http\Response
      */
-    public function show(Album $album)
+    public function show(AlbumsUser $albumsUser)
     {
         //
     }
@@ -58,10 +52,10 @@ class AlbumController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Album  $album
+     * @param  \App\Models\AlbumsUser  $albumsUser
      * @return \Illuminate\Http\Response
      */
-    public function edit(Album $album)
+    public function edit(AlbumsUser $albumsUser)
     {
         //
     }
@@ -70,10 +64,10 @@ class AlbumController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Album  $album
+     * @param  \App\Models\AlbumsUser  $albumsUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Album $album)
+    public function update(Request $request, AlbumsUser $albumsUser)
     {
         //
     }
@@ -81,10 +75,10 @@ class AlbumController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Album  $album
+     * @param  \App\Models\AlbumsUser  $albumsUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Album $album)
+    public function destroy(AlbumsUser $albumsUser)
     {
         //
     }

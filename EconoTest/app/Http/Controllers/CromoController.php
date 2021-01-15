@@ -41,17 +41,12 @@ class CromoController extends Controller
      */
     public function store(Request $request)
     {
-        $cromo = Cromo::find($request->id);
-        $validacionArray = array(
-            'nombre'=> 'required|min:3|max:50',
-            'descripcion'=> 'required',
-        );
-        $imagen = $request->file('img');
-        if($imagen !== null){
-            $validacionArray['img'] = 'image|mimes:jpg,png,jpeg,svg|max:3000';
-        }
-        $validator = Validator::make($request->all(),$validacionArray);
-        
+
+        $validator = Validator::make($request->all(),[
+        'nombre'=> 'required|min:3|max:50',
+        'descripcion'=> 'required',
+        'img'=> 'required|image|mimes:jpg,png,jpeg,svg|max:3000',
+        ]);
         if($validator -> fails()){
             return back()
             ->withInput()
@@ -94,7 +89,7 @@ class CromoController extends Controller
      */
     public function edit(Cromo $cromo)
     {
-       
+
     }
 
     /**
@@ -107,7 +102,7 @@ class CromoController extends Controller
     public function update(Request $request, Cromo $cromo)
     {
         $cromo = Cromo::find($request->id);
-       $validacionArray = array(
+        $validacionArray = array(
             'nombre'=> 'required|min:3|max:50',
             'descripcion'=> 'required',
         );
@@ -131,7 +126,6 @@ class CromoController extends Controller
                 $destino = public_path('img/cromos');
                 $request->img->move($destino, $nombre);
                 $cromo->imagen = $nombre;
-
             }
 
             $cromo->save();
