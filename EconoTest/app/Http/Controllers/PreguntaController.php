@@ -102,7 +102,7 @@ class PreguntaController extends Controller
         $pregunta->delete();
 
         return redirect()->route('preguntas.index')
-                        ->with('success','Pregunta borrada exitosamente');
+                        ->with('eliminado','Pregunta borrada exitosamente');
     }
 
     public function mostrarPreguntas($id){

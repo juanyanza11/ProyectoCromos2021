@@ -2,15 +2,15 @@
 @extends('preguntas.layout')
 
 @section('contenido')
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        en este modulo se hace el crud de preguntas
-    </div>
     <div class="row">
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
+        @if ($message = Session::get('eliminado'))
+            <div class="alert alert-danger">
+                <h5>Mensaje: </h5>
                 <p>{{ $message }}</p>
             </div>
         @endif
+
+
 
 
         <div class="card mb-2 w-100">
@@ -26,6 +26,7 @@
    
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
+            <h5>Mensaje: </h5>
             <p>{{ $message }}</p>
         </div>
     @endif
@@ -33,13 +34,12 @@
     <table class="table table-bordered tabla_preguntas" >
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Pregunta</th>
                 <th>Respuesta</th>
-                <th>Alternativa 1</th>
-                <th>Alternativa 2</th>
-                <th>Alternativa 3</th>
-                <th>Alternativa 4</th>
+                <th>Alternativa</th>
+                <th>Alternativa</th>
+                <th>Alternativa</th>
+                <th>Alternativa</th>
                 <th>Temática</th>
                 <th width="280px">Acción</th>
             </tr>
@@ -47,7 +47,6 @@
         <tbody>
             @foreach ($preguntas2 as $pregunta)
                 <tr>
-                    <td>{{ $pregunta-> id }}</td>
                     <td>{{ $pregunta->enunciado }}</td>
                     <td>{{ $pregunta->opcion_correcta}}</td>
                     <td>{{ $pregunta->opcion_1 }}</td>

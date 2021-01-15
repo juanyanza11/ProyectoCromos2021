@@ -1,0 +1,3 @@
+.navbar-nav .nav-item + .nav-item {
+    margin: 0 !important;
+}
