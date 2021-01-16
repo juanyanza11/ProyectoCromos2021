@@ -61,7 +61,7 @@
         </main>
 
       <!-- FOOTER -->
-      <footer id="footer">
+      <footer id="footer-log">
           <div class="container">
 
             <div class="copyright-text">

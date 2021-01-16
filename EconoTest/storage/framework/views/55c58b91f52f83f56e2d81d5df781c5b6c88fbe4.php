@@ -43,6 +43,17 @@
                       </li>
                       <li><a href="/login">Quiz</a>
                       </li>
+                      <li>
+                        <a href="<?php echo e(route('logout')); ?>"
+                          onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+                          <img src="<?php echo e(asset('images/logout.png')); ?>" width="27" height="27">
+                        </a>
+                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
+                          class="d-none">
+                          <?php echo csrf_field(); ?>
+                        </form>
+                      </li>
                     <?php else: ?>
                     <div class="rd-navbar-btn-wrap"><a class="button button-smaller button-primary-outline" href="register">REGISTRARSE</a></div>
                     <ul class="rd-navbar-nav">

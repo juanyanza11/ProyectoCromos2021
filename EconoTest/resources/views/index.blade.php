@@ -43,6 +43,17 @@
                       </li>
                       <li><a href="/login">Quiz</a>
                       </li>
+                      <li>
+                        <a href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+                          <img src="{{ asset('images/logout.png') }}" width="27" height="27">
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          class="d-none">
+                          @csrf
+                        </form>
+                      </li>
                     @else
                     <div class="rd-navbar-btn-wrap"><a class="button button-smaller button-primary-outline" href="register">REGISTRARSE</a></div>
                     <ul class="rd-navbar-nav">
