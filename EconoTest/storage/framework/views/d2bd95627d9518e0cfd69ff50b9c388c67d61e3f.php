@@ -5,6 +5,7 @@
     <div class="row">
         <?php if($message = Session::get('eliminado')): ?>
             <div class="alert alert-danger">
+                <h5>Mensaje: </h5>
                 <p><?php echo e($message); ?></p>
             </div>
         <?php endif; ?>
@@ -25,6 +26,7 @@
    
     <?php if($message = Session::get('success')): ?>
         <div class="alert alert-success">
+            <h5>Mensaje: </h5>
             <p><?php echo e($message); ?></p>
         </div>
     <?php endif; ?>

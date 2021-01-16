@@ -17,18 +17,21 @@ class AlbumSeeder extends Seeder
     {
         DB::table('albums')->insert([
             'nombre' => 'Album 1',
+            'descripcion' => 'descripcion album 1',
             'tematica_id' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
         DB::table('albums')->insert([
             'nombre' => 'Album 2',
+            'descripcion' => 'descripcion album 2',
             'tematica_id' => '2',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
         DB::table('albums')->insert([
             'nombre' => 'Album 3',
+            'descripcion' => 'descripcion album 3',
             'tematica_id' => '3',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

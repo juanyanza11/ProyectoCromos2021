@@ -16,7 +16,8 @@ class CreateAlbumsTable extends Migration
         Schema::create('albums', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->foreignId('tematica_id')->constrained();
+            $table->string('descripcion');
+            $table->foreignId('tematica_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

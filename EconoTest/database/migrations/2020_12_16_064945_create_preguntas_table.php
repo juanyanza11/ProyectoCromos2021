@@ -29,7 +29,7 @@ class CreatePreguntasTable extends Migration
             $table->string('opcion_2');
             $table->string('opcion_3');
             $table->string('opcion_4');
-            $table->foreignId('tematica_id')->constrained();
+            $table->foreignId('tematica_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

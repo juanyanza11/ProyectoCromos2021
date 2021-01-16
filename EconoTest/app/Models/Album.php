@@ -9,6 +9,11 @@ class Album extends Model
 {
     use HasFactory;
      protected $fillable = [
-        'user_id'
+        'nombre', 'descripcion', 'tematica_id'
     ];
+
+
+    public function tematica(){
+        return $this->belongsTo(Tematica::class);
+    }
 }

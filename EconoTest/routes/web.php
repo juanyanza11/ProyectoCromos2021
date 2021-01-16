@@ -34,6 +34,8 @@ Route::get('/admin/dashboard', [\App\Http\Controllers\AdministradorController::c
 Route::resource('/admin/preguntas', "App\Http\Controllers\PreguntaController");
 Route::resource('/admin/cromos', "App\Http\Controllers\CromoController");
 Route::resource('/admin/tematicas', "App\Http\Controllers\TematicaController");
+Route::resource('/admin/albums', "App\Http\Controllers\AlbumAdminController");
+
 
 
 Route::get('/preguntas/{id}', [\App\Http\Controllers\PreguntaController::class, 'mostrarPreguntas'])->name('preguntas.usuario.index');

@@ -18,7 +18,7 @@ class CreateCromosTable extends Migration
             $table->string('nombre');
             $table->string('descripcion')->nullable();
             $table->string('imagen')->nullable();
-            $table->foreignId('album_id')->nullable()->constrained();
+            $table->foreignId('album_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

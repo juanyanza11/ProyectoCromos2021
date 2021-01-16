@@ -15,7 +15,7 @@ class CreateAlbumsUsersTable extends Migration
     {
         Schema::create('albums_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('album_id')->constrained();
+            $table->foreignId('album_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
