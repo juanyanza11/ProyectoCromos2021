@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Album;
+use App\Models\AlbumsUser;
 use App\Models\Cromo;
 use App\Models\CromosUser;
 use App\Models\Tematica;
@@ -106,45 +107,136 @@ class PreguntaController extends Controller
     }
 
     public function mostrarPreguntas($id){
-        $preguntas = Pregunta::all()->where('tematica_id', '=', $id);
-
-        if(count($preguntas)==0){
-            return redirect()->action([HomeController::class, 'index']);
-
-        }
+        $preguntas = Pregunta::all()->where('tematica_id', '=', $id)->random()->take(1)->get();
 
 
-        return view('cuestionario.index', compact('preguntas', ));
+        $tematica_id = $id;
+
+
+//        return view('cuestionario.index', compact('preguntas', 'tematica_id'));
+        return response()->json(['preguntas' => $preguntas]);
     }
 
-    public function validarPreguntas(Request $request){
+    
+    
+    
+    public function validarPreguntas(Request $request)
+    {
         // Obtener las preguntas desde la vista
         $request_data = $request->all();
 
+        return response()->json([
+            'request' => $request_data
+        ]);
+
+
         // Obtener el total de preguntas
-        $total_preguntas = (count($request_data) - 1) / 2;
+        //$total_preguntas = (count($request_data) - 2) / 2;
 
         // Obteniendo las llaves de las preguntas
         $preguntas_keys = array_keys($request_data);
+
         // borrar token de las claves
         unset($preguntas_keys[0]);
+        $tematica_id = $request_data[$preguntas_keys[1]];
+        unset($preguntas_keys[1]);
 
-        $correctas = 0;
+        $keys =[];
 
-        for ($i = 1; $i < count($request_data); $i++){
-            // en valor impar esta la respuesta y en el par la pregunta
-            // entrar a la pregunta
-            if($i % 2 == 0){
-                // obtiene la llave de la pregunta
-                $key = $preguntas_keys[$i];
-                // obtiene la llave de la respuesta
-                $key_response = $preguntas_keys[$i - 1];
-                // si la respuesta del usuario es igual a la opcion correcta de la pregunta
-                if($request_data[$key] == $request_data[$key_response]){
-                    $correctas++;
-                }
+        for ($i = 2; $i <= count($preguntas_keys) + 1; $i++) {
+            echo $i;
+            $siguiente = $preguntas_keys[$i + 1];
+            if (strpos($preguntas_keys[$i], 'response') !== false ) {
+
+                echo "Si existe la respuesta";
             }
         }
+        dd($preguntas_keys);
+        foreach ($preguntas_keys as $key){
+            $keys[] = $key;
+        }
+
+        dd("hola antes");
+        $keys_corrects = [];
+        $keys_responses = [];
+
+        $data_responses_questions = [];
+        for ($i = 0; $i < count($keys) ; $i++) {
+            echo $keys[$i] . '<br>';
+            if(strpos($keys[$i], 'response') !== false && isset($keys[$i])){
+                $data_responses_questions[] = $request_data[$keys[$i]];
+                $siguiente = isset($keys[$i + 1]) ? $keys[$i + 1] : 'no_contestada';
+                if(strpos($siguiente, 'response') !== false ){
+                    $old_key = $keys[$i + 1];
+                    array_splice($keys,$i + 1 ,1, ['', $old_key]);
+                }
+                echo "<pre>";
+                print_r($keys);
+                echo "</pre>";
+            }else{
+                echo "No existe" . $keys[$i];
+                if(isEmpty( $keys[$i])){
+                    $data_responses_questions[$i] = '';
+                }else{
+                    $data_responses_questions[$i]= $request_data[$keys[$i]];
+                }
+            }
+
+//            if(!isset($preguntas_keys[$i + 1])){
+//                $responses[$i] = '';
+//            }else{
+//                echo $preguntas_keys[$i + 1];
+//                if(strpos($preguntas_keys[$i + 1], 'response') === false){
+//                    // Aqui se le pone en null
+//
+//                    $responses[$i] = '';
+//                }else{
+//                    $corrects[$i] = $request_data[$preguntas_keys[$i]];
+//                }
+//
+//            }
+        }
+        echo "<pre>";
+        print_r($data_responses_questions);
+        echo "</pre>";
+        dd("hola");
+        foreach ($preguntas_keys as $pregunta_key){
+            if(strpos($pregunta_key, 'response') !== false){
+                $keys_corrects[] = $pregunta_key;
+            }else{
+                $keys_responses[] = $pregunta_key;
+            }
+        }
+
+        $noContestadas = 0;
+
+        if(intval(count($keys_corrects)) > intval(count($keys_responses)) ){
+            $noContestadas = intval(count($keys_corrects)) - intval(count($keys_responses));
+        }
+
+        $total_preguntas = intval(count($keys_corrects));
+        $correctas = 0;
+
+        if($noContestadas <= 0){
+            for ($i = 2; $i < count($request_data); $i++){
+                // en valor impar esta la respuesta y en el par la pregunta
+                // entrar a la pregunta
+                if($i % 2 != 0){
+                    // obtiene la llave de la pregunta
+                    $key = $preguntas_keys[$i];
+                    // obtiene la llave de la respuesta
+                    $key_response = $preguntas_keys[$i - 1];
+                    // si la respuesta del usuario es igual a la opcion correcta de la pregunta
+                    if($request_data[$key] == $request_data[$key_response]){
+                        $correctas++;
+                    }
+                }
+            }
+        }else{
+
+        }
+
+
         // total de los errores
         $erroneas = $total_preguntas - $correctas;
         // se obtiene el valor minimo para pasar
@@ -156,17 +248,19 @@ class PreguntaController extends Controller
 
         if($correctas >= $minimo_pasar){
             $paso = true;
-            // Validar si tiene un album o sino creale
-            $existeAlbum = Album::firstWhere('user_id', Auth::user()->id);
+            // Obtener el album de esa tematica
+            $albumTematica = Album::firstWhere('tematica_id', $tematica_id);
 
-            if($existeAlbum == null){
+            // Validar si tiene un album o sino creale
+            $existeAlbum = AlbumsUser::where('user_id', '=' ,Auth::user()->id)->where('album_id', '=', $albumTematica->id)->get();
+
+
+            if(count($existeAlbum) <= 0){
                 // Crear el album al usuario
-                $album = new Album();
-                $album->user_id = Auth::user()->id;
-                $album->save();
-                $newAlbumId = $album->id;
-            }else{
-                $newAlbumId = $existeAlbum->id;
+                $album_user = new AlbumsUser();
+                $album_user->album_id = $albumTematica->id;
+                $album_user->user_id = Auth::user()->id;
+                $album_user->save();
             }
 
             // Obtener 3 cromos al Alazar y guardarlos
@@ -177,7 +271,7 @@ class PreguntaController extends Controller
                 $newCromoAlbum = new CromosUser();
                 $newCromoAlbum->estado = 0;
                 $newCromoAlbum->cromo_id = $cromo->id;
-                $newCromoAlbum->album_id = $newAlbumId;
+                $newCromoAlbum->album_id = $albumTematica->id;
                 $newCromoAlbum->save();
             }
         }
@@ -189,4 +283,6 @@ class PreguntaController extends Controller
         return view('cuestionario.resultado', compact('total_preguntas','correctas', 'erroneas', 'newAlbumId', 'paso','mostrarAlerta'));
     }
 
+
+    
 }

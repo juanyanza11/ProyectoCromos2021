@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\AlbumsUser;
 use App\Models\Cromo;
 use App\Models\CromosUser;
 use Illuminate\Http\Request;
@@ -87,5 +88,11 @@ class AlbumController extends Controller
     public function destroy(Album $album)
     {
         //
+    }
+
+    public function coleccion(){
+        $user = Auth::user();
+        $albums = AlbumsUser::all()->where('user_id', '=', $user->id);
+        return view('album.coleccion', compact('albums'));
     }
 }

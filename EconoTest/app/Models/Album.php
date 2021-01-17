@@ -12,6 +12,10 @@ class Album extends Model
         'nombre', 'descripcion', 'tematica_id'
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 
     public function tematica(){
         return $this->belongsTo(Tematica::class);
