@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
+    @yield('styles-users')
 
 
 </head>
@@ -48,11 +49,10 @@
                         <div class="rd-navbar-nav-wrap">
                             <div class="rd-navbar-nav-inner">
                                 <ul class="rd-navbar-nav">
-                                    <li class="active"><a href="#">Quiz</a>
+                                    <li class="{{ Request::is('home') ? 'active' : '' }}"><a href="/home">Quiz</a>
                                     </li>
-                                    <li><a href="">Mi Colección</a>
+                                    <li {{ Request::is('album.coleccion') ? 'active' : '' }} ><a href="/coleccion">Mi Colección</a>
                                     </li>
-                                    @yield('coleccionMenu')
                                     <li><a href="#">Perfil</a>
                                     </li>
                                     <li>
@@ -77,7 +77,7 @@
     </header>
     <!-- FIN NAVBAR -->
 
-    <main id="app" >
+    <main>
         @yield('contenido')
     </main>
 
@@ -106,7 +106,7 @@
     <script src="{{ asset('/js/core.min.js') }}"></script>
     <script src="{{ asset('/js/script.js') }}"></script>
 
-    @yield('scripts')
+    @yield('scripts-users')
 </div>
 </body>
 </html>
