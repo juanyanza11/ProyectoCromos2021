@@ -32,4 +32,9 @@ class HomeController extends Controller
 
         return view('home', compact('user', 'tematicas'));
     }
+
+    public function perfil(){
+        $user = Auth::user();
+        return view('perfil', compact('user'));
+    }
 }

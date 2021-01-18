@@ -61,6 +61,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="pais" class="col-md-4 col-form-label text-md-right">{{ __('Pais') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="pais" type="text" class="form-control @error('pais') is-invalid @enderror" name="pais" value="{{ old('pais') }}" required autocomplete="pais" autofocus>
+
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="ciudad" class="col-md-4 col-form-label text-md-right">{{ __('Ciudad') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="ciudad" type="text" class="form-control @error('ciudad') is-invalid @enderror" name="ciudad" value="{{ old('ciudad') }}" required autocomplete="ciudad" autofocus>
+                            </div>
+                        </div>
+
+
+                        
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

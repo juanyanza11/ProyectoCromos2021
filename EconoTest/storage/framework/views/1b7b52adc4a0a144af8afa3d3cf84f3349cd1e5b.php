@@ -103,6 +103,39 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="pais" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Pais')); ?></label>
+
+                            <div class="col-md-6">
+                                <input id="pais" type="text" class="form-control <?php $__errorArgs = ['pais'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="pais" value="<?php echo e(old('pais')); ?>" required autocomplete="pais" autofocus>
+
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="ciudad" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Ciudad')); ?></label>
+
+                            <div class="col-md-6">
+                                <input id="ciudad" type="text" class="form-control <?php $__errorArgs = ['ciudad'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="ciudad" value="<?php echo e(old('ciudad')); ?>" required autocomplete="ciudad" autofocus>
+                            </div>
+                        </div>
+
+
+                        
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

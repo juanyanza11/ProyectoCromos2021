@@ -1,9 +1,6 @@
 
 
 <?php $__env->startSection('contenido'); ?>
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        descripciuion de los usuarios
-    </div>
     <div class ="row">
         <?php if($message = Session::get('Listo')): ?>
             <div class = "col-12 alert alert-success alert-dismissable fade show" role = "alert">

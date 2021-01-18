@@ -15,7 +15,7 @@
                                 <h5 class="card-title">{{$album->album->nombre}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$album->album->tematica->nombre}}</h6>
                                 <a href="{{route('album.index', ['album' => $album->id])}}" class="card-link">Ver mi album</a>
-                                <a href="{{route('album.index', ['album' => $album->id])}}" class="card-link">Ir a la tematica</a>
+                                <a href="{{route('home')}}" class="card-link">Ir a la tematica</a>
                             </div>
                         </div>
                     @endforeach

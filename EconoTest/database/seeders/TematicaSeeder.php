@@ -16,17 +16,17 @@ class TematicaSeeder extends Seeder
     public function run()
     {
         DB::table('tematicas')->insert([
-            ['nombre' => 'MACROECONOMIA', 'imagen' => null,'created_at' => Carbon::now(),
+            ['nombre' => 'ASTROLOGÍA', 'imagen' => 'astrologia.jfif','created_at' => Carbon::now(),
             'updated_at' => Carbon::now()],
-            ['nombre' => 'MICROECONOMIA', 'imagen' => null,'created_at' => Carbon::now(),
+            ['nombre' => 'FÚTBOL', 'imagen' => 'futbolistas.jfif','created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()],
-            ['nombre' => 'ECONOMETRIA', 'imagen' => null,'created_at' => Carbon::now(),
+            ['nombre' => 'MATEMÁTICAS', 'imagen' => 'matematicas.jfif','created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()],
-            ['nombre' => 'TEMATICA 4', 'imagen' => null,'created_at' => Carbon::now(),
+            ['nombre' => 'MEDICINA', 'imagen' => 'medicina.jpg','created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()],
-            ['nombre' => 'TEMATICA 5', 'imagen' => null,'created_at' => Carbon::now(),
+            ['nombre' => 'MINERÍA', 'imagen' => 'mineria.jfif','created_at' => Carbon::now(),
             'updated_at' => Carbon::now()],
-            ['nombre' => 'TEMATICA 6', 'imagen' => null,'created_at' => Carbon::now(),
+            ['nombre' => 'PRESIDENTES', 'imagen' => 'presidentes.png','created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()],
         ]);
     }

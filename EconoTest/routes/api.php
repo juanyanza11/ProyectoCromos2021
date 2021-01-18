@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/resultado/quiz', [\App\Http\Controllers\ApiController::class, 'mostrarResultados']);
+Route::post('/update/cromo', [\App\Http\Controllers\ApiController::class, 'actualizarEstado']);

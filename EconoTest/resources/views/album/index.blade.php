@@ -19,7 +19,13 @@
             margin: 10px;
         }
         .cromos_ganados .owl-nav{
-            width: 100px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+        }
+        .cromos_ganados .owl-nav span{
+            display: none !important;
         }
         .cromos_ganados .owl-dots{
             display: none !important;
@@ -53,7 +59,7 @@
         }
         .listado-cromos{
             display: flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
         }
         .vacio{
             height: 160px;
@@ -87,24 +93,33 @@
 @endsection
 
 @section('contenido')
-    <section class="section-md-75 "  style="min-height: 300px">
-        <div class="container">
-            <h4 class="text-center" >Cromos que este usuario gano y no estan en el album</h4>
-            <div class="cromos_ganados">
-                @foreach($cromosGanados as $cromo)
-                    <div class="vacio">
-                        <div class="fill" data-cromo-id="{{$cromo->cromo->id}}" draggable="true" style="background-image:url('{{asset("/img/cromos/{$cromo->cromo->imagen}")}}');position: relative; height: 150px; width: 150px;cursor: pointer; " ></div>
-                    </div>
-                @endforeach
-            </div>
-            <h4 class="text-center" >Pon tus cromos aqui</h4>
-            <div class="listado-cromos">
-                @foreach($cromos as $cromo)
-                    <div class="vacio filtro" >
-                        <div class="cromos-listos"  data-cromo-id="{{$cromo->id}}" style="background-image:url('{{asset("/img/cromos/{$cromo->imagen}")}}');position: relative; height: 150px; width: 150px; " ></div>
-                    </div>
-                @endforeach
-            </div>
+    <section class="section-md-75 "  style="min-height: 550px">
+        <div class="container" >
+            @if(count($cromosGanadosSinColocar) > 0)
+                <h4 class="text-center" >Cromos que este usuario gano y no estan en el album</h4>
+                <div class="cromos_ganados">
+
+                        @foreach($cromosGanadosSinColocar as $cromo)
+                            <div class="vacio">
+                                <div class="fill" data-cromo-id="{{$cromo->cromo->id}}"  data-id="{{$cromo->id}}" draggable="true" style="background-image:url('{{asset("/img/cromos/{$cromo->cromo->imagen}")}}');position: relative; height: 150px; width: 150px;cursor: pointer; " ></div>
+                            </div>
+                        @endforeach
+
+                </div>
+            @endif
+            @if(count($cromos) > 0)
+                <h4 class="text-center" >Pon tus cromos aqui</h4>
+                <div class="listado-cromos">
+                    @foreach($cromos as $cromo)
+                        <div class="vacio filtro" >
+                            <div class="cromos-listos"  data-cromo-id="{{$cromo->id}}"   style="background-image:url('{{asset("/img/cromos/{$cromo->imagen}")}}');position: relative; height: 150px; width: 150px; " ></div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <h5 class="text-center" >Este album aun no tiene cromos activos</h5>
+            @endif
+
         </div>
     </section>
 
@@ -115,15 +130,41 @@
     <script src="{{asset('js/owl.carousel.min.js')}}" ></script>
     <script >
         $(document).ready(function(){
+            let cromosGanados = {!! $cromosGanadosSinColocar !!};
+            let cromosGanadosColocados = {!! $cromosGanadosColocados !!}
+
             $('.cromos_ganados').owlCarousel({
                 mouseDrag: false,
                 items: 5
             });
+            if(Object.keys(cromosGanados).length >= 7){
+                $('.cromos_ganados .owl-nav').css({
+                    display: 'flex'
+                });
+            }else{
+                $('.cromos_ganados .owl-nav').css({
+                    display: 'none'
+                });
+            }
+
+            let todoslosCromos = $('.cromos-listos');
+            for(const cromo of todoslosCromos){
+                const idCromo = cromo.dataset.cromoId;
+                Object.keys(cromosGanadosColocados).map(key => {
+                    let cromoGanado = cromosGanadosColocados[key];
+
+                    if(idCromo == cromoGanado.cromo_id){
+                        cromo.parentElement.style.filter = "grayScale(0%)";
+                    }
+                })
+            }
         });
         let fills = document.querySelectorAll('.fill');
         let vacios = document.querySelectorAll('.vacio');
 
         let idCromoParaPonerlo = null;
+        let idCromoActualizar = null;
+        let elementoBorrar = null;
 
         // Fill listener
         for(const fill of fills){
@@ -140,6 +181,8 @@
 
         function  dragStart(e){
             idCromoParaPonerlo = e.target.dataset.cromoId;
+            idCromoActualizar = e.target.dataset.id;
+            elementoBorrar = e.target.parentElement;
             console.log("start");
         }
 
@@ -160,11 +203,31 @@
 
         function drop(e){
             let cromoId = e.target.dataset.cromoId;
+
+            let url = `${window.location.origin}/api/update/cromo`;
             if(cromoId == idCromoParaPonerlo){
-                console.log("es igual", e.target.parentElement.style.filter = "grayScale(0%)");
+                $.ajax({
+                    method: 'POST',
+                    url,
+                    data: {
+                        cromoId :idCromoActualizar
+                    },
+                    dataType: "json",
+                    success: function(response){
+                        console.log("Response", response);
+                        if(response.update){
+                            elementoBorrar.parentElement.removeChild(elementoBorrar);
+                            e.target.parentElement.style.filter = "grayScale(0%)"
+                        }
+                    }
+
+                })
             }else{
                 console.log("no es igual")
             }
+
+
+
             console.log("drop");
         }
 

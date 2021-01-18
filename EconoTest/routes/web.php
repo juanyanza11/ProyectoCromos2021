@@ -39,7 +39,8 @@ Route::resource('/admin/albums', "App\Http\Controllers\AlbumAdminController");
 
 
 Route::get('/preguntas/{id}', [\App\Http\Controllers\PreguntaController::class, 'mostrarPreguntas'])->name('preguntas.usuario.index');
-Route::post('/preguntas/quiz', [\App\Http\Controllers\PreguntaController::class, 'validarPreguntas'])->name('preguntas.usuario.quiz');
 
 Route::get('/coleccion', [\App\Http\Controllers\AlbumController::class, 'coleccion'])->name('album.coleccion');
 Route::get('/album/{album}', [\App\Http\Controllers\AlbumController::class, 'index'])->name('album.index');
+Route::get('/perfil', [\App\Http\Controllers\HomeController::class, 'perfil'])->name('home.perfil');
+Route::post('/perfil/edit', [App\Http\Controllers\HomeController::class, 'editarPerfil']);

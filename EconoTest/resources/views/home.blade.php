@@ -12,11 +12,12 @@
             <div class="row row-40">
                 <input type="hidden" id="token_consulta" value="{{ csrf_token()}}" >
                 <input type="hidden" id="user_id" value="{{ auth()->user()->id}}" >
+                <input type="hidden" id="tematica_id" value="" >
                 @foreach($tematicas as $tematica)
                     <div class="col-md-6 col-lg-4 height-fill">
                         <article class="icon-box1 abrirQuiz " data-id="{{$tematica->id}}" >
                             <div class="box-top">
-                                <div class="box-icon1"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
+                                <div class="box-icon1"><img src='{{asset("/img/tematicas/{$tematica->imagen}")}}' alt="" width="300" height="300"/></div>
                                 <div class="box-header">
                                     <h5><a href="#"></a></h5>
                                 </div>
@@ -108,9 +109,11 @@
 
             $('.abrirQuiz').click( function(){
                 let id = $(this).data('id');
+                $('#tematica_id').val(id);
                 $.ajax({
                     url: `/preguntas/${id}`,
                     success: function (respuesta){
+                        // en caso de que no haya preguntas 
                         if(respuesta.preguntas.length == 0){
                             Swal.fire({
                                 icon: 'question',
@@ -121,8 +124,9 @@
                             let questionNumber = 0;
                             questions = respuesta.preguntas?.map( pregunta => {
                                 questionNumber += 1;
+                                // crea el elemento como necesita el plugin
                                 return{
-                                    numb: 1,
+                                    numb: questionNumber,
                                     question: pregunta.enunciado,
                                     answer: pregunta.opcion_correcta,
                                     options: [
@@ -137,8 +141,6 @@
 
                             info_box.classList.add("activeInfo");
                         }
-
-                        console.log(questions);
                     },
                 });
             });

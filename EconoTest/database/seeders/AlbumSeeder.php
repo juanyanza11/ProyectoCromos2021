@@ -16,23 +16,44 @@ class AlbumSeeder extends Seeder
     public function run()
     {
         DB::table('albums')->insert([
-            'nombre' => 'Album 1',
-            'descripcion' => 'descripcion album 1',
+            'nombre' => 'ALBUM DE ASTROLOGÍA',
+            'descripcion' => 'descripcion album ASTROLOGÍA',
             'tematica_id' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
         DB::table('albums')->insert([
-            'nombre' => 'Album 2',
-            'descripcion' => 'descripcion album 2',
+            'nombre' => 'ALBUM DE FÚTBOL',
+            'descripcion' => 'descripcion album FÚTBOL',
             'tematica_id' => '2',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
         DB::table('albums')->insert([
-            'nombre' => 'Album 3',
-            'descripcion' => 'descripcion album 3',
+            'nombre' => 'ALBUM DE MATEMÁTICAS',
+            'descripcion' => 'descripcion album MATEMÁTICAS',
             'tematica_id' => '3',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+         DB::table('albums')->insert([
+            'nombre' => 'ALBUM DE MEDICINA',
+            'descripcion' => 'descripcion album MEDICINA',
+            'tematica_id' => '4',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+         DB::table('albums')->insert([
+            'nombre' => 'ALBUM DE MINERÍA',
+            'descripcion' => 'descripcion album MINERÍA',
+            'tematica_id' => '5',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+         DB::table('albums')->insert([
+            'nombre' => 'ALBUM DE PRESIDENTES',
+            'descripcion' => 'descripcion album PRESIDENTES',
+            'tematica_id' => '6',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

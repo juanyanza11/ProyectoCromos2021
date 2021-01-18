@@ -46,7 +46,7 @@
                                     <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
                                 </li>
                             <?php endif; ?>
-                            
+
                             <?php if(Route::has('register')): ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
@@ -81,6 +81,8 @@
         <main class="py-4">
             <?php echo $__env->yieldContent('content'); ?>
         </main>
+
+        <?php echo $__env->yieldContent('footer'); ?>;
     </div>
 </body>
 </html>

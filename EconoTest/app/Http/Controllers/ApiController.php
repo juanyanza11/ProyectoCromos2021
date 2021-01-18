@@ -8,6 +8,9 @@ use App\Models\Cromo;
 use App\Models\CromosUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
 
 class ApiController extends Controller
 {
@@ -37,22 +40,45 @@ class ApiController extends Controller
             }
 
             // Obtener 3 cromos al Alazar y guardarlos
-            $cromos_ganados = Cromo::all()->random()->take(3)->get();
-
+            $cromos_ganados = DB::table('cromos')->where('album_id', '=', $albumTematica->id)->inRandomOrder()->take(3)->get();
             // Recorrer cromos para guardar en base de datos
             foreach ($cromos_ganados as $cromo){
+                $existeCromo = CromosUser::where('cromo_id', '=', $cromo->id)->where('album_id', '=' ,$albumTematica->id)->get();
+                
+                if(count($existeCromo) <= 0){
                 $newCromoAlbum = new CromosUser();
                 $newCromoAlbum->estado = 0;
                 $newCromoAlbum->cromo_id = $cromo->id;
                 $newCromoAlbum->album_id = $albumTematica->id;
                 $newCromoAlbum->save();
+                }else{
+                    // Actualizar cantidad;
+                }
             }
         }
 
 
 
         return response()->json([
-            'paso' => $paso,
+            'paso' => $paso
         ], 200);
+    }
+
+
+    public function actualizarEstado(Request $request){
+        $cromoUser = CromosUser::find( $request->cromoId);
+
+        // Make sure you've got the Page model
+        $update = false;
+        if($cromoUser) {
+            $cromoUser->estado = true;
+            $cromoUser->save();
+            $update = true;
+        }
+
+        return response()->json([
+            'update' => $update
+        ], 200);
+
     }
 }

@@ -12,16 +12,22 @@ use Illuminate\Support\Facades\Redirect;
 
 class AlbumController extends Controller
 {
+
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Album $album)
+    public function index(AlbumsUser $album)
     {
-        $cromosGanados = CromosUser::all()->where('album_id', '=', $album->id);
-        $cromos = Cromo::all();
-        return view('album.index', compact('cromosGanados', 'cromos', 'album'));
+        $cromosGanadosSinColocar = CromosUser::all()->where('album_id', '=', $album->album_id)->where('estado', '=', 0);
+        $cromosGanadosColocados = CromosUser::all()->where('album_id', '=', $album->album_id)->where('estado', '=', 1);
+        $cromos = Cromo::all()->where('album_id', '=', $album->album_id);
+        return view('album.index', compact('cromosGanadosSinColocar', 'cromosGanadosColocados' ,'cromos', 'album'));
     }
 
     /**

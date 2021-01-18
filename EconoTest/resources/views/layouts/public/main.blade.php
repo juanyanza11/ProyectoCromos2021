@@ -43,7 +43,7 @@
                                     </li>
                                     <li class="{{ Request::is('coleccion') ? 'active' : '' }}" ><a href="/coleccion">Mi Colección</a>
                                     </li>
-                                    <li class="{{ Request::is('perfil') ? 'active' : '' }}" ><a href="#">Perfil</a>
+                                    <li class="{{ Request::is('perfil') ? 'active' : '' }}" ><a href="/perfil">Perfil</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
