@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use App\Models\Tematica;
 use Illuminate\Http\Request;
-
+use App\Models\AlbumsTematica;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -29,10 +29,18 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $tematicas = Tematica::all();
-
+        $albums = Album::all();
         return view('home', compact('user', 'tematicas'));
     }
+    public function albums(){
+        $albums = Album::all();
+        return view('home.albums', compact('albums'));
+    }
 
+    public function albumsSinlge($id){
+        $listadoTemticas = AlbumsTematica::all()->where('album_id', '=', $id);
+        return view('home.albums_tematicas', compact('listadoTemticas'));
+    }
     public function perfil(){
         $user = Auth::user();
         return view('perfil', compact('user'));

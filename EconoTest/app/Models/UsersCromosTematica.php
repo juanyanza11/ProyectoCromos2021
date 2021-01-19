@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cromo extends Model
+class UsersCromosTematica extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'nombre', 'descripcion','imagen', 'estado'
-    ];
-
-    
+    public function cromosTematica(){
+        return $this->belongsTo(CromosTematica::class);
+    }
 }

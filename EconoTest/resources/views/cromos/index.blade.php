@@ -35,7 +35,7 @@
                                 <td>Nombre</td>
                                 <td>Descripción</td>
                                 <td>Imagen</td>
-                                <td>Album</td>
+                                <td>Temática</td>
                                 <td width="200px" >Acciones</td>
                             </tr>
                         </thead>
@@ -45,7 +45,7 @@
                                 <td>Nombre</td>
                                 <td>Descripción</td>
                                 <td>Imagen</td>
-                                <td>Album</td>
+                                <td>Temática</td>
                                 <td width="200px" >Acciones</td>
                             </tr>
                         </tfoot>
@@ -59,7 +59,7 @@
                                         
                                         <td><img src='{{asset("/img/cromos/{$cromo->imagen}")}}' alt="" style="width:70px"></td>
                                        
-                                        <td>{{ $cromo->album->nombre }}</td>
+                                        <td>aqui va el nombre de la tematica</td>
                                         
                                         <td class="d-flex justify-content-around" >
                                             <button class= "btn btn-round  btn-primary btnEditar"
@@ -125,10 +125,10 @@
                     <textarea name="descripcion" cols="62" rows="5" required class ="form-control" style="width: 100%; min-height: 200px; max-height: 200px" ></textarea>
                     </div>
                     <div class="form-group">
-                        <strong>ALBUM:</strong>
-                        <select name="album_id" id="album_id">
-                        @foreach($albums as $album)
-                            <option value= "{{ $album->id }}">{{ $album->nombre }}</option>
+                        <strong>TEMÁTICA:</strong>
+                        <select name="tematica_id" id="tematica_id">
+                        @foreach($tematicas as $tematica)
+                            <option value= "{{ $tematica->id }}">{{ $tematica->nombre }}</option>
                         @endforeach
                         </select>
                     </div>
@@ -210,10 +210,10 @@
 
                     </div>
                     <div class="form-group">
-                        <strong>ALBUM:</strong>
-                        <select name="album_id" id="album_id">
-                        @foreach($albums as $album)
-                            <option value= "{{ $album->id }}">{{ $album->nombre }}</option>
+                        <strong>TEMÁTICA:</strong>
+                        <select name="tematica_id" id="tematica_id">
+                        @foreach($tematicas as $tematica)
+                            <option value= "{{ $tematica->id }}">{{ $tematica->nombre }}</option>
                         @endforeach
                         </select>
                     </div>
@@ -261,7 +261,6 @@
             $("#idEdit").val($(this).data('id'));
             $("#nameEdit").val($(this).data('name'));
             $("#descripcionEdit").val($(this).data('description'));
-            //$("#album_id").val($(this).data('album_id'))
             let urlImagen = $(this).data('imagen');
             if(urlImagen !== ''){
                 $('#imagen_edit').show();
@@ -269,8 +268,6 @@
 
             }
             $('#subir_imagen_input').show();
-
-
         });
     });
     </script>

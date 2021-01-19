@@ -15,8 +15,8 @@ class PreguntasSeeder extends Seeder
     public function run()
     {
         DB::table('preguntas')->insert([
-            'enunciado' => 'Que determina el modelo clasico?',
-            'tematica_id' => 1,
+            'enunciado' => 'pregunta 1 de Futbol?',
+            'tematica_id' => 2,
             'opcion_correcta' => 'correcta',
             'opcion_1' => 'correcta',
             'opcion_2' => 'dos',
@@ -26,8 +26,30 @@ class PreguntasSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
         DB::table('preguntas')->insert([
-            'enunciado' => 'Que es el ciclo economico?',
-            'tematica_id' => 1,
+            'enunciado' => 'pregunta 2 de Futbol?',
+            'tematica_id' => 2,
+            'opcion_correcta' => 'correcta',
+            'opcion_1' => 'correcta',
+            'opcion_2' => 'dos',
+            'opcion_3' => 'tres',
+            'opcion_4' => 'cuatro',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('preguntas')->insert([
+            'enunciado' => 'pregunta 3 de Futbol?',
+            'tematica_id' => 2,
+            'opcion_correcta' => 'correcta',
+            'opcion_1' => 'correcta',
+            'opcion_2' => 'dos',
+            'opcion_3' => 'tres',
+            'opcion_4' => 'cuatro',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('preguntas')->insert([
+            'enunciado' => 'Pregunta 2 de presidentes?',
+            'tematica_id' => 6,
             'opcion_correcta' => 'correcta',
             'opcion_1' => 'uno',
             'opcion_2' => 'correcta',
@@ -39,8 +61,30 @@ class PreguntasSeeder extends Seeder
 
 
         DB::table('preguntas')->insert([
-            'enunciado' => 'Que es la economia?',
-            'tematica_id' => 3,
+            'enunciado' => 'PRegunta  1 de presidentes?',
+            'tematica_id' => 6,
+            'opcion_correcta' => 'correcta',
+            'opcion_1' => 'uno',
+            'opcion_2' => 'dos',
+            'opcion_3' => 'correcta',
+            'opcion_4' => 'cuatro',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+         DB::table('preguntas')->insert([
+            'enunciado' => 'PRegunta  3 de presidentes?',
+            'tematica_id' => 6,
+            'opcion_correcta' => 'correcta',
+            'opcion_1' => 'uno',
+            'opcion_2' => 'dos',
+            'opcion_3' => 'correcta',
+            'opcion_4' => 'cuatro',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::table('preguntas')->insert([
+            'enunciado' => 'PRegunta 1  MINERIA?',
+            'tematica_id' => 5,
             'opcion_correcta' => 'correcta',
             'opcion_1' => 'uno',
             'opcion_2' => 'dos',

@@ -17,7 +17,7 @@ class CreateAlbumsTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion');
-            $table->foreignId('tematica_id')->constrained()->onDelete('cascade');
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }

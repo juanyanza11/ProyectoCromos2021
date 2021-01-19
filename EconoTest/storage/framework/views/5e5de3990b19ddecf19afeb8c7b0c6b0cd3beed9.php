@@ -12,8 +12,8 @@
                     <?php $__currentLoopData = $albums; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $album): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="card m-2" style="width: 22rem;">
                             <div class="card-body ">
-                                <h5 class="card-title"><?php echo e($album->album->nombre); ?></h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><?php echo e($album->album->tematica->nombre); ?></h6>
+                                <h5 class="card-title"><?php echo e($album->albumsTematica->album->nombre); ?> - <?php echo e($album->albumsTematica->tematica->nombre); ?> </h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?php echo e($album->albumsTematica->tematica->nombre); ?></h6>
                                 <a href="<?php echo e(route('album.index', ['album' => $album->id])); ?>" class="card-link">Ver mi album</a>
                                 <a href="<?php echo e(route('home')); ?>" class="card-link">Ir a la tematica</a>
                             </div>

@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Validator;
 use App\Models\Cromo;
-use App\Models\Album;
+use App\Models\Tematica;
+use App\Models\CromosTematica;
 use Illuminate\Http\Request;
+
+
 use function PHPUnit\Framework\isNull;
 
 class CromoController extends Controller
@@ -17,9 +20,9 @@ class CromoController extends Controller
      */
     public function index()
     {
-        $albums = Album::all();
+        $tematicas = Tematica::all();
         $cromos = Cromo::all();
-        return view('cromos.index',compact('cromos','albums'));
+        return view('cromos.index',compact('cromos','tematicas'));
     }
 
     /**
@@ -41,7 +44,7 @@ class CromoController extends Controller
     public function store(Request $request)
     {
 
-        $validator = Validator::make($request->all(),[
+            $validator = Validator::make($request->all(),[
         'nombre'=> 'required|min:3|max:50',
         'descripcion'=> 'required',
         'img'=> 'required|image|mimes:jpg,png,jpeg,svg|max:3000',
@@ -63,8 +66,11 @@ class CromoController extends Controller
                 'nombre' => $request->nombre,
                 'descripcion' => $request->descripcion,
                 'imagen' =>$nombre,
-                'album_id' =>$request->album_id,
             ]);
+            $newCromoTematica = new CromosTematica();
+            $newCromoTematica->cromo_id = $cromo->id;
+            $newCromoTematica->tematica_id = $request->tematica_id;
+            $newCromoTematica->save();
         return back()->with('Listo', 'Se ha insertado correctamente');
         }
     }

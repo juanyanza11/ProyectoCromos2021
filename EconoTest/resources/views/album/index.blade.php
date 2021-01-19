@@ -14,6 +14,11 @@
         .cromos_ganados .owl-nav{
 
         }
+        .owl-stage{
+            background: #e1e1e1;
+            border: 5px salmon solid;
+            border-radius: 10px;
+        }
         .owl-prev, .owl-next{
             position: relative;
             margin: 10px;
@@ -49,8 +54,8 @@
         }
         .cromos-listos{
             position: relative;
-            height: 150px;
-            width: 150px;
+            height: 165px;
+            width: 165px;
             cursor: pointer;
             background-position: center center;
             background-size: cover;
@@ -60,6 +65,9 @@
         .listado-cromos{
             display: flex;
             flex-wrap: wrap;
+            background-color: #e1e1e1; 
+            border-radius: 20px; 
+            padding: 15px
         }
         .vacio{
             height: 160px;
@@ -72,11 +80,13 @@
         }
 
         .vacio.filtro{
-            filter: grayscale(100%);
+            filter: grayscale(100%) blur(2px);
             background-size: cover;
             background-repeat: no-repeat;
-            height: 150px;
-            width: 150px;
+            height: 165px;
+            width: 165px;
+            margin: 10px;
+            display: block;
         }
 
         .hold{
@@ -89,35 +99,60 @@
         .invisible{
             display: none;
         }
+        .progress-bar{
+            background: #f15f0d;
+        }
     </style>
 @endsection
 
 @section('contenido')
-    <section class="section-md-75 "  style="min-height: 550px">
-        <div class="container" >
-            @if(count($cromosGanadosSinColocar) > 0)
-                <h4 class="text-center" >Cromos que este usuario gano y no estan en el album</h4>
-                <div class="cromos_ganados">
+    <section class="section-md-75 "  style="min-height: 300px">
+        <div class="container">
+            <div class="row d-flex justify-content-center m-5">
+                <div class="col-8 ">
+                    @php
+                        $total = 0;
+                        foreach ($cromosGanadosColocados as $cromo) {
+                            if($cromo->cromosTematica->tematica_id === $tematica_id){
+                                $total++;
+                            }
+                        }
 
-                        @foreach($cromosGanadosSinColocar as $cromo)
-                            <div class="vacio">
-                                <div class="fill" data-cromo-id="{{$cromo->cromo->id}}"  data-id="{{$cromo->id}}" draggable="true" style="background-image:url('{{asset("/img/cromos/{$cromo->cromo->imagen}")}}');position: relative; height: 150px; width: 150px;cursor: pointer; " ></div>
-                            </div>
-                        @endforeach
-
+                        $percentage = ($total  * 100) / count($cromos);
+                    @endphp
+                    <h5 class="text-center" > {{$total}} / {{count($cromos)}} cromos</h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{$percentage}}%" aria-valuenow="{{$total}}" aria-valuemin="0" aria-valuemax="{{count($cromos)}}"></div>
+                    </div>
                 </div>
+            </div>
+            @if(count($cromosGanadosSinColocar) > 0)
+                <h4 class="text-center" >ARRASTRA TUS CROMOS AL ÁLBUM</h4>
+                <div class="cromos_ganados">
+                        @foreach($cromosGanadosSinColocar as $cromo)
+                            @if($cromo->cromosTematica->tematica_id === $tematica_id)
+                                <div class="vacio">
+                                    <div class="fill" data-cromo-id="{{$cromo->cromosTematica->id}}"  data-edit="{{$cromo->id}}"  data-id="{{$cromo->cromosTematica->id}}" draggable="true" style="background-image:url('{{asset("/img/cromos/{$cromo->cromosTematica->cromo->imagen}")}}');position: relative; height: 150px; width: 150px;cursor: pointer; " ></div>
+                                </div>
+                            @endif
+                        @endforeach
+                </div>
+            @else
+                
+                <h4 class="text-center" >No tienes más cromos disponibles 😢</h4>
             @endif
+           
             @if(count($cromos) > 0)
-                <h4 class="text-center" >Pon tus cromos aqui</h4>
+                <h4 class="text-center" >Listado de cromos del album</h4>
                 <div class="listado-cromos">
                     @foreach($cromos as $cromo)
                         <div class="vacio filtro" >
-                            <div class="cromos-listos"  data-cromo-id="{{$cromo->id}}"   style="background-image:url('{{asset("/img/cromos/{$cromo->imagen}")}}');position: relative; height: 150px; width: 150px; " ></div>
+                            <div class="cromos-listos"  data-cromo-id="{{$cromo->id}}"   style="background-image:url('{{asset("/img/cromos/{$cromo->cromo->imagen}")}}');position: relative; " ></div>
                         </div>
                     @endforeach
                 </div>
             @else
-                <h5 class="text-center" >Este album aun no tiene cromos activos</h5>
+                <h5 class="text-center" >Este album aun no tiene cromos activos 😢</h5>
             @endif
 
         </div>
@@ -132,7 +167,7 @@
         $(document).ready(function(){
             let cromosGanados = {!! $cromosGanadosSinColocar !!};
             let cromosGanadosColocados = {!! $cromosGanadosColocados !!}
-
+            console.log(cromosGanados);
             $('.cromos_ganados').owlCarousel({
                 mouseDrag: false,
                 items: 5
@@ -150,10 +185,11 @@
             let todoslosCromos = $('.cromos-listos');
             for(const cromo of todoslosCromos){
                 const idCromo = cromo.dataset.cromoId;
+                
                 Object.keys(cromosGanadosColocados).map(key => {
                     let cromoGanado = cromosGanadosColocados[key];
 
-                    if(idCromo == cromoGanado.cromo_id){
+                    if(idCromo == cromoGanado.cromos_tematica_id){
                         cromo.parentElement.style.filter = "grayScale(0%)";
                     }
                 })
@@ -164,6 +200,7 @@
 
         let idCromoParaPonerlo = null;
         let idCromoActualizar = null;
+        let idUserCromoTemtica = null;
         let elementoBorrar = null;
 
         // Fill listener
@@ -182,6 +219,7 @@
         function  dragStart(e){
             idCromoParaPonerlo = e.target.dataset.cromoId;
             idCromoActualizar = e.target.dataset.id;
+            idUserCromoTemtica =  e.target.dataset.edit;
             elementoBorrar = e.target.parentElement;
             console.log("start");
         }
@@ -210,7 +248,7 @@
                     method: 'POST',
                     url,
                     data: {
-                        cromoId :idCromoActualizar
+                        cromoId :idUserCromoTemtica
                     },
                     dataType: "json",
                     success: function(response){

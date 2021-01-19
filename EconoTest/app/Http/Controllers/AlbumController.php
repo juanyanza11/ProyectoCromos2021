@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
+use App\Models\CromosTematica;
+use App\Models\UsersAlbumsTematica;
+use App\Models\UsersCromosTematica;
+
 class AlbumController extends Controller
 {
 
@@ -22,13 +26,14 @@ class AlbumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(AlbumsUser $album)
+    public function index(UsersAlbumsTematica  $album)
     {
-        $cromosGanadosSinColocar = CromosUser::all()->where('album_id', '=', $album->album_id)->where('estado', '=', 0);
-        $cromosGanadosColocados = CromosUser::all()->where('album_id', '=', $album->album_id)->where('estado', '=', 1);
-        $cromos = Cromo::all()->where('album_id', '=', $album->album_id);
-        return view('album.index', compact('cromosGanadosSinColocar', 'cromosGanadosColocados' ,'cromos', 'album'));
-    }
+       $cromos = CromosTematica::all()->where('tematica_id', '=', $album->albumsTematica->tematica_id);
+        $cromosGanadosSinColocar = UsersCromosTematica::all()->where('user_id', '=', $album->user_id)->where('estado', '=', 0);
+        $cromosGanadosColocados = UsersCromosTematica::all()->where('user_id', '=', $album->user_id)->where('estado', '=', 1);
+        $tematica_id = $album->albumsTematica->tematica_id;
+        return view('album.index', compact('cromosGanadosSinColocar', 'cromosGanadosColocados' ,'cromos','tematica_id'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -98,7 +103,7 @@ class AlbumController extends Controller
 
     public function coleccion(){
         $user = Auth::user();
-        $albums = AlbumsUser::all()->where('user_id', '=', $user->id);
+        $albums = UsersAlbumsTematica::all()->where('user_id', '=', $user->id);
         return view('album.coleccion', compact('albums'));
     }
 }

@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
         $this->call(RolSeeder::class);
         $this->call(AlbumSeeder::class);
         $this->call(CromoSeeder::class);
+        $this->call(AlbumTematicaSeeder::class);
+        $this->call(CromoTematicaSeeder::class);
+        $this->call(UserAlbumTematicaSeeder::class);
 
     }
 }

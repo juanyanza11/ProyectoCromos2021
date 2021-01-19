@@ -39,8 +39,10 @@
                                 <ul class="rd-navbar-nav">
                                     <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">Inicio</a>
                                     </li>
-                                    <li class="{{ Request::is('home') ? 'active' : '' }}"><a href="/home">Quiz</a>
+                                    <li class="{{ Request::is('albunes') ? 'active' : '' }}"><a href="/albunes">Albunes</a>
                                     </li>
+                                    {{-- <li class="{{ Request::is('home') ? 'active' : '' }}"><a href="/home">Quiz</a>
+                                    </li> --}}
                                     <li class="{{ Request::is('coleccion') ? 'active' : '' }}" ><a href="/coleccion">Mi Colección</a>
                                     </li>
                                     <li class="{{ Request::is('perfil') ? 'active' : '' }}" ><a href="/perfil">Perfil</a>

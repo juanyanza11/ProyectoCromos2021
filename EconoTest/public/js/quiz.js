@@ -171,17 +171,19 @@ async function showResult() {
 
     const scoreText = result_box.querySelector(".score_text");
     const tematicaId = document.querySelector("#tematica_id").value;
+    const albumId = document.querySelector('#album_id').value;
     const userId = document.querySelector("#user_id").value;
     let data = {
         score: userScore,
         totalPreguntas: questions.length,
         tematicaId,
-        userId
+        userId,
+        albumId
     };
-
+    let url = `${window.location.origin}/api/resultado/quiz`;
     $.ajax({
         method: "POST",
-        url: "api/resultado/quiz",
+        url,
         data,
         dataType: "json",
         success: function(response) {

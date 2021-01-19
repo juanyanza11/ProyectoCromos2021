@@ -39,8 +39,9 @@
                                 <ul class="rd-navbar-nav">
                                     <li class="<?php echo e(Request::is('/') ? 'active' : ''); ?>"><a href="/">Inicio</a>
                                     </li>
-                                    <li class="<?php echo e(Request::is('home') ? 'active' : ''); ?>"><a href="/home">Quiz</a>
+                                    <li class="<?php echo e(Request::is('albunes') ? 'active' : ''); ?>"><a href="/albunes">Albunes</a>
                                     </li>
+                                    
                                     <li class="<?php echo e(Request::is('coleccion') ? 'active' : ''); ?>" ><a href="/coleccion">Mi Colección</a>
                                     </li>
                                     <li class="<?php echo e(Request::is('perfil') ? 'active' : ''); ?>" ><a href="/perfil">Perfil</a>

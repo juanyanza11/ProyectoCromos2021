@@ -20,6 +20,10 @@ Route::get('/', function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/albunes', [App\Http\Controllers\HomeController::class, 'albums'])->name('albums');
+Route::get('/albunes/{id}', [App\Http\Controllers\HomeController::class, 'albumsSinlge'])->name('albums.single');
+
+
 //ruta para ingresar a Admin
 
 //rutas internas de admin/usuarios

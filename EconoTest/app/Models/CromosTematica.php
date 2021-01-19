@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Album extends Model
+class CromosTematica extends Model
 {
     use HasFactory;
-     protected $fillable = [
-        'nombre', 'descripcion', 'imagen'
-    ];
-
-    public function user(){
-        return $this->belongsTo(User::class);
+    
+    public function cromo(){
+        return $this->belongsTo(Cromo::class);
     }
-
 
     public function tematica(){
         return $this->belongsTo(Tematica::class);

@@ -38,7 +38,7 @@ class LoginController extends Controller
                 break;
 
             case 'estudiante':
-                return '/home';
+                return '/albunes';
                 break;
             default:
             return view('/');

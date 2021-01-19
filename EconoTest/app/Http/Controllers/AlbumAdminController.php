@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Album;
+use App\Models\AlbumsTematica;
 use App\Models\Tematica;
 use Validator;
 use Illuminate\Support\Str;
@@ -42,12 +43,12 @@ class AlbumAdminController extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(),[
         'nombre'=> 'required|min:3|max:50',
         // arreglar requeridos
         'descripcion'=> 'required',
-        'tematica_id'=> 'required|unique:App\Models\Album,tematica_id',
-
+        'img'=> 'required|image|mimes:jpg,png,jpeg,svg|max:3000',
         
         ]);
         if($validator -> fails()){
@@ -56,11 +57,30 @@ class AlbumAdminController extends Controller
             ->with('ErrorInsert', 'Error de inserción, complete los datos correctamente')
             ->withErrors($validator);
         }else{
+            $imagen = $request->file('img');
+            $rand = rand(0,100);
+            $nombre_imagen = Str::lower($imagen->getClientOriginalName());
+            $nombre = "0{$rand}{$nombre_imagen}";
+            $destino = public_path('img/albums');
+            $request->img->move($destino, $nombre);
+
+
+            $tematica_id = $request->tematica_id;
+             
             $album = Album::create([
-                'nombre' => $request->nombre,
-                'descripcion' => $request->descripcion,
-                'tematica_id' => $request->tematica_id,
-            ]);
+                 'nombre' => $request->nombre,
+                 'descripcion' => $request->descripcion,
+                 'imagen' =>$nombre,
+             ]);
+            if($tematica_id !== null){
+            foreach ($tematica_id as $tematica){
+                $newAlbumTematica = new AlbumsTematica();
+                $newAlbumTematica->album_id = $album->id;
+                $newAlbumTematica->tematica_id = $tematica;
+                $newAlbumTematica->save();
+            }}
+
+             
         return back()->with('Listo', 'Se ha insertado correctamente');
         }
     }
@@ -100,8 +120,11 @@ class AlbumAdminController extends Controller
         $validacionArray = array(
             'nombre'=> 'required|min:3|max:50',
             'descripcion'=> 'required',
-            'tematica_id'=> 'required',
         );
+        $imagen = $request->file('img');
+        if($imagen !== null){
+            $validacionArray['img'] = 'image|mimes:jpg,png,jpeg,svg|max:3000';
+        }
         $validator = Validator::make($request->all(),$validacionArray);
         if($validator -> fails()){
             return back()
@@ -111,8 +134,27 @@ class AlbumAdminController extends Controller
         }else{
             $album->nombre = $request->nombre;
             $album->descripcion = $request->descripcion;
-            $album->tematica_id = $request->tematica_id;
+            if($imagen !== null){
+                $rand = rand(0,100);
+                $nombre_imagen = Str::lower($imagen->getClientOriginalName());
+                $nombre = "0{$rand}{$nombre_imagen}";
+                $destino = public_path('img/albums');
+                $request->img->move($destino, $nombre);
+                $album->imagen = $nombre;
+            }
 
+            $album->nombre = $request->nombre;
+            $album->descripcion = $request->descripcion;
+
+
+           /*  $tematica_id = $request->tematica_id;
+
+            foreach ($tematica_id as $tematica){
+                $newAlbumTematica = new AlbumsTematica();
+                $newAlbumTematica->album_id = $album->id;
+                $newAlbumTematica->tematica_id = $tematica;
+                $newAlbumTematica->save();
+            } */
             $album->save();
             return back()->with('Listo', 'El Album se actualizó correctamente');
         }

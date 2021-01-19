@@ -33,6 +33,7 @@
                                 <td>Id</td>
                                 <td>Nombre</td>
                                 <td>Descripción</td>
+                                <td>Imagen</td>
                                 <td>Temática</td>
 
                                 <td width="200px" >Acciones</td>
@@ -43,7 +44,9 @@
                                 <td>Id</td>
                                 <td>Nombre</td>
                                 <td>Descripción</td>
+                                <td>Imagen</td>
                                 <td>Temática</td>
+                                
 
                                 <td width="200px" >Acciones</td>
                             </tr>
@@ -55,13 +58,16 @@
                                         <td>{{ $album->id }}</td>
                                         <td>{{ $album->nombre }}</td>
                                         <td>{{ $album->descripcion }}</td>
-                                        <td>{{ $album->tematica->nombre }}</td>
+                                        <td><img src='{{asset("/img/albums/{$album->imagen}")}}' alt="" style="width:70px"></td>
+
+                                        <td>aqui va el nombre de la tematica</td>
 
                                         <td class="d-flex justify-content-around" >
                                             <button class= "btn btn-round  btn-primary btnEditar"
                                                     data-id ="{{ $album->id}}"
                                                     data-name ="{{ $album->nombre}}"
                                                     data-description ="{{ $album->descripcion}}"
+                                                    data-imagen="{{ $album->imagen ? asset("/img/albums/{$album->imagen}"): ''}}"
                                                     data-toggle="modal" data-target="#modalEditar"
                                             >
                                                 Editar
@@ -117,14 +123,20 @@
                     <div class = "form-group">
                     <p>Descripción:</p>
                     <textarea name="descripcion" cols="62" rows="5" required class ="form-control" style="width: 100%; min-height: 200px; max-height: 200px" ></textarea>
+                    </div><div class = "form-group">
+                        <p>Imagen del Álbum:</p>
+                        <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
                     </div>
                     <div class="form-group">
                         <strong>Temática:</strong>
-                        <select name="tematica_id" id="tematica_id">
+                        
                         @foreach($tematicas as $tematica)
-                            <option value= "{{ $tematica->id }}">{{ $tematica->nombre }}</option>
+                            <div class="form-group">
+                            <input type="checkbox" name="tematica_id[]" value= "{{ $tematica->id}}"/>
+                            <label for="tematica_id">{{ $tematica->nombre}}</label>
+                        </div>
                         @endforeach
-                        </select>
+                        
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -199,13 +211,20 @@
                     <p>Descripción:</p>
                     <textarea id = "descripcionEdit" name="descripcion" cols="62" rows="5" required class ="form-control" style="width: 100%; min-height: 200px; max-height: 200px" ></textarea>
                     </div>
+                    <div class = "form-group"  id="subir_imagen_input" style="display:none" >
+                        <p>Imagen del cromo:</p>
+                        <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
+                    </div>
                     <div class="form-group">
                         <strong>Temática:</strong>
-                        <select name="tematica_id" id="tematica_id">
+                        
                         @foreach($tematicas as $tematica)
-                            <option value= "{{ $tematica->id }}">{{ $tematica->nombre }}</option>
+                            <div class="form-group">
+                            <input type="checkbox" name="tematica_id[]" value= "{{ $tematica->id}}"/>
+                            <label for="tematica_id">{{ $tematica->nombre}}</label>
+                        </div>
                         @endforeach
-                        </select>
+                        
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -236,11 +255,21 @@
         });
 
         $(".btnEditar").click(function(){
+            $('#subir_imagen_input').hide();
+            $('#imagen_edit').hide();
+            $('#imagen_edit').attr( 'src','');
             let id = $(this).data('id');
             $('#fromEditar').attr('action', `/admin/albums/${id}`);
             $("#idEdit").val($(this).data('id'));
             $("#nameEdit").val($(this).data('name'));
             $("#descripcionEdit").val($(this).data('description'));
+            let urlImagen = $(this).data('imagen');
+            if(urlImagen !== ''){
+                $('#imagen_edit').show();
+                $('#imagen_edit').attr( 'src', urlImagen);
+
+            }
+            $('#subir_imagen_input').show();
         });
     });
     </script>
