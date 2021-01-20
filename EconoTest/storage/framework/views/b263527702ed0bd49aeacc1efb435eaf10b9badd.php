@@ -1,38 +1,34 @@
-{{--@extends('usuario.mainUser')--}}
-@extends('layouts.public.main')
+<?php $__env->startSection('styles-users'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('css/quiz.css')); ?>">
+<?php $__env->stopSection(); ?>
 
-
-@section('styles-users')
-    <link rel="stylesheet" href="{{ asset('css/quiz.css')  }}">
-@endsection
-
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
     <section id="quiz" class="p-5">
         <div class="container">
-                @if (count($listadoTemticas) > 0)
+                <?php if(count($listadoTemticas) > 0): ?>
                 <h3 id="titulos" class="text-center" >Escoge una temática para empezar un Quiz</h3>
 
                 <div class="row row-40">
-                    <input type="hidden" id="token_consulta" value="{{ csrf_token()}}" >
-                    <input type="hidden" id="user_id" value="{{ auth()->user()->id}}" >
+                    <input type="hidden" id="token_consulta" value="<?php echo e(csrf_token()); ?>" >
+                    <input type="hidden" id="user_id" value="<?php echo e(auth()->user()->id); ?>" >
                     <input type="hidden" id="tematica_id" value="" >
                     <input type="hidden" id="album_id" value="" >
-                    @foreach($listadoTemticas as $tematica)
+                    <?php $__currentLoopData = $listadoTemticas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-md-6 col-lg-4 height-fill">
-                            <article class="icon-box1 abrirQuiz "  data-id="{{$tematica->tematica_id}}" data-album="{{$tematica->album_id}}" >
+                            <article class="icon-box1 abrirQuiz "  data-id="<?php echo e($tematica->tematica_id); ?>" data-album="<?php echo e($tematica->album_id); ?>" >
                                 <div class="box-top">
-                                    <div class="box-icon1"><img id="imgSombra" src='{{asset("/img/tematicas/{$tematica->tematica->imagen}")}}' alt="" width="300" height="300"/></div>
+                                    <div class="box-icon1"><img id="imgSombra" src='<?php echo e(asset("/img/tematicas/{$tematica->tematica->imagen}")); ?>' alt="" width="300" height="300"/></div>
                                     <div class="box-header">
                                         <h5><a href="#"></a></h5>
                                     </div>
                                 </div>
                                 <div class="divider bg-accent"></div>
                                 <div class="box-body">
-                                    <h5>{{$tematica->tematica->nombre}}</h5>
+                                    <h5><?php echo e($tematica->tematica->nombre); ?></h5>
                                 </div>
                             </article>
                         </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     <!-- start Quiz button -->
                     <div class="start_btn" style="display:none" ><button>Comenzar Quiz</button></div>
@@ -95,19 +91,19 @@
                             <button class="quit">Quit Quiz</button>
                         </div>
                     </div>
-                @else
+                <?php else: ?>
                     <h3 id="titulos">Este Album aún no tiene ninguna tematica asociada</h3>
                 </div>
 
-            @endif
+            <?php endif; ?>
 
         </div>
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts-users')
+<?php $__env->startSection('scripts-users'); ?>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="{{asset('js/quiz.js')}}"></script>
+    <script src="<?php echo e(asset('js/quiz.js')); ?>"></script>
     <script>
         let questions = [];
         $(document).ready(function(){
@@ -156,5 +152,7 @@
         });
 
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.public.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\JuanJ\Desktop\ECONOTEST ACTUAL\ProyectoCromos2021\EconoTest\resources\views/home/albums_tematicas.blade.php ENDPATH**/ ?>

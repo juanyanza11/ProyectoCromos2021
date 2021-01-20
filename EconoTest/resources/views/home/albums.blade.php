@@ -3,7 +3,7 @@
 
 
 @section('styles-users')
-   
+
 @endsection
 
 @section('contenido')
@@ -15,11 +15,11 @@
                 @foreach($albums as $album)
                     <div class="col-md-6 col-lg-4 height-fill">
                         <a href="{{ route('albums.single', ['id' => $album->id]) }}">
-                            <article class="icon-box1 abrirQuiz " data-id="{{$album->id}}" >
+                            <article class="icon-box1 abrirQuiz rounded-top" data-id="{{$album->id}}" >
                                 <div class="box-top">
-                                    <div class="box-icon1"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
+                                    <div class="box-icon1"><img id="imgSombra" src='{{asset("/img/albums/{$album->imagen}")}}' alt="" width="300" height="300"/></div>
                                     <div class="box-header">
-                                        <h5><a href="#"></a></h5>
+                                        <h5 id="tituloAlbum"><a href="#"></a></h5>
                                     </div>
                                 </div>
                                 <div class="divider bg-accent"></div>
@@ -34,11 +34,9 @@
         </div>
     </section>
 
-
 @endsection
 
-
 @section('scripts-users')
- 
+
 @endsection
 

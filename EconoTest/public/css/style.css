@@ -440,8 +440,16 @@ h4,
 
 h5,
 .h5 {
-    font-size: 16px;
+    font-size: 26px !important;
+    line-height: 2;
+    color: #353030;
+}
+
+#titulos {
+    text-align: center;
+    font-size: 40px;
     line-height: 1.35;
+    color: #323131;
 }
 
 @media (min-width: 1200px) {
@@ -450,6 +458,7 @@ h5,
         line-height: 1.47368;
         font-size: 19px;
     }
+
 }
 
 h5.h5-smaller,
@@ -884,8 +893,8 @@ address {
 }
 
 .bg-accent {
-    background: #cca876;
-    fill: #cca876;
+    background: #f15f0d;
+    fill: #f15f0d;
 }
 
 .bg-gray-light {
@@ -10383,7 +10392,7 @@ html:not(.lt-ie10) .not-animated {
     }
 }
 
-/* 
+/*
  *  Owl Carousel - Animate Plugin
  */
 .owl-carousel .animated {
@@ -10424,7 +10433,7 @@ html:not(.lt-ie10) .not-animated {
     }
 }
 
-/* 
+/*
  * 	Owl Carousel - Auto Height Plugin
  */
 .owl-height {
@@ -10435,7 +10444,7 @@ html:not(.lt-ie10) .not-animated {
     transition: height 500ms ease-in-out;
 }
 
-/* 
+/*
  *  Core Owl Carousel CSS File
  */
 .owl-carousel {
@@ -10535,7 +10544,7 @@ html:not(.lt-ie10) .not-animated {
     display: block;
 }
 
-/* 
+/*
  * 	Owl Carousel - Lazy Load Plugin
  */
 .owl-carousel .owl-item .owl-lazy {
@@ -10547,7 +10556,7 @@ html:not(.lt-ie10) .not-animated {
     transition: opacity 400ms ease;
 }
 
-/* 
+/*
  * 	Owl Carousel - Video Plugin
  */
 .owl-carousel .owl-video-wrapper {
@@ -11993,7 +12002,7 @@ html:not(.lt-ie10) .not-animated {
 }
 
 /*---------------------------------------
-     HEADER            
+     HEADER
   -----------------------------------------*/
 .page-head {
     position: relative;
@@ -12002,7 +12011,7 @@ html:not(.lt-ie10) .not-animated {
 }
 
 /*---------------------------------------
-     CONTENIDO          
+     CONTENIDO
   -----------------------------------------*/
 section {
     position: relative;
@@ -12010,7 +12019,7 @@ section {
 }
 
 /*---------------------------------------
-     NAVBAR            
+     NAVBAR
   -----------------------------------------*/
 
 @-webkit-keyframes rd-navbar-slide-down {
@@ -14983,7 +14992,7 @@ html.boxed .rd-navbar--is-clone {
 }
 
 /*---------------------------------------
-     INFO            
+     INFO
   -----------------------------------------*/
 .bg-displaced-wrap {
     position: relative;
@@ -15006,7 +15015,7 @@ html.boxed .rd-navbar--is-clone {
 }
 
 /*---------------------------------------
-     BENEFICIOS            
+     BENEFICIOS
 	-----------------------------------------*/
 
 .section-50 {
@@ -15015,7 +15024,7 @@ html.boxed .rd-navbar--is-clone {
 }
 
 /*---------------------------------------
-     FOOTER              
+     FOOTER
 	-----------------------------------------*/
 footer {
     background: #ffffff;
@@ -15032,7 +15041,7 @@ footer {
 }
 
 /*---------------------------------------
-     ICONOS             
+     ICONOS
   -----------------------------------------*/
 .social-icon li {
     display: inline-block;
@@ -15056,17 +15065,16 @@ footer {
 }
 
 /*---------------------------------------
-     VISTA USUARIO             
+     VISTA USUARIO
   -----------------------------------------*/
 
 #quiz {
-    background-color: #d6dbd2;
+    background-color: #fff3;
 }
 
 .icon-box1 {
-    background-color: #bbc7a4;
+    background-color: #d6d8d3;
     position: relative;
-    display: -webkit-inline-box;
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -15089,9 +15097,14 @@ footer {
     padding: 35px 30px;
     text-align: center;
     cursor: default;
+    border: outset ;
 }
 
-.icon-box1:hover {
+.icon-box1:hover #imgSombra{
+    box-shadow: 0 0 20px rgb(255, 111, 0);
+}
+
+.icon-box1:hover{
     color: #ffffff;
     background-color: #2c363f;
 }

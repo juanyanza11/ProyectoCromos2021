@@ -200,12 +200,12 @@ async function showResult() {
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
                     confirmButtonText: "Ir a mi coleccion",
-                    cancelButtonText: "Volver a las temáticas"
+                    cancelButtonText: "Volver a los albums"
                 }).then(result => {
                     if (result.isConfirmed) {
                         window.location.replace("/coleccion");
                     } else {
-                        window.location.replace("/home");
+                        window.location.replace("/albunes");
                     }
                 });
             } else {
@@ -214,7 +214,7 @@ async function showResult() {
                     title: "Oops...",
                     text: "Lo sentimos no pasaste el examen"
                 }).then(res => {
-                    window.location.replace("/home");
+                    window.location.replace("/albunes");
                 });
             }
         }
