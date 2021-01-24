@@ -26,6 +26,7 @@
                 <a  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  data-toggle="modal" data-target="#modalAgregar"><i
                     class="fas fa-download fa-sm text-white-50"></i> Agregar Cromos</a>
             </div>
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="cromoTable" width="100%" cellspacing="0">
@@ -56,9 +57,9 @@
                                         <td>{{ $cromo->id }}</td>
                                         <td>{{ $cromo->nombre }}</td>
                                         <td>{{ $cromo->descripcion }}</td>
-                                        
-                                        <td><img src='{{asset("/img/cromos/{$cromo->imagen}")}}' alt="" style="width:70px"></td>
- 
+
+                                        <td class="d-flex justify-content-center"><img src='{{asset("/img/cromos/{$cromo->imagen}")}}' alt="" style="width:70px"></td>
+
                                        <td>
                                             <ul>
                                                 @foreach ($cromo->tematicas as $tematica)
@@ -66,8 +67,8 @@
                                                 @endforeach
                                             </ul>
                                         </td>
-                                        
-                                        <td class="d-flex justify-content-around" >
+
+                                        <td class="flex justify-content-around" >
                                             <button class= "btn btn-round  btn-primary btnEditar"
                                                     data-id ="{{ $cromo->id}}"
                                                     data-name ="{{ $cromo->nombre}}"

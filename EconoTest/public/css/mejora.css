@@ -2,3 +2,23 @@
     margin: 0 !important;
 }
 
+.alert-success{
+    width: 100%;
+}
+
+.alert-danger{
+    width: 100%;
+}
+
+#quiz{
+    min-height: 496px;
+}
+#coleccion{
+    min-height: 496px;
+}
+.no-tiene-cromos{
+    padding: 25px;
+}
+.section-md-75{
+    min-height: 496px;
+}

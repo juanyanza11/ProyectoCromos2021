@@ -65,8 +65,8 @@
         .listado-cromos{
             display: flex;
             flex-wrap: wrap;
-            background-color: #e1e1e1; 
-            border-radius: 20px; 
+            background-color: #e1e1e1;
+            border-radius: 20px;
             padding: 15px
         }
         .vacio{
@@ -106,7 +106,7 @@
 @endsection
 
 @section('contenido')
-    <section class="section-md-75 "  style="min-height: 300px">
+    <section class="section-md-75">
         <div class="container">
             <div class="row d-flex justify-content-center m-5">
                 <div class="col-8 ">
@@ -115,17 +115,24 @@
                         foreach ($cromosGanadosColocados as $cromo) {
                            $total++;
                         }
+                        if ($total === 0){
+                            $percentage = 0;
+                        }else{
                         $percentage = ($total  * 100) / count($cromos);
+
+                        }
+
                     @endphp
-                    <h5 class="text-center" > {{$total}} / {{count($cromos)}} cromos</h5>
+                    <h5 class="text-center" >Cromos Conseguidos</h5>
+                    <h5 class="text-center" > {{$total}} / {{count($cromos)}}</h5>
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: {{$percentage}}%" aria-valuenow="{{$total}}" aria-valuemin="0" aria-valuemax="{{count($cromos)}}"></div>
-                    </div> 
+                    </div>
                 </div>
             </div>
             @if(count($cromosGanadosSinColocar) > 0)
                <div class="tiene-cromos">
-                    <h4 class="text-center" >Cromos que este usuario gano y no estan en el album</h4>
+                    <h5 class="text-center" >Cromos que este usuario gano y no estan en el album</h5>
                     <div class="cromos_ganados">
                             @foreach($cromosGanadosSinColocar as $cromo)
                                 <div class="vacio">
@@ -136,13 +143,13 @@
                     </div>
                 </div>
             @else
-            
+
                 <div class="no-tiene-cromos">
-                    <h4>No tienes mas cromos disponibles</h4>
-                </div>    
+                    <h5 class="text-center">No tienes mas cromos disponibles</h5>
+                </div>
             @endif
             @if(count($cromos) > 0)
-                <h4 class="text-center" >Listado de cromos del album</h4>
+                <h5 class="text-center" >Listado de cromos del album</h5>
                 <div class="listado-cromos">
                     @foreach($cromos as $cromo)
                         <div class="vacio filtro" >
@@ -184,7 +191,7 @@
             let todoslosCromos = $('.cromos-listos');
             for(const cromo of todoslosCromos){
                 const idCromo = cromo.dataset.cromoId;
-                
+
                 Object.keys(cromosGanadosColocados).map(key => {
                     let cromoGanado = cromosGanadosColocados[key];
 
@@ -255,6 +262,7 @@
                         if(response.update){
                             elementoBorrar.parentElement.removeChild(elementoBorrar);
                             e.target.parentElement.style.filter = "grayScale(0%)"
+                            location.reload();
                         }
                     }
 

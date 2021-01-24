@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('contenido'); ?>
     <div class ="row">
         <?php if($message = Session::get('Listo')): ?>
@@ -50,8 +48,8 @@
                                     <tr>
                                         <td><?php echo e($tematica -> id); ?></td>
                                         <td><?php echo e($tematica -> nombre); ?></td>
-                                        <td><img src='<?php echo e(asset("/img/tematicas/{$tematica->imagen}")); ?>' alt="" style="width:70px"></td>
-                                        <td class="d-flex justify-content-around" >
+                                        <td class="d-flex justify-content-center"><img src='<?php echo e(asset("/img/tematicas/{$tematica->imagen}")); ?>' alt="" style="width:70px"></td>
+                                        <td class="flex justify-content-around" >
                                             <button class= "btn btn-round  btn-primary btnEditar"
                                                     data-id ="<?php echo e($tematica->id); ?>"
                                                     data-name ="<?php echo e($tematica->nombre); ?>"
@@ -108,7 +106,7 @@
                     <div class = "form-group">
                         <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="<?php echo e(old('nombre')); ?>">
                     </div>
-                    
+
                     <div class = "form-group">
                         <p>Imagen de la temática:</p>
                         <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
@@ -237,7 +235,7 @@
         });
     });
     </script>
-    
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\JuanJ\Desktop\ECONOTEST ACTUAL\ProyectoCromos2021\EconoTest\resources\views/tematicas/index.blade.php ENDPATH**/ ?>
