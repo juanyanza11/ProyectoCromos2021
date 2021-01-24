@@ -37,9 +37,8 @@ class HomeController extends Controller
         return view('home.albums', compact('albums'));
     }
 
-    public function albumsSinlge($id){
-        $listadoTemticas = AlbumsTematica::all()->where('album_id', '=', $id);
-        return view('home.albums_tematicas', compact('listadoTemticas'));
+    public function albumsSinlge(Album $album){
+        return view('home.albums_tematicas', compact('album'));
     }
     public function perfil(){
         $user = Auth::user();

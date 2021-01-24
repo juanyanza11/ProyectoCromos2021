@@ -12,4 +12,13 @@ class Tematica extends Model
     protected $fillable = [
         'codigo', 'nombre','imagen'
     ];
+
+    // Relacion muhcos a muchos
+    public function albums(){
+        return $this->belongsToMany(Album::class);
+    }
+    public function cromos(){
+        return $this->belongsToMany(Cromo::class);
+    }
+
 }

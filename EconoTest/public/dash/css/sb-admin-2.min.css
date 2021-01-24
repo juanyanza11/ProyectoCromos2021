@@ -8788,9 +8788,7 @@ button.bg-dark:hover {
 .font-italic {
     font-style: italic !important;
 }
-.text-white {
-    color: #fff !important;
-}
+
 .text-primary {
     color: #4e73df !important;
 }
@@ -10273,6 +10271,7 @@ form.user .btn-user {
 footer.sticky-footer {
     padding: 2rem 0;
     flex-shrink: 0;
+    background-color:rgb(224, 228, 220);
 }
 footer.sticky-footer .copyright {
     line-height: 1;

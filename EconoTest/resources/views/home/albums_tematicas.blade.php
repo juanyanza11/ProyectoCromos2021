@@ -9,26 +9,26 @@
 @section('contenido')
     <section id="quiz" class="p-5">
         <div class="container">
-                @if (count($listadoTemticas) > 0)
+                @if (count($album->tematicas) > 0)
                 <h3 id="titulos" class="text-center" >Escoge una temática para empezar un Quiz</h3>
 
                 <div class="row row-40">
                     <input type="hidden" id="token_consulta" value="{{ csrf_token()}}" >
                     <input type="hidden" id="user_id" value="{{ auth()->user()->id}}" >
                     <input type="hidden" id="tematica_id" value="" >
-                    <input type="hidden" id="album_id" value="" >
-                    @foreach($listadoTemticas as $tematica)
+                    <input type="hidden" id="album_id" value="{{$album->id}}" >
+                    @foreach($album->tematicas as $tematica)
                         <div class="col-md-6 col-lg-4 height-fill">
-                            <article class="icon-box1 abrirQuiz "  data-id="{{$tematica->tematica_id}}" data-album="{{$tematica->album_id}}" >
+                            <article class="icon-box1 abrirQuiz " data-id="{{$tematica->id}}">
                                 <div class="box-top">
-                                    <div class="box-icon1"><img id="imgSombra" src='{{asset("/img/tematicas/{$tematica->tematica->imagen}")}}' alt="" width="300" height="300"/></div>
+                                    <div class="box-icon1"><img id="imgSombra" src='{{asset("/img/tematicas/{$tematica->imagen}")}}' alt="" width="300" height="300"/></div>
                                     <div class="box-header">
                                         <h5><a href="#"></a></h5>
                                     </div>
                                 </div>
                                 <div class="divider bg-accent"></div>
                                 <div class="box-body">
-                                    <h5>{{$tematica->tematica->nombre}}</h5>
+                                    <h5>{{$tematica->nombre}}</h5>
                                 </div>
                             </article>
                         </div>
@@ -115,10 +115,9 @@
             $('.abrirQuiz').click( function(){
 
                 let tematicaId = $(this).data('id');
-                let albumId = $(this).data('album');
                 console.log(tematicaId);
                 $('#tematica_id').val(tematicaId);
-                $('#album_id').val(albumId);
+
                 $.ajax({
                     url: `/preguntas/${tematicaId}`,
                     success: function (respuesta){

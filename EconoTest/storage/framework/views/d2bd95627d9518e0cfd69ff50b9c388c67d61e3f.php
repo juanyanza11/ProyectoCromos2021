@@ -1,6 +1,5 @@
 
 
-
 <?php $__env->startSection('contenido'); ?>
     <div class="row">
         <?php if($message = Session::get('eliminado')): ?>
@@ -22,8 +21,6 @@
                 <a class="btn btn-primary btn-round " href="<?php echo e(route('preguntas.create')); ?>"> Añadir pregunta</a>
             </div>
         </div>
-    </div>
-   
     <?php if($message = Session::get('success')): ?>
         <div class="alert alert-success">
             <h5>Mensaje: </h5>
@@ -71,16 +68,20 @@
 
                         </tbody>
                     </table>
+                    
                 </div>
+                
             </div>
+            
         </div>
+        
     </div>
-
+    
+</div>
 
 
 
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('preguntas.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ProyectoCromos2021\EconoTest\resources\views/preguntas/index.blade.php ENDPATH**/ ?>

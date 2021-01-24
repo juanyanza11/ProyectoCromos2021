@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Album;
-use App\Models\AlbumsTematica;
 use App\Models\Tematica;
-use Validator;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use function PHPUnit\Framework\isNull;
+use Validator;
 
 class AlbumAdminController extends Controller
 {
@@ -19,10 +17,9 @@ class AlbumAdminController extends Controller
      */
     public function index()
     {
-        $tematicas = Tematica::all();
         $albums = Album::all();
-        return view('albumAdmin.index',compact('albums','tematicas'));
-
+        $tematicas = Tematica::all();
+        return view('admin.albums.index', compact('albums', 'tematicas'));
     }
 
     /**
@@ -43,13 +40,10 @@ class AlbumAdminController extends Controller
      */
     public function store(Request $request)
     {
-
         $validator = Validator::make($request->all(),[
-        'nombre'=> 'required|min:3|max:50',
-        // arreglar requeridos
-        'descripcion'=> 'required',
-        'img'=> 'required|image|mimes:jpg,png,jpeg,svg|max:3000',
-        
+            'nombre'=> 'required|min:3|max:50',
+            'descripcion'=> 'required|min:3|max:250',
+            'img'=> 'required|image|mimes:jpg,png,jpeg,svg|max:3000',
         ]);
         if($validator -> fails()){
             return back()
@@ -61,27 +55,18 @@ class AlbumAdminController extends Controller
             $rand = rand(0,100);
             $nombre_imagen = Str::lower($imagen->getClientOriginalName());
             $nombre = "0{$rand}{$nombre_imagen}";
-            $destino = public_path('img/albums');
+            $destino = public_path('img/albunes');
             $request->img->move($destino, $nombre);
 
-
-            $tematica_id = $request->tematica_id;
-             
             $album = Album::create([
-                 'nombre' => $request->nombre,
-                 'descripcion' => $request->descripcion,
-                 'imagen' =>$nombre,
-             ]);
-            if($tematica_id !== null){
-            foreach ($tematica_id as $tematica){
-                $newAlbumTematica = new AlbumsTematica();
-                $newAlbumTematica->album_id = $album->id;
-                $newAlbumTematica->tematica_id = $tematica;
-                $newAlbumTematica->save();
-            }}
+                'nombre' => $request->nombre,
+                'descripcion' => $request->descripcion,
+                'imagen' =>$nombre,
+            ]);
 
-             
-        return back()->with('Listo', 'Se ha insertado correctamente');
+            // Guardar las tematicas
+            $album->tematicas()->attach($request->tematicas);
+            return back()->with('Listo', 'Se ha insertado correctamente');
         }
     }
 
@@ -114,12 +99,13 @@ class AlbumAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Album $album)
+    public function update(Request $request, $id)
     {
         $album = Album::find($request->id);
         $validacionArray = array(
             'nombre'=> 'required|min:3|max:50',
-            'descripcion'=> 'required',
+            'descripcion'=> 'required|min:3|max:250',
+
         );
         $imagen = $request->file('img');
         if($imagen !== null){
@@ -138,25 +124,20 @@ class AlbumAdminController extends Controller
                 $rand = rand(0,100);
                 $nombre_imagen = Str::lower($imagen->getClientOriginalName());
                 $nombre = "0{$rand}{$nombre_imagen}";
-                $destino = public_path('img/albums');
+                $destino = public_path('img/albunes');
                 $request->img->move($destino, $nombre);
                 $album->imagen = $nombre;
             }
 
-            $album->nombre = $request->nombre;
-            $album->descripcion = $request->descripcion;
-
-
-           /*  $tematica_id = $request->tematica_id;
-
-            foreach ($tematica_id as $tematica){
-                $newAlbumTematica = new AlbumsTematica();
-                $newAlbumTematica->album_id = $album->id;
-                $newAlbumTematica->tematica_id = $tematica;
-                $newAlbumTematica->save();
-            } */
             $album->save();
-            return back()->with('Listo', 'El Album se actualizó correctamente');
+
+            // Borrar Tematicas
+            $album->tematicas()->detach($album->tematicas);
+            
+            // y añadirlas denuevo
+            $album->tematicas()->attach($request->tematicas);
+
+            return back()->with('Listo', 'El cromo se actualizó correctamente');
         }
     }
 
@@ -169,8 +150,7 @@ class AlbumAdminController extends Controller
     public function destroy(Album $album)
     {
         $album->delete();
-
         return redirect()->route('albums.index')
-            ->with('eliminado','Album borrado exitosamente');
+        ->with('success','Album borrado exitosamente');
     }
 }

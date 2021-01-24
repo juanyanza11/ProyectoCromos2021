@@ -113,41 +113,40 @@
                     <?php
                         $total = 0;
                         foreach ($cromosGanadosColocados as $cromo) {
-                            if($cromo->cromosTematica->tematica_id === $tematica_id){
-                                $total++;
-                            }
+                           $total++;
                         }
-
                         $percentage = ($total  * 100) / count($cromos);
                     ?>
                     <h5 class="text-center" > <?php echo e($total); ?> / <?php echo e(count($cromos)); ?> cromos</h5>
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: <?php echo e($percentage); ?>%" aria-valuenow="<?php echo e($total); ?>" aria-valuemin="0" aria-valuemax="<?php echo e(count($cromos)); ?>"></div>
-                    </div>
+                    </div> 
                 </div>
             </div>
             <?php if(count($cromosGanadosSinColocar) > 0): ?>
-                <h4 class="text-center" >ARRASTRA TUS CROMOS AL ÁLBUM</h4>
-                <div class="cromos_ganados">
-                        <?php $__currentLoopData = $cromosGanadosSinColocar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cromo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <?php if($cromo->cromosTematica->tematica_id === $tematica_id): ?>
+               <div class="tiene-cromos">
+                    <h4 class="text-center" >Cromos que este usuario gano y no estan en el album</h4>
+                    <div class="cromos_ganados">
+                            <?php $__currentLoopData = $cromosGanadosSinColocar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cromo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="vacio">
-                                    <div class="fill" data-cromo-id="<?php echo e($cromo->cromosTematica->id); ?>"  data-edit="<?php echo e($cromo->id); ?>"  data-id="<?php echo e($cromo->cromosTematica->id); ?>" draggable="true" style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->cromosTematica->cromo->imagen}")); ?>');position: relative; height: 150px; width: 150px;cursor: pointer; " ></div>
+                                    <div class="fill" data-cromo-id="<?php echo e($cromo->cromo->id); ?>"  data-edit="<?php echo e($cromo->id); ?>"  data-id="<?php echo e($cromo->cromo->id); ?>" draggable="true" style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->cromo->imagen}")); ?>');position: relative; height: 150px; width: 150px;cursor: pointer; " ></div>
                                 </div>
-                            <?php endif; ?>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                    </div>
                 </div>
             <?php else: ?>
-                
-                <h4 class="text-center" >No tienes más cromos disponibles 😢</h4>
+            
+                <div class="no-tiene-cromos">
+                    <h4>No tienes mas cromos disponibles</h4>
+                </div>    
             <?php endif; ?>
-           
             <?php if(count($cromos) > 0): ?>
                 <h4 class="text-center" >Listado de cromos del album</h4>
                 <div class="listado-cromos">
                     <?php $__currentLoopData = $cromos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cromo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="vacio filtro" >
-                            <div class="cromos-listos"  data-cromo-id="<?php echo e($cromo->id); ?>"   style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->cromo->imagen}")); ?>');position: relative; " ></div>
+                            <div class="cromos-listos"  data-cromo-id="<?php echo e($cromo->id); ?>"   style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>');position: relative; " ></div>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
@@ -166,9 +165,9 @@
     <script >
         $(document).ready(function(){
             let cromosGanados = <?php echo $cromosGanadosSinColocar; ?>;
-            let cromosGanadosColocados = <?php echo $cromosGanadosColocados; ?>
+            let cromosGanadosColocados = <?php echo json_encode($cromosColocados); ?>
 
-            console.log(cromosGanados);
+            console.log(cromosGanadosColocados);
             $('.cromos_ganados').owlCarousel({
                 mouseDrag: false,
                 items: 5
@@ -190,7 +189,7 @@
                 Object.keys(cromosGanadosColocados).map(key => {
                     let cromoGanado = cromosGanadosColocados[key];
 
-                    if(idCromo == cromoGanado.cromos_tematica_id){
+                    if(idCromo == cromoGanado.id){
                         cromo.parentElement.style.filter = "grayScale(0%)";
                     }
                 })
@@ -249,7 +248,7 @@
                     method: 'POST',
                     url,
                     data: {
-                        cromoId :idUserCromoTemtica
+                        cromoId :idUserCromoTemtica,
                     },
                     dataType: "json",
                     success: function(response){

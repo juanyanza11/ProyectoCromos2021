@@ -14,10 +14,10 @@
                 <input type="hidden" id="user_id" value="{{ auth()->user()->id}}" >
                 @foreach($albums as $album)
                     <div class="col-md-6 col-lg-4 height-fill">
-                        <a href="{{ route('albums.single', ['id' => $album->id]) }}">
+                        <a href="{{ route('albums.single', ['album' => $album->id]) }}">
                             <article class="icon-box1 abrirQuiz rounded-top" data-id="{{$album->id}}" >
                                 <div class="box-top">
-                                    <div class="box-icon1"><img id="imgSombra" src='{{asset("/img/albums/{$album->imagen}")}}' alt="" width="300" height="300"/></div>
+                                    <div class="box-icon1"><img id="imgSombra" src='{{asset("/img/albunes/{$album->imagen}")}}' alt="" width="300" height="300"/></div>
                                     <div class="box-header">
                                         <h5 id="tituloAlbum"><a href="#"></a></h5>
                                     </div>

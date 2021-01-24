@@ -9,25 +9,26 @@
 <?php $__env->startSection('contenido'); ?>
     <section id="quiz" class="p-5">
         <div class="container">
-            <div class="row row-40">
-                <?php if(count($listadoTemticas) > 0): ?>
-                    <h2 class="text-center" >Elige una tematica para empezar un test</h2>
+                <?php if(count($album->tematicas) > 0): ?>
+                <h3 id="titulos" class="text-center" >Escoge una temática para empezar un Quiz</h3>
+
+                <div class="row row-40">
                     <input type="hidden" id="token_consulta" value="<?php echo e(csrf_token()); ?>" >
                     <input type="hidden" id="user_id" value="<?php echo e(auth()->user()->id); ?>" >
                     <input type="hidden" id="tematica_id" value="" >
-                    <input type="hidden" id="album_id" value="" >
-                    <?php $__currentLoopData = $listadoTemticas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>     
+                    <input type="hidden" id="album_id" value="<?php echo e($album->id); ?>" >
+                    <?php $__currentLoopData = $album->tematicas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-md-6 col-lg-4 height-fill">
-                            <article class="icon-box1 abrirQuiz " data-id="<?php echo e($tematica->tematica_id); ?>" data-album="<?php echo e($tematica->album_id); ?>" >
+                            <article class="icon-box1 abrirQuiz " data-id="<?php echo e($tematica->id); ?>">
                                 <div class="box-top">
-                                    <div class="box-icon1"><img src="images/beneficios1.jfif" alt="" width="300" height="300"/></div>
+                                    <div class="box-icon1"><img id="imgSombra" src='<?php echo e(asset("/img/tematicas/{$tematica->imagen}")); ?>' alt="" width="300" height="300"/></div>
                                     <div class="box-header">
                                         <h5><a href="#"></a></h5>
                                     </div>
                                 </div>
                                 <div class="divider bg-accent"></div>
                                 <div class="box-body">
-                                    <h5><?php echo e($tematica->tematica->nombre); ?></h5>
+                                    <h5><?php echo e($tematica->nombre); ?></h5>
                                 </div>
                             </article>
                         </div>
@@ -42,9 +43,9 @@
                         <div class="info-list">
                             <div class="info">1. Tienes <span>15 segundos</span> por cada pregunta.</div>
                             <div class="info">2. Una vez seleccionada la respuesta, no puedes cambiarla</div>
-                            <div class="info">3. You can't select any option once time goes off.</div>
-                            <div class="info">4. No puedes cerrar el test meintras lo estas realizando.</div>
-                            <div class="info">5. Ganaras 3 cromos para tu album si respondes bien las preguntas.</div>
+                            <div class="info">3. No puedes cerrar el test mientras lo estas realizando.</div>
+                            <div class="info">4. Ganarás <span>3 cromos</span> para tu album si respondes bien las preguntas.</div>
+                            <div class="info">5. ¡Buena Suerte! 😎</div>
                         </div>
                         <div class="buttons">
                             <button class="quit">Cerrar Test</button>
@@ -94,19 +95,15 @@
                             <button class="quit">Quit Quiz</button>
                         </div>
                     </div>
-                <?php else: ?> 
-                    <h2>Este Album aún no tiene ninguna tematica asociada</h2>
-                <?php endif; ?>
-                
-            </div>
+                <?php else: ?>
+                    <h3 id="titulos">Este Album aún no tiene ninguna tematica asociada</h3>
+                </div>
+
+            <?php endif; ?>
+
         </div>
     </section>
-
-
-    
-
 <?php $__env->stopSection(); ?>
-
 
 <?php $__env->startSection('scripts-users'); ?>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -116,12 +113,11 @@
         $(document).ready(function(){
 
             $('.abrirQuiz').click( function(){
-            
+
                 let tematicaId = $(this).data('id');
-                let albumId = $(this).data('album');
                 console.log(tematicaId);
                 $('#tematica_id').val(tematicaId);
-                $('#album_id').val(albumId);
+
                 $.ajax({
                     url: `/preguntas/${tematicaId}`,
                     success: function (respuesta){
@@ -148,7 +144,6 @@
                                     ]
                                 }
                             } );
-
 
                             info_box.classList.add("activeInfo");
                         }

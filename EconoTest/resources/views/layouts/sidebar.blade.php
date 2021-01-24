@@ -2,10 +2,8 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/dashboard">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Econotest <sup>Admin</sup></div>
+        
+        <img src="{{ asset('images/econotest-logo.png') }}" alt="logo" width="160" height="45"/>
     </a>
 
     <!-- Divider -->

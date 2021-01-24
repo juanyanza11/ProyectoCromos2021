@@ -8,16 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Album extends Model
 {
     use HasFactory;
-     protected $fillable = [
-        'nombre', 'descripcion', 'imagen'
-    ];
-
+      protected $fillable = [
+          'nombre','descripcion','imagen',
+        ];
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-
-    public function tematica(){
-        return $this->belongsTo(Tematica::class);
+    // Relacion muchos a muchos
+    public function tematicas(){
+        return $this->belongsToMany(Tematica::class);
     }
 }

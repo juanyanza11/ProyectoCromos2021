@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/albunes', [App\Http\Controllers\HomeController::class, 'albums'])->name('albums');
-Route::get('/albunes/{id}', [App\Http\Controllers\HomeController::class, 'albumsSinlge'])->name('albums.single');
+Route::get('/albunes/{album}', [App\Http\Controllers\HomeController::class, 'albumsSinlge'])->name('albums.single');
 
 
 //ruta para ingresar a Admin

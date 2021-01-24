@@ -11,6 +11,8 @@ class Cromo extends Model
     protected $fillable = [
         'nombre', 'descripcion','imagen', 'estado'
     ];
-
-    
+    // Relacion muchos a muchos
+    public function tematicas(){
+        return $this->belongsToMany(Tematica::class);
+    }
 }

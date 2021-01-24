@@ -5,10 +5,7 @@ use Illuminate\Support\Str;
 use Validator;
 use App\Models\Cromo;
 use App\Models\Tematica;
-use App\Models\CromosTematica;
 use Illuminate\Http\Request;
-
-
 use function PHPUnit\Framework\isNull;
 
 class CromoController extends Controller
@@ -20,9 +17,9 @@ class CromoController extends Controller
      */
     public function index()
     {
-        $tematicas = Tematica::all();
         $cromos = Cromo::all();
-        return view('cromos.index',compact('cromos','tematicas'));
+        $tematicas = Tematica::all();
+        return view('cromos.index', compact('cromos', 'tematicas'));
     }
 
     /**
@@ -43,11 +40,10 @@ class CromoController extends Controller
      */
     public function store(Request $request)
     {
-
-            $validator = Validator::make($request->all(),[
-        'nombre'=> 'required|min:3|max:50',
-        'descripcion'=> 'required',
-        'img'=> 'required|image|mimes:jpg,png,jpeg,svg|max:3000',
+        $validator = Validator::make($request->all(),[
+            'nombre'=> 'required|min:3|max:50',
+            'descripcion'=> 'required',
+            'img'=> 'required|image|mimes:jpg,png,jpeg,svg|max:3000',
         ]);
         if($validator -> fails()){
             return back()
@@ -67,10 +63,9 @@ class CromoController extends Controller
                 'descripcion' => $request->descripcion,
                 'imagen' =>$nombre,
             ]);
-            $newCromoTematica = new CromosTematica();
-            $newCromoTematica->cromo_id = $cromo->id;
-            $newCromoTematica->tematica_id = $request->tematica_id;
-            $newCromoTematica->save();
+
+            // Guardar las tematicas
+            $cromo->tematicas()->attach($request->tematicas);
         return back()->with('Listo', 'Se ha insertado correctamente');
         }
     }
@@ -110,7 +105,6 @@ class CromoController extends Controller
         $validacionArray = array(
             'nombre'=> 'required|min:3|max:50',
             'descripcion'=> 'required',
-            'album_id'=> 'required',
         );
         $imagen = $request->file('img');
         if($imagen !== null){
@@ -125,7 +119,6 @@ class CromoController extends Controller
         }else{
             $cromo->nombre = $request->nombre;
             $cromo->descripcion = $request->descripcion;
-            $cromo->album_id = $request->album_id;
             if($imagen !== null){
                 $rand = rand(0,100);
                 $nombre_imagen = Str::lower($imagen->getClientOriginalName());
@@ -136,6 +129,13 @@ class CromoController extends Controller
             }
 
             $cromo->save();
+
+            // Borrar Tematicas
+            $cromo->tematicas()->detach($cromo->tematicas);
+            
+            // y añadirlas denuevo
+            $cromo->tematicas()->attach($request->tematicas);
+
             return back()->with('Listo', 'El cromo se actualizó correctamente');
         }
     }
@@ -151,7 +151,6 @@ class CromoController extends Controller
         $cromo->delete();
 
         return redirect()->route('cromos.index')
-            ->with('eliminado','Cromo borrado exitosamente');
-            
+            ->with('success','Cromo borrada exitosamente');
     }
 }

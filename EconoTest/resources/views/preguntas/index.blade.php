@@ -1,5 +1,4 @@
 @extends('layouts.main')
-@extends('preguntas.layout')
 
 @section('contenido')
     <div class="row">
@@ -22,8 +21,6 @@
                 <a class="btn btn-primary btn-round " href="{{ route('preguntas.create') }}"> Añadir pregunta</a>
             </div>
         </div>
-    </div>
-   
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <h5>Mensaje: </h5>
@@ -71,11 +68,16 @@
 
                         </tbody>
                     </table>
+                    
                 </div>
+                
             </div>
+            
         </div>
+        
     </div>
-
+    
+</div>
 
 
 

@@ -62,4 +62,20 @@ class User extends Authenticatable
         }   
         return false;
     }
+
+     public function albums($tematica_id = null){
+        if($tematica_id === null){
+            return $this->belongsToMany(Album::class,'album_tematica_user')->withPivot('tematica_id');
+        }else{
+            return $this->belongsToMany(Album::class,'album_tematica_user')
+            ->where('tematica_id', '=', $tematica_id)->get();
+        }   
+    }
+
+
+
+    public function cromos($cromo_id,$tematica_id){
+        return $this->belongsToMany(Cromo::class,'cromo_tematica_user')
+            ->where('tematica_id', '=', $tematica_id)->where('cromo_id', '=', $cromo_id)->get();
+    }
 }

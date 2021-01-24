@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlbumsTematicasTable extends Migration
+class CreateCromoTematicaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateAlbumsTematicasTable extends Migration
      */
     public function up()
     {
-        Schema::create('albums_tematicas', function (Blueprint $table) {
+        Schema::create('cromo_tematica', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('album_id')->constrained();
+            $table->foreignId('cromo_id')->constrained()->onDelete('cascade');
             $table->foreignId('tematica_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateAlbumsTematicasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('albums_tematicas');
+        Schema::dropIfExists('cromo_tematica');
     }
 }

@@ -180,6 +180,8 @@ async function showResult() {
         userId,
         albumId
     };
+
+    console.log("Data", data);
     let url = `${window.location.origin}/api/resultado/quiz`;
     $.ajax({
         method: "POST",
