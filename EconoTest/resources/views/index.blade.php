@@ -1,4 +1,3 @@
-{{--@extends('usuario.mainUser')--}}
 @extends('layouts.public.main')
 
 @section('contenido')
