@@ -15,9 +15,9 @@
                 @foreach($albums as $album)
                     <div class="col-md-6 col-lg-4 height-fill">
                         <a href="{{ route('albums.single', ['album' => $album->id]) }}">
-                            <article class="icon-box1 abrirQuiz rounded-top" data-id="{{$album->id}}" >
+                            <article class="icon-box1 abrirQuiz rounded-top" data-id="{{$album->id}}">
                                 <div class="box-top">
-                                    <div class="box-icon1"><img id="imgSombra" src='{{asset("/img/albunes/{$album->imagen}")}}' alt="" width="300" height="300"/></div>
+                                    <div class="box-icon1"><img id="imgSombra" src='{{asset("/img/albunes/{$album->imagen}")}}' alt="" width="210" height="120"/></div>
                                     <div class="box-header">
                                         <h5 id="tituloAlbum"><a href="#"></a></h5>
                                     </div>

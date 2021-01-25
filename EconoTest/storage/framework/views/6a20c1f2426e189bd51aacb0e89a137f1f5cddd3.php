@@ -15,13 +15,13 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic%7CLato:300,300italic,400,400italic,700,900%7CMerriweather:700italic">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('/css/fonts.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/mejora.css') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/fonts.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/mejora.css')); ?>">
 
 
-    @yield('styles-users')
+    <?php echo $__env->yieldContent('styles-users'); ?>
 
 </head>
 <body  class="d-flex flex-column" >
@@ -33,34 +33,33 @@
             <div class="rd-navbar-inner">
                 <div class="rd-navbar-group">
                     <div class="rd-navbar-panel">
-                        <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="#"><img src="{{ asset('images/econotest-logo.png') }}" alt="" width="143" height="27"/></a>
+                        <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button><a class="rd-navbar-brand brand" href="#"><img src="<?php echo e(asset('images/econotest-logo.png')); ?>" alt="" width="143" height="27"/></a>
                     </div>
                     <div class="rd-navbar-nav-wrap">
                         <div class="rd-navbar-nav-inner">
-                            @if (Auth::check())
+                            <?php if(Auth::check()): ?>
                                 <ul class="rd-navbar-nav">
-                                    <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">Inicio</a>
+                                    <li class="<?php echo e(Request::is('/') ? 'active' : ''); ?>"><a href="/">Inicio</a>
                                     </li>
-                                    <li class="{{ Request::is('albunes') ? 'active' : '' }}"><a href="/albunes">Álbumes</a>
+                                    <li class="<?php echo e(Request::is('albunes') ? 'active' : ''); ?>"><a href="/albunes">Albums</a>
                                     </li>
-                                    {{-- <li class="{{ Request::is('home') ? 'active' : '' }}"><a href="/home">Quiz</a>
-                                    </li> --}}
-                                    <li class="{{ Request::is('coleccion') ? 'active' : '' }}" ><a href="/coleccion">Mi Colección</a>
+                                    
+                                    <li class="<?php echo e(Request::is('coleccion') ? 'active' : ''); ?>" ><a href="/coleccion">Mi Colección</a>
                                     </li>
-                                    <li class="{{ Request::is('perfil') ? 'active' : '' }}" ><a href="/perfil">Perfil</a>
+                                    <li class="<?php echo e(Request::is('perfil') ? 'active' : ''); ?>" ><a href="/perfil">Perfil</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="<?php echo e(route('logout')); ?>"
                                            onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                                            <img src="{{ asset('images/logout.png') }}" width="27" height="27">
+                                            <img src="<?php echo e(asset('images/logout.png')); ?>" width="27" height="27">
                                         </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
                                               class="d-none">
-                                            @csrf
+                                            <?php echo csrf_field(); ?>
                                         </form>
                                     </li>
-                                    @else
+                                    <?php else: ?>
                                         <div class="rd-navbar-btn-wrap"><a class="button button-smaller button-primary-outline" href="register">REGISTRARSE</a></div>
                                         <ul class="rd-navbar-nav">
                                             <li class="active"><a href="#inicio">Inicio</a>
@@ -72,7 +71,7 @@
                                             <li><a href="/login">Iniciar Sesión</a>
                                             </li>
                                         </ul>
-                            @endif
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -82,7 +81,7 @@
 </header>
 <!-- FIN NAVBAR -->
 
-@yield('contenido')
+<?php echo $__env->yieldContent('contenido'); ?>
 
 <!-- FOOTER -->
 <footer id="footer">
@@ -100,8 +99,9 @@
 </footer>
 <!-- FIN FOOTER -->
 
-<script src="{{ asset('/js/core.min.js') }}"></script>
-<script src="{{ asset('/js/script.js') }}"></script>
-@yield('scripts-users')
+<script src="<?php echo e(asset('/js/core.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/js/script.js')); ?>"></script>
+<?php echo $__env->yieldContent('scripts-users'); ?>
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/layouts/public/main.blade.php ENDPATH**/ ?>

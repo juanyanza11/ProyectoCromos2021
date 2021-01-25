@@ -4483,8 +4483,8 @@ blockquote cite {
 }
 
 .icon-box {
-    background-color: #fcfafa;
     position: relative;
+    display: -webkit-inline-box;
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -4508,7 +4508,6 @@ blockquote cite {
     text-align: center;
     cursor: default;
 }
-
 
 .icon-box:before,
 .icon-box:after {
@@ -10902,9 +10901,7 @@ html:not(.lt-ie10) .not-animated {
 }
 
 /*
-* @subsection   ToTop
-* @license      MIT license - http://opensource.org/licenses/MIT
-* @version      1.0.0
+ TO TOP
 */
 .ui-to-top {
     width: 40px;
@@ -12020,10 +12017,10 @@ section {
 }
 
 /*---------------------------------------
-     NAVBAR
+     NAVBAR            
   -----------------------------------------*/
 
-@-webkit-keyframes rd-navbar-slide-down {
+  @-webkit-keyframes rd-navbar-slide-down {
     0% {
         transform: translateY(-100%);
     }
@@ -12059,9 +12056,6 @@ section {
     }
 }
 
-/*
-	* @subsection General Styles
-	*/
 .rd-navbar-wrap,
 .rd-navbar-static .rd-navbar-megamenu,
 .rd-navbar-fullwidth .rd-navbar-megamenu,
@@ -12188,9 +12182,9 @@ section {
     display: none;
 }
 
-/*
-	* Navbar components
-	*/
+/*---------------------------------------
+	NAVBAR COMPONENTS          
+-----------------------------------------*/
 .rd-navbar {
     display: none;
     background: #f15f0d;
@@ -12205,7 +12199,7 @@ section {
     height: 48px;
     line-height: 48px;
     cursor: pointer;
-    color: #000;
+    color: rgb(0, 0, 0);
     background-color: transparent;
     border: none;
     display: none;
@@ -12236,7 +12230,7 @@ section {
 .rd-navbar-toggle span {
     width: 24px;
     height: 4px;
-    background-color: #000;
+    background-color: rgb(255, 255, 255);
     backface-visibility: hidden;
     border-radius: 2px;
 }
@@ -12277,6 +12271,12 @@ section {
 
 .rd-navbar-brand {
     transition: none !important;
+}
+
+@media screen and (max-width: 1200px) {
+    .rd-navbar-brand{
+        margin-top: -10px;
+    }
 }
 
 .rd-navbar-brand svg {
@@ -12993,7 +12993,7 @@ section {
     font-size: 16px;
     line-height: 34px;
     color: #00030a;
-    background: #fff;
+    background: #f15f0d;
     z-index: 998;
 }
 
@@ -13109,7 +13109,7 @@ section {
     width: 270px;
     padding: 112px 0 56px;
     color: #fff;
-    background: #fff;
+    background: #f15f0d;
     border-right: 1px solid #e5e7e9;
     overflow-x: hidden;
     overflow-y: auto;
@@ -13171,7 +13171,7 @@ section {
     display: block;
     font-size: 16px;
     padding: 14px 56px 14px 16px;
-    color: #535457;
+    color: rgb(255, 255, 255);
 }
 
 .rd-navbar-fixed .rd-navbar-nav li:hover > a,
@@ -13183,6 +13183,7 @@ section {
 .rd-navbar-fixed .rd-navbar-nav li.opened > a,
 .rd-navbar-fixed .rd-navbar-nav li.opened > a:hover {
     color: #fff;
+    font-weight: bold;
     background: #b49465;
 }
 
@@ -14437,27 +14438,6 @@ html.boxed .rd-navbar--is-clone {
     z-index: -1000;
 }
 
-/* IE10 Windows Phone 8 Fixes */
-.swiper-wp8-horizontal {
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-}
-
-.swiper-wp8-vertical {
-    -ms-touch-action: pan-x;
-    touch-action: pan-x;
-}
-
-.swiper-nav {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    left: 0;
-    z-index: 10;
-    pointer-events: none;
-    transform: translateY(-50%);
-}
-
 /* Arrows */
 .swiper-button-prev,
 .swiper-button-next {
@@ -14995,13 +14975,17 @@ html.boxed .rd-navbar--is-clone {
 /*---------------------------------------
      INFO
   -----------------------------------------*/
+#info{
+    margin-top: 5em;
+}
+
 .bg-displaced-wrap {
     position: relative;
     z-index: 0;
 }
 
 .bg-displaced-wrap .bg-displaced-body {
-    margin: 5em;
+    margin: 1em;
     position: relative;
     z-index: 1;
 }
@@ -15070,11 +15054,11 @@ footer {
   -----------------------------------------*/
 
 #quiz {
-    background-color: #fff3;
+    background-color: #fff;
 }
 
 .icon-box1 {
-    background-color: #d6d8d3;
+    background-color: #aaaaaaad;
     position: relative;
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
@@ -15091,8 +15075,9 @@ footer {
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
-    max-width: 400px;
+    max-width: 300px;
     width: 100%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     padding: 35px 30px;
@@ -15107,6 +15092,7 @@ footer {
 
 .icon-box1:hover{
     color: #ffffff;
+    border: inset;
     background-color: #2c363f;
 }
 .icon-box1:hover h5 {
@@ -15130,12 +15116,12 @@ footer {
 }
 
 .icon-box1:before,
-.icon-box:after {
+.icon-box1:after {
     content: "";
     position: absolute;
-    width: calc(100% - 35px);
-    height: calc(100% - 35px);
-    border: 1px solid #e5e7e9;
+    width: calc(100%);
+    height: calc(100%);
+    border: 1px solid #fff3;
     pointer-events: none;
     transition: 0.33s all ease;
 }
@@ -15149,7 +15135,7 @@ footer {
 .icon-box1:after {
     bottom: 0;
     right: 0;
-    border-width: 0 1px 1px 0;
+    border-width: 2px 2px 2px 2px;
 }
 
 .icon-box1 .box-top .box-header > * {
@@ -15159,7 +15145,8 @@ footer {
 
 .icon-box1 .divider {
     max-width: 100%;
-    margin: 13px auto;
+    margin-top: -40px;
+    margin-bottom: 15px;
     transition: 0.33s all ease;
 }
 
@@ -15203,20 +15190,14 @@ footer {
     justify-content: center;
 }
 
-.icon-box1 * + .box-header {
-    margin-top: 5px;
-}
 
-.icon-box1.hover:before,
-.icon-box1.hover:after,
 .icon-box1:hover:before,
 .icon-box1:hover:after {
     width: 100%;
     height: 100%;
-    border-color: #cca876;
+    border-color: rgb(155, 155, 155);
 }
 
-.icon-box1.hover .box-top,
 .icon-box1:hover .box-top {
     -webkit-transform: translateY(-9px);
     transform: translateY(-9px);
@@ -15228,17 +15209,29 @@ footer {
     transform: translateY(9px);
 }
 
-.icon-box1.hover .divider,
 .icon-box1:hover .divider {
     width: 168px;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 280px){
+
     .icon-box1 {
-        max-width: 308px;
+        max-width: 300px;
         padding: 67px 40px 61px;
     }
+
     .icon-box1 .box-top .box-header > * {
         font-size: 22px;
     }
 }
+@media screen and (min-width: 280px) and (max-width: 1200px) {
+    #quiz{
+        margin-top: 30px;
+    }
+}
+@media screen and (max-width: 280px) {
+    .icon-box1:hover .divider {
+        width: 170px;
+    }
+}
+
