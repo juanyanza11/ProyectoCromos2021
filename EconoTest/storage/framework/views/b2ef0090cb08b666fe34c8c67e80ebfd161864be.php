@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="<?php echo e(asset('css/owl.carousel.min.css')); ?>">
     <style>
         .cromos_ganados .owl-stage-outer{
+            background: #e1e1e1;
+            border: 5px salmon solid;
+            border-radius: 10px;
             overflow: hidden;
         }
         .cromos_ganados .owl-stage{
@@ -14,10 +17,8 @@
         .cromos_ganados .owl-nav{
 
         }
-        .owl-stage{
-            background: #e1e1e1;
-            border: 5px salmon solid;
-            border-radius: 10px;
+        .owl-stage {
+            
         }
         .owl-prev, .owl-next{
             position: relative;
@@ -65,8 +66,8 @@
         .listado-cromos{
             display: flex;
             flex-wrap: wrap;
-            background-color: #e1e1e1; 
-            border-radius: 20px; 
+            background-color: #e1e1e1;
+            border-radius: 20px;
             padding: 15px
         }
         .vacio{
@@ -106,8 +107,9 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-    <section class="section-md-75 "  style="min-height: 300px">
+    <section class="section-md-75" style="min-height: 555px">
         <div class="container">
+            <?php if(count($cromos) > 0): ?>
             <div class="row d-flex justify-content-center m-5">
                 <div class="col-8 ">
                     <?php
@@ -115,34 +117,41 @@
                         foreach ($cromosGanadosColocados as $cromo) {
                            $total++;
                         }
+                        if ($total === 0){
+                            $percentage = 0;
+                        }else{
                         $percentage = ($total  * 100) / count($cromos);
+
+                        }
+
                     ?>
-                    <h5 class="text-center" > <?php echo e($total); ?> / <?php echo e(count($cromos)); ?> cromos</h5>
+                    <h5 class="text-center" >Cromos Conseguidos</h5>
+                    <h5 class="text-center" > <?php echo e($total); ?> / <?php echo e(count($cromos)); ?></h5>
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: <?php echo e($percentage); ?>%" aria-valuenow="<?php echo e($total); ?>" aria-valuemin="0" aria-valuemax="<?php echo e(count($cromos)); ?>"></div>
-                    </div> 
+                    </div>
                 </div>
             </div>
+            <?php endif; ?>
             <?php if(count($cromosGanadosSinColocar) > 0): ?>
                <div class="tiene-cromos">
-                    <h4 class="text-center" >Cromos que este usuario gano y no estan en el album</h4>
+                    <h5 class="text-center" >Arrastre su cromo al álbum</h5>
                     <div class="cromos_ganados">
                             <?php $__currentLoopData = $cromosGanadosSinColocar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cromo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="vacio">
                                     <div class="fill" data-cromo-id="<?php echo e($cromo->cromo->id); ?>"  data-edit="<?php echo e($cromo->id); ?>"  data-id="<?php echo e($cromo->cromo->id); ?>" draggable="true" style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->cromo->imagen}")); ?>');position: relative; height: 150px; width: 150px;cursor: pointer; " ></div>
                                 </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                     </div>
                 </div>
             <?php else: ?>
-            
+
                 <div class="no-tiene-cromos">
-                    <h4>No tienes mas cromos disponibles</h4>
-                </div>    
+                    <h5 class="text-center">No tienes mas cromos disponibles</h5>
+                </div>
             <?php endif; ?>
             <?php if(count($cromos) > 0): ?>
-                <h4 class="text-center" >Listado de cromos del album</h4>
+                <h5 class="text-center" >Listado de cromos del álbum de <?php echo e($tematica->nombre); ?></h5>
                 <div class="listado-cromos">
                     <?php $__currentLoopData = $cromos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cromo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="vacio filtro" >
@@ -185,7 +194,7 @@
             let todoslosCromos = $('.cromos-listos');
             for(const cromo of todoslosCromos){
                 const idCromo = cromo.dataset.cromoId;
-                
+
                 Object.keys(cromosGanadosColocados).map(key => {
                     let cromoGanado = cromosGanadosColocados[key];
 
@@ -256,6 +265,7 @@
                         if(response.update){
                             elementoBorrar.parentElement.removeChild(elementoBorrar);
                             e.target.parentElement.style.filter = "grayScale(0%)"
+                            location.reload();
                         }
                     }
 

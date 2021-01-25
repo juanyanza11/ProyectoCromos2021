@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="<?php echo e(asset('/css/fonts.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('/css/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/mejora.css')); ?>">
+
 
     <?php echo $__env->yieldContent('styles-users'); ?>
 
@@ -39,7 +41,7 @@
                                 <ul class="rd-navbar-nav">
                                     <li class="<?php echo e(Request::is('/') ? 'active' : ''); ?>"><a href="/">Inicio</a>
                                     </li>
-                                    <li class="<?php echo e(Request::is('albunes') ? 'active' : ''); ?>"><a href="/albunes">Albunes</a>
+                                    <li class="<?php echo e(Request::is('albunes') ? 'active' : ''); ?>"><a href="/albunes">Álbumes</a>
                                     </li>
                                     
                                     <li class="<?php echo e(Request::is('coleccion') ? 'active' : ''); ?>" ><a href="/coleccion">Mi Colección</a>

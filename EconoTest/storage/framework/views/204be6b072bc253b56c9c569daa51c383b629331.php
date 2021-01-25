@@ -44,7 +44,7 @@
                                 <tr>
                                     <td><?php echo e($album->nombre); ?></td>
                                     <td><?php echo e($album->descripcion); ?></td>
-                                    <td><img src='<?php echo e(asset("/img/albunes/{$album->imagen}")); ?>' alt="" style="width:70px"></td>
+                                    <td class="d-flex justify-content-center"><img src='<?php echo e(asset("/img/albunes/{$album->imagen}")); ?>' alt="" style="width:70px"></td>
                                     <td>
                                         <ul>
                                             <?php $__currentLoopData = $album->tematicas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -52,7 +52,7 @@
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </ul>
                                     </td>
-                                    <td class="d-flex justify-content-around" >
+                                    <td class="flex justify-content-around" >
                                         <button class= "btn btn-round  btn-primary btnEditar"
                                             data-id ="<?php echo e($album->id); ?>"
                                             data-name ="<?php echo e($album->nombre); ?>"

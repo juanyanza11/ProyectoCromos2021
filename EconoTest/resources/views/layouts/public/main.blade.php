@@ -41,7 +41,7 @@
                                 <ul class="rd-navbar-nav">
                                     <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">Inicio</a>
                                     </li>
-                                    <li class="{{ Request::is('albunes') ? 'active' : '' }}"><a href="/albunes">Albums</a>
+                                    <li class="{{ Request::is('albunes') ? 'active' : '' }}"><a href="/albunes">Álbumes</a>
                                     </li>
                                     {{-- <li class="{{ Request::is('home') ? 'active' : '' }}"><a href="/home">Quiz</a>
                                     </li> --}}

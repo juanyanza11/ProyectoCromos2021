@@ -7,7 +7,7 @@
 @endsection
 
 @section('contenido')
-    <section id="quiz" class="p-5">
+    <section id="quiz" class="p-5" style="min-height: 555px">
         <div class="container">
                 @if (count($album->tematicas) > 0)
                 <h3 id="titulos" class="text-center" >Escoge una temática para empezar un Quiz</h3>
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 @else
-                    <h3 id="titulos">Este Álbum no dispone de ninguna tematica 😥</h3>
+                    <h3 id="titulos">Este Álbum no dispone de ninguna temática 😥</h3>
                 </div>
 
             @endif

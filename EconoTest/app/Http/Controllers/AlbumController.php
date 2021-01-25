@@ -46,7 +46,7 @@ class AlbumController extends Controller
         //     "cromosGanadosSinColocar" => $cromosGanadosSinColocar,
         //     "cromosGanadosColocados" => $cromosGanadosColocados
         // ]);
-        return view('album.index', compact('cromosGanadosSinColocar', 'cromosGanadosColocados' ,'cromos', 'tematica_id', 'cromosColocados'));
+        return view('album.index', compact('cromosGanadosSinColocar', 'cromosGanadosColocados' ,'cromos', 'tematica_id', 'cromosColocados', 'tematica'));
 
     }
 
