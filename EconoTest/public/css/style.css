@@ -4483,8 +4483,8 @@ blockquote cite {
 }
 
 .icon-box {
+    background-color: #fcfafa;
     position: relative;
-    display: -webkit-inline-box;
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -4508,6 +4508,7 @@ blockquote cite {
     text-align: center;
     cursor: default;
 }
+
 
 .icon-box:before,
 .icon-box:after {

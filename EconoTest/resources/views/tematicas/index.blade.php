@@ -50,8 +50,8 @@
                                     <tr>
                                         <td>{{ $tematica -> id }}</td>
                                         <td>{{ $tematica -> nombre }}</td>
-                                        <td><img src='{{asset("/img/tematicas/{$tematica->imagen}")}}' alt="" style="width:70px"></td>
-                                        <td class="d-flex justify-content-around" >
+                                        <td class="d-flex justify-content-center"><img src='{{asset("/img/tematicas/{$tematica->imagen}")}}' alt="" style="width:70px"></td>
+                                        <td class="flex justify-content-around" >
                                             <button class= "btn btn-round  btn-primary btnEditar"
                                                     data-id ="{{ $tematica->id}}"
                                                     data-name ="{{ $tematica->nombre}}"
@@ -108,7 +108,7 @@
                     <div class = "form-group">
                         <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="{{ old('nombre') }}">
                     </div>
-                    
+
                     <div class = "form-group">
                         <p>Imagen de la temática:</p>
                         <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
@@ -237,5 +237,5 @@
         });
     });
     </script>
-    
+
 @endsection

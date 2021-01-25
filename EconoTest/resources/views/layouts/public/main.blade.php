@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('/css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/mejora.css') }}">
+
 
     @yield('styles-users')
 
@@ -39,7 +41,7 @@
                                 <ul class="rd-navbar-nav">
                                     <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">Inicio</a>
                                     </li>
-                                    <li class="{{ Request::is('albunes') ? 'active' : '' }}"><a href="/albunes">Albunes</a>
+                                    <li class="{{ Request::is('albunes') ? 'active' : '' }}"><a href="/albunes">Albums</a>
                                     </li>
                                     {{-- <li class="{{ Request::is('home') ? 'active' : '' }}"><a href="/home">Quiz</a>
                                     </li> --}}

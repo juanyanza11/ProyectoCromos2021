@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 @else
-                    <h3 id="titulos">Este Album aún no tiene ninguna tematica asociada</h3>
+                    <h3 id="titulos">Este Álbum no dispone de ninguna tematica 😥</h3>
                 </div>
 
             @endif

@@ -20,6 +20,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('/dash/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/mejora.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+
     @yield('css')
 
 
@@ -96,20 +98,20 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('/dash/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{ asset('/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('/dash/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('/js/sb-admin-2.min.js')}}"></script>
     <!--
     <script src="{{asset('/dash/vendor/datatables/jquery.dataTables.min.js')}}" ></script>
     <script src="{{asset('/dash/vendor/datatables/dataTables.bootstrap4.js')}}" ></script>
     -->
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 
     @yield('scripts-admin')
 

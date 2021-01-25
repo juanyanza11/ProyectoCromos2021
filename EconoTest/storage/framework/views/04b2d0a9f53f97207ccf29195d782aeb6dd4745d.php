@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="<?php echo e(asset('/css/fonts.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('/css/bootstrap.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('/css/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/mejora.css')); ?>">
+
 
     <?php echo $__env->yieldContent('styles-users'); ?>
 
@@ -39,11 +41,12 @@
                                 <ul class="rd-navbar-nav">
                                     <li class="<?php echo e(Request::is('/') ? 'active' : ''); ?>"><a href="/">Inicio</a>
                                     </li>
-                                    <li class="<?php echo e(Request::is('home') ? 'active' : ''); ?>"><a href="/home">Quiz</a>
+                                    <li class="<?php echo e(Request::is('albunes') ? 'active' : ''); ?>"><a href="/albunes">Albums</a>
                                     </li>
+                                    
                                     <li class="<?php echo e(Request::is('coleccion') ? 'active' : ''); ?>" ><a href="/coleccion">Mi Colección</a>
                                     </li>
-                                    <li class="<?php echo e(Request::is('perfil') ? 'active' : ''); ?>" ><a href="#">Perfil</a>
+                                    <li class="<?php echo e(Request::is('perfil') ? 'active' : ''); ?>" ><a href="/perfil">Perfil</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo e(route('logout')); ?>"

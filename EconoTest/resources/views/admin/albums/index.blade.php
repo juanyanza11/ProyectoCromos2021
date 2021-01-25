@@ -44,7 +44,7 @@
                                 <tr>
                                     <td>{{ $album->nombre }}</td>
                                     <td>{{ $album->descripcion }}</td>
-                                    <td><img src='{{asset("/img/albunes/{$album->imagen}")}}' alt="" style="width:70px"></td>
+                                    <td class="d-flex justify-content-center"><img src='{{asset("/img/albunes/{$album->imagen}")}}' alt="" style="width:70px"></td>
                                     <td>
                                         <ul>
                                             @foreach ($album->tematicas as $tematica)
@@ -52,7 +52,7 @@
                                             @endforeach
                                         </ul>
                                     </td>
-                                    <td class="d-flex justify-content-around" >
+                                    <td class="flex justify-content-around" >
                                         <button class= "btn btn-round  btn-primary btnEditar"
                                             data-id ="{{ $album->id}}"
                                             data-name ="{{ $album->nombre}}"
