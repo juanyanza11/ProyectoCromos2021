@@ -32,7 +32,7 @@
                                 <h5 class="card-title"><?php echo e($album->nombre); ?> </h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo e($tematicaNombre); ?></h6>
                                 <a href="<?php echo e(route('album.index', ['album' => $album->id])); ?>" class="card-link">Ver mi album</a>
-                                <a href="<?php echo e(route('home')); ?>" class="card-link">Ir a la tematica</a>
+                                <a href="<?php echo e(route('albums.single', ['album' => $album->id])); ?>" class="card-link">Ir a la tematica</a>
                             </div>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
