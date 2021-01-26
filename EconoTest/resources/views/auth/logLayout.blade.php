@@ -24,8 +24,8 @@
     @yield('css')
 
   </head>
-  <body>
 
+  <body>
       <!-- NAVBAR -->
       <header class="page-head">
         <div class="rd-navbar-wrap">
@@ -56,14 +56,13 @@
         @yield('header')
       </header>
       <!-- FIN NAVBAR -->
-        <main class="py-4">
-            @yield('content')
-        </main>
+        
+      <main class="contenido">
+        @yield('content')
+      </main>
 
       <!-- FOOTER -->
       <footer id="footer-log">
-          <div class="container">
-
             <div class="copyright-text">
               <p class="rights text-white"><span class="copyright-year"></span><span>&nbsp;&#169;&nbsp;</span><span>ECONOTEST.&nbsp; Todos los Derechos Reservados.</p>
               <ul class="social-icon">
@@ -72,13 +71,10 @@
                 <li><a href="#" class="fab fa-instagram"></a></li>
               </ul>
             </div>
-
-          </div>
           @yield('footer')
       </footer>
       <!-- FIN FOOTER -->
-
-    </div>
+      
     <script src="{{ asset('/js/core.min.js') }}"></script>
     <script src="{{ asset('/js/script.js') }}"></script>
     @yield('scripts')

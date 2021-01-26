@@ -15,9 +15,9 @@
                 <?php $__currentLoopData = $albums; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $album): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-md-6 col-lg-4 height-fill">
                         <a href="<?php echo e(route('albums.single', ['album' => $album->id])); ?>">
-                            <article class="icon-box1 abrirQuiz rounded-top" data-id="<?php echo e($album->id); ?>">
+                            <article class="icon-box1 abrirQuiz" data-id="<?php echo e($album->id); ?>">
                                 <div class="box-top">
-                                    <div class="box-icon1"><img id="imgSombra" src='<?php echo e(asset("/img/albunes/{$album->imagen}")); ?>' alt="" width="210" height="120"/></div>
+                                    <div class="box-icon"><img id="imgSombra" src='<?php echo e(asset("/img/albunes/{$album->imagen}")); ?>' alt="" width="210" height="120"/></div>
                                     <div class="box-header">
                                         <h5 id="tituloAlbum"><a href="#"></a></h5>
                                     </div>

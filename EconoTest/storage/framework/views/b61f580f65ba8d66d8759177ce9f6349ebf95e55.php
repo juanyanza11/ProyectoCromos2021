@@ -1,8 +1,8 @@
-{{--@extends('usuario.mainUser')--}}
-@extends('layouts.public.main')
 
-@section('styles-users')
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+
+
+<?php $__env->startSection('styles-users'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('css/owl.carousel.min.css')); ?>">
     <style>
         .cromos_ganados .owl-stage-outer{
             background: #e1e1e1;
@@ -104,15 +104,15 @@
             background: #f15f0d;
         }
     </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
     <section class="section-md-35">
         <div class="container">
-            @if(count($cromos) > 0)
+            <?php if(count($cromos) > 0): ?>
             <div class="row d-flex justify-content-center m-5">
                 <div class="col-8 ">
-                    @php
+                    <?php
                         $total = 0;
                         foreach ($cromosGanadosColocados as $cromo) {
                            $total++;
@@ -122,56 +122,57 @@
                         }else{
                         $percentage = ($total  * 100) / count($cromos);
                         }
-                    @endphp
+                    ?>
 
                     <h5 class="text-center" >Cromos Conseguidos</h5>
-                    <h5 class="text-center" > {{$total}} / {{count($cromos)}}</h5>
+                    <h5 class="text-center" > <?php echo e($total); ?> / <?php echo e(count($cromos)); ?></h5>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: {{$percentage}}%" aria-valuenow="{{$total}}" aria-valuemin="0" aria-valuemax="{{count($cromos)}}"></div>
+                        <div class="progress-bar" role="progressbar" style="width: <?php echo e($percentage); ?>%" aria-valuenow="<?php echo e($total); ?>" aria-valuemin="0" aria-valuemax="<?php echo e(count($cromos)); ?>"></div>
                     </div>
                 </div>
             </div>
-            @endif
-            @if(count($cromosGanadosSinColocar) > 0)
+            <?php endif; ?>
+            <?php if(count($cromosGanadosSinColocar) > 0): ?>
                <div class="tiene-cromos">
                     <h5 class="text-center" >Arrastre su cromo al álbum</h5>
                     <div class="cromos_ganados">
-                            @foreach($cromosGanadosSinColocar as $cromo)
+                            <?php $__currentLoopData = $cromosGanadosSinColocar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cromo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="vacio">
-                                    <div class="fill" data-cromo-id="{{$cromo->cromo->id}}"  data-edit="{{$cromo->id}}"  data-id="{{$cromo->cromo->id}}" draggable="true" style="background-image:url('{{asset("/img/cromos/{$cromo->cromo->imagen}")}}');position: relative; height: 150px; width: 150px;cursor: pointer; " ></div>
+                                    <div class="fill" data-cromo-id="<?php echo e($cromo->cromo->id); ?>"  data-edit="<?php echo e($cromo->id); ?>"  data-id="<?php echo e($cromo->cromo->id); ?>" draggable="true" style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->cromo->imagen}")); ?>');position: relative; height: 150px; width: 150px;cursor: pointer; " ></div>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
-            @else
+            <?php else: ?>
 
                 <div class="no-tiene-cromos">
                     <h5 class="text-center">No tienes mas cromos disponibles</h5>
                 </div>
-            @endif
-            @if(count($cromos) > 0)
-                <h5 class="text-center" >Listado de cromos del álbum de {{$tematica->nombre}}</h5>
+            <?php endif; ?>
+            <?php if(count($cromos) > 0): ?>
+                <h5 class="text-center" >Listado de cromos del álbum de <?php echo e($tematica->nombre); ?></h5>
                 <div class="listado-cromos">
-                    @foreach($cromos as $cromo)
+                    <?php $__currentLoopData = $cromos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cromo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="vacio filtro" >
-                            <div class="cromos-listos"  data-cromo-id="{{$cromo->id}}"   style="background-image:url('{{asset("/img/cromos/{$cromo->imagen}")}}');position: relative; " ></div>
+                            <div class="cromos-listos"  data-cromo-id="<?php echo e($cromo->id); ?>"   style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>');position: relative; " ></div>
                         </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
-            @else
+            <?php else: ?>
                 <h5 class="text-center" >Este album aun no tiene cromos activos 😢</h5>
-            @endif
+            <?php endif; ?>
         </div>
     </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts-users')
-    <script src="{{asset('js/owl.carousel.min.js')}}" ></script>
+<?php $__env->startSection('scripts-users'); ?>
+    <script src="<?php echo e(asset('js/owl.carousel.min.js')); ?>" ></script>
     <script >
         $(document).ready(function(){
-            let cromosGanados = {!! $cromosGanadosSinColocar !!};
-            let cromosGanadosColocados = {!!json_encode($cromosColocados)!!}
+            let cromosGanados = <?php echo $cromosGanadosSinColocar; ?>;
+            let cromosGanadosColocados = <?php echo json_encode($cromosColocados); ?>
+
             console.log(cromosGanadosColocados);
             $('.cromos_ganados').owlCarousel({
                 mouseDrag: false,
@@ -273,4 +274,6 @@
         }
 
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.public.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/album/index.blade.php ENDPATH**/ ?>
