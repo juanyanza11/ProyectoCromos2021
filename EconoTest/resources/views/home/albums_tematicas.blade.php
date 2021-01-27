@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 @else
-                    <h3 id="titulos">Este Álbum no dispone de ninguna temática 😥</h3>
+                    <h3 id="titulosMitad">Este Álbum no dispone de ninguna temática 😥</h3>
                 </div>
 
             @endif

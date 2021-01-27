@@ -2,10 +2,10 @@
 
 <?php $__env->startSection('contenido'); ?>
 
-    <section class="section-md-75" id="coleccion">
+    <section id="quiz" class="p-5">
         <div class="container">
             <?php if( !isset($albums) || count($albums) <= 0): ?>
-                <h3 class="text-center font-weight-normal" > No tienes ningun album asignado, realiza un test y recibe tu primer album </h3>
+                <h3 id="titulosMitad"> No tienes ningun album asignado, realiza un test y recibe tu primer album </h3>
             <?php else: ?>
                 <h3 class="text-center" >Mis Álbumes</h3>
                 <div class="row">

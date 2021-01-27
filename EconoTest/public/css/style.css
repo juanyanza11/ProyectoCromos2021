@@ -452,6 +452,14 @@ h5,
     color: #323131;
 }
 
+#titulosMitad {
+    padding-top: 25vh;
+    text-align: center;
+    font-size: 40px;
+    line-height: 1.35;
+    color: #323131;
+}
+
 @media (min-width: 1200px) {
     h5,
     .h5 {
@@ -12015,6 +12023,16 @@ section {
     position: relative;
     z-index: 1;
 }
+.contenido{
+    min-height: calc(100vh - 185px - 14px);
+    background-color: #FFF4E1;
+}
+
+@media screen and (min-width: 280px) and (max-width: 1200px) {
+    .contenido{
+        min-height: calc(100vh - 145px);
+    }    
+}
 
 /*---------------------------------------
      NAVBAR            
@@ -14976,7 +14994,7 @@ html.boxed .rd-navbar--is-clone {
      INFO
   -----------------------------------------*/
 #info{
-    margin-top: 5em;
+    padding-top: 5em;
 }
 
 .bg-displaced-wrap {
@@ -14985,12 +15003,12 @@ html.boxed .rd-navbar--is-clone {
 }
 
 .bg-displaced-wrap .bg-displaced-body {
-    margin: 1em;
     position: relative;
     z-index: 1;
 }
 
 .bg-displaced-wrap .bg-displaced {
+    margin-top: 5em;
     position: absolute;
     top: 50px;
     right: 0;
@@ -15000,11 +15018,12 @@ html.boxed .rd-navbar--is-clone {
 }
 
 /*---------------------------------------
-     BENEFICIOS
+     PASOS
 	-----------------------------------------*/
 
 .section-50 {
-    margin: 5em 0em;
+    padding-top: 7em;
+    padding-bottom: 5em;
     text-align: center;
 }
 
@@ -15021,14 +15040,7 @@ footer {
     margin: 5px;
 }
 
-.contenido{
-    min-height: calc(100vh - 185px - 14px);
-}
-@media screen and (min-width: 280px) and (max-width: 1200px) {
-    .contenido{
-        min-height: calc(100vh - 145px);
-    }    
-}
+
 
 /*---------------------------------------
      ICONOS
@@ -15059,11 +15071,11 @@ footer {
   -----------------------------------------*/
 
 #quiz {
-    background-color: #fff;
+    background-color: #FFF4E1;
 }
 
 .icon-box1 {
-    background-color: #aaaaaaad;
+    background-color: #f0f0f0dc;
     position: relative;
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;

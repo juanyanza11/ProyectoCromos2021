@@ -64,7 +64,7 @@
       <!-- FIN INICIO -->
 
       <!-- INFO -->
-      <section id="info" class="bg-displaced-wrap">
+      <section id="info" class="bg-displaced-wrap" style="background-color: #fff">
         <div class="bg-displaced-body">
           <div class="container">
             <div class="inset-xl-left-70 inset-xl-right-70">
@@ -88,10 +88,10 @@
       </section>
       <!-- FIN INFO -->
 
-       <!-- BENEFICIOS -->
-       <section id="beneficios" class="section-50 section-md-75 section-lg-100">
+       <!-- PASOS -->
+       <section id="pasos" class="section-50 section-md-75 section-lg-100" style="background-color: #fff">
         <div class="container">
-        <h3>BENEFICIOS</h3>
+        <h3>PASOS A SEGUIR</h3>
           <div class="row row-40">
             <div class="col-md-6 col-lg-4 height-fill">
               <article class="icon-box">
@@ -103,7 +103,7 @@
                 </div>
                 <div class="divider bg-accent"></div>
                 <div class="box-body">
-                  <p>Obten diversas recompensan en forma de cromos.</p>
+                  <p>Registrate, es fácil y rápido.</p>
                 </div>
               </article>
             </div>
@@ -117,7 +117,7 @@
                 </div>
                 <div class="divider bg-accent"></div>
                 <div class="box-body">
-                  <p>Mide tus conocimientos sobre temáticas centrales de la economía</p>
+                  <p>Elige una temática y completa un quiz.</p>
                 </div>
               </article>
             </div>
@@ -131,7 +131,7 @@
                 </div>
                 <div class="divider bg-accent"></div>
                 <div class="box-body">
-                  <p>Aprendizaje interactivo</p>
+                  <p>Gana cromos y completa los diversos álbumes disponibles.</p>
                 </div>
               </article>
             </div>

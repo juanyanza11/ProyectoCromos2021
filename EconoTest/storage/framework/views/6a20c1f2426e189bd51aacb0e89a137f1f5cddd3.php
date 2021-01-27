@@ -66,7 +66,7 @@
                                                     </li>
                                                     <li><a href="#info">Sobre Econotest</a>
                                                     </li>
-                                                    <li><a href="#beneficios">Beneficios</a>
+                                                    <li><a href="#pasos">Pasos</a>
                                                     </li>
                                                     <li><a href="/login">Iniciar Sesión</a>
                                                     </li>
