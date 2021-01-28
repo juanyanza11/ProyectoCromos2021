@@ -79,6 +79,7 @@
                         </tr>
                         </tfoot>
                     </table>
+                    
                 </div>
 
                 </div>
@@ -86,6 +87,13 @@
 
     </div>
 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts-admin'); ?>
+<script>$(document).ready(function() {
+    $.noConflict();
+    $('#example').DataTable();
+} );</script>
 <?php $__env->stopSection(); ?>
 
 

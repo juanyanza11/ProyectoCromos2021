@@ -302,5 +302,13 @@ style="text-transform:uppercase;">
             $('#subir_imagen_input').show();
         });
     });
+
+        
+
     </script>
+
+<script>$(document).ready(function() {
+    $.noConflict();
+    $('#cromoTable').DataTable();
+} );</script>
 @endsection

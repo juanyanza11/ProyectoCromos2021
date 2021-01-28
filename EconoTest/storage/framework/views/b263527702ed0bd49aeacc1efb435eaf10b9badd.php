@@ -1,9 +1,13 @@
+
+
+
+
 <?php $__env->startSection('styles-users'); ?>
     <link rel="stylesheet" href="<?php echo e(asset('css/quiz.css')); ?>">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-    <section id="quiz" class="p-5">
+    <section id="quiz" class="p-5" style="min-height: 555px">
         <div class="container">
                 <?php if(count($album->tematicas) > 0): ?>
                 <h3 id="titulos" class="text-center" >Escoge una temática para empezar un Quiz</h3>
@@ -15,18 +19,20 @@
                     <input type="hidden" id="album_id" value="<?php echo e($album->id); ?>" >
                     <?php $__currentLoopData = $album->tematicas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-md-6 col-lg-4 height-fill">
-                            <article class="icon-box1 abrirQuiz " data-id="<?php echo e($tematica->id); ?>">
-                                <div class="box-top">
-                                    <div class="box-icon1"><img id="imgSombra" src='<?php echo e(asset("/img/tematicas/{$tematica->imagen}")); ?>' alt="" width="300" height="300"/></div>
-                                    <div class="box-header">
-                                        <h5><a href="#"></a></h5>
+                            <a>
+                                <article class="icon-box1 abrirQuiz" data-id="<?php echo e($tematica->id); ?>">
+                                    <div class="box-top">
+                                        <div class="box-icon"><img id="imgSombra" src='<?php echo e(asset("/img/tematicas/{$tematica->imagen}")); ?>' alt="" width="210" height="120"/></div>
+                                        <div class="box-header">
+                                            <h5><a href="#"></a></h5>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="divider bg-accent"></div>
-                                <div class="box-body">
-                                    <h5><?php echo e($tematica->nombre); ?></h5>
-                                </div>
-                            </article>
+                                    <div class="divider bg-accent"></div>
+                                    <div class="box-body">
+                                        <h5><?php echo e($tematica->nombre); ?></h5>
+                                    </div>
+                                </article>
+                            </a>    
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -92,7 +98,7 @@
                         </div>
                     </div>
                 <?php else: ?>
-                    <h3 id="titulos">Este Álbum no dispone de ninguna tematica 😥</h3>
+                    <h3 id="titulosMitad">Este Álbum no dispone de ninguna temática 😥</h3>
                 </div>
 
             <?php endif; ?>
