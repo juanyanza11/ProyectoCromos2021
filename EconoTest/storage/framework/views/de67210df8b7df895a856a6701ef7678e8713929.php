@@ -57,7 +57,7 @@
       </header>
       <!-- FIN NAVBAR -->
         
-      <main class="contenido">
+      <main class="contenido1">
         <?php echo $__env->yieldContent('content'); ?>
       </main>
 

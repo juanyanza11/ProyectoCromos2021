@@ -7,7 +7,7 @@
             @if( !isset($albums) || count($albums) <= 0)
                 <h3 id="titulosMitad"> No tienes ningun album asignado, realiza un test y recibe tu primer album </h3>
             @else
-                <h3 class="text-center" >Mis Álbumes</h3>
+                <h3 id="titulos" class="text-center" >Mis Álbumes</h3>
                 <div class="row">
                     @foreach($albums as $album)
                         @php

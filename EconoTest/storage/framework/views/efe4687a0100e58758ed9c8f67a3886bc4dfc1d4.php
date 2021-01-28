@@ -7,7 +7,7 @@
             <?php if( !isset($albums) || count($albums) <= 0): ?>
                 <h3 id="titulosMitad"> No tienes ningun album asignado, realiza un test y recibe tu primer album </h3>
             <?php else: ?>
-                <h3 class="text-center" >Mis Álbumes</h3>
+                <h3 id="titulos" class="text-center" >Mis Álbumes</h3>
                 <div class="row">
                     <?php $__currentLoopData = $albums; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $album): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php

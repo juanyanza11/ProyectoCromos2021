@@ -57,7 +57,7 @@
       </header>
       <!-- FIN NAVBAR -->
         
-      <main class="contenido">
+      <main class="contenido1">
         @yield('content')
       </main>
 
