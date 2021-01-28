@@ -449,7 +449,7 @@ h5,
     text-align: center;
     font-size: 40px;
     line-height: 1.35;
-    color: #323131;
+    color: #505050;
 }
 
 #titulosMitad {
@@ -457,7 +457,7 @@ h5,
     text-align: center;
     font-size: 40px;
     line-height: 1.35;
-    color: #323131;
+    color: #505050;
 }
 
 @media (min-width: 1200px) {
@@ -1684,6 +1684,8 @@ figure img {
 
 label {
     margin-bottom: 0;
+    padding-left: 35px;
+    padding-bottom: 5px;
 }
 
 input:not(:empty) + .form-label,
@@ -12034,6 +12036,17 @@ section {
     }    
 }
 
+.contenido1{
+    min-height: calc(100vh - 185px - 14px);
+}
+
+@media screen and (min-width: 280px) and (max-width: 1200px) {
+    .contenido1{
+        min-height: calc(100vh - 145px);
+    }    
+}
+
+
 /*---------------------------------------
      NAVBAR            
   -----------------------------------------*/
@@ -15075,7 +15088,7 @@ footer {
 }
 
 .icon-box1 {
-    background-color: #f0f0f0dc;
+    background-color: #dbdbdbcc;
     position: relative;
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
@@ -15250,4 +15263,6 @@ footer {
         width: 170px;
     }
 }
-
+strong{
+    color: #4e4e4e;
+}
