@@ -236,6 +236,11 @@
     });
     </script>
 
+    <script>$(document).ready(function() {
+        $.noConflict();
+        $('#cromoTable').DataTable();
+    } );</script>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\JuanJ\Desktop\ECONOTEST ACTUAL\ProyectoCromos2021\EconoTest\resources\views/tematicas/index.blade.php ENDPATH**/ ?>

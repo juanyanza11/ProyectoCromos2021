@@ -1,5 +1,4 @@
 @extends('layouts.main')
-
 @section('contenido')
     <div class="row">
         @if ($message = Session::get('eliminado'))
@@ -81,6 +80,7 @@
                         </tr>
                         </tfoot>
                     </table>
+                    
                 </div>
 
                 </div>
@@ -88,5 +88,12 @@
 
     </div>
 
+@endsection
+
+@section('scripts-admin')
+<script>$(document).ready(function() {
+    $.noConflict();
+    $('#example').DataTable();
+} );</script>
 @endsection
 

@@ -285,4 +285,9 @@
         });
     });
     </script>
+
+<script>$(document).ready(function() {
+    $.noConflict();
+    $('#cromoTable').DataTable();
+} );</script>
 @endsection
