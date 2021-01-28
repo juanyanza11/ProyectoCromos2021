@@ -1,0 +1,29 @@
+
+D
+public/css/style.css,1\e\1ef0e38ec90181a17549647e1a67072ac5d804da
+]
+-resources/views/layouts/public/main.blade.php,6\b\6b179a7b2cc9c2349de5c37f223d5ba82b7d249e
+O
+resources/views/index.blade.php,7\2\7285af984716ae46f13e2fe2f49a6044922e65e7
+B
+public/css/app.css,a\e\aed169877220cb60c39687eb7ae1de7d4fb7946f
+O
+resources/views/admin.blade.php,5\8\582108d5ae6e8fff60008467c7fa720040ee5307
+V
+&app/Http/Controllers/ApiController.php,d\d\ddca0ae47086c744fd1a72629a7513ffd51701f3
+`
+0app/Http/Controllers/AdministradorController.php,4\1\41290c3e280c31863c92f1a234127b7739c0a4a6
+]
+-app/Http/Controllers/AlbumAdminController.php,9\3\938b2b4ea9c0c0cc1a26cf4b1aac912cdd5c49ee
+X
+(app/Http/Controllers/AlbumController.php,6\2\62b539724e01174157f96e88282aef893a6c217e
+S
+#app/Http/Controllers/Controller.php,2\e\2ed23e1749f02eb8e561f0a531d07863e7cf9fb9
+X
+(app/Http/Controllers/CromoController.php,4\7\4703af8988a45a684e536e02577759ee70bf8564
+W
+'app/Http/Controllers/HomeController.php,9\c\9c8530715f6b05b710e3fa767bada1e4d0297e47
+[
++app/Http/Controllers/PreguntaController.php,c\1\c182e66eea13807d5f6d24b15ec25d2df5dbfc57
+[
++app/Http/Controllers/TematicaController.php,9\2\924c931af1b7310b4d39865e71d54a5e58c1894c
