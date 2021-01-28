@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
     <style>
         .cromos_ganados .owl-stage-outer{
+            background: #e1e1e1;
+            border: 5px salmon solid;
+            border-radius: 10px;
             overflow: hidden;
         }
         .cromos_ganados .owl-stage{
@@ -14,10 +17,8 @@
         .cromos_ganados .owl-nav{
 
         }
-        .owl-stage{
-            background: #e1e1e1;
-            border: 5px salmon solid;
-            border-radius: 10px;
+        .owl-stage {
+            
         }
         .owl-prev, .owl-next{
             position: relative;
@@ -106,8 +107,9 @@
 @endsection
 
 @section('contenido')
-    <section class="section-md-75">
+    <section class="section-md-35">
         <div class="container">
+            @if(count($cromos) > 0)
             <div class="row d-flex justify-content-center m-5">
                 <div class="col-8 ">
                     @php
@@ -119,10 +121,9 @@
                             $percentage = 0;
                         }else{
                         $percentage = ($total  * 100) / count($cromos);
-
                         }
-
                     @endphp
+
                     <h5 class="text-center" >Cromos Conseguidos</h5>
                     <h5 class="text-center" > {{$total}} / {{count($cromos)}}</h5>
                     <div class="progress">
@@ -130,16 +131,16 @@
                     </div>
                 </div>
             </div>
+            @endif
             @if(count($cromosGanadosSinColocar) > 0)
                <div class="tiene-cromos">
-                    <h5 class="text-center" >Cromos que este usuario gano y no estan en el album</h5>
+                    <h5 class="text-center" >Arrastre su cromo al álbum</h5>
                     <div class="cromos_ganados">
                             @foreach($cromosGanadosSinColocar as $cromo)
                                 <div class="vacio">
                                     <div class="fill" data-cromo-id="{{$cromo->cromo->id}}"  data-edit="{{$cromo->id}}"  data-id="{{$cromo->cromo->id}}" draggable="true" style="background-image:url('{{asset("/img/cromos/{$cromo->cromo->imagen}")}}');position: relative; height: 150px; width: 150px;cursor: pointer; " ></div>
                                 </div>
                             @endforeach
-
                     </div>
                 </div>
             @else
@@ -149,7 +150,7 @@
                 </div>
             @endif
             @if(count($cromos) > 0)
-                <h5 class="text-center" >Listado de cromos del album</h5>
+                <h5 class="text-center" >Listado de cromos del álbum de {{$tematica->nombre}}</h5>
                 <div class="listado-cromos">
                     @foreach($cromos as $cromo)
                         <div class="vacio filtro" >
@@ -160,10 +161,8 @@
             @else
                 <h5 class="text-center" >Este album aun no tiene cromos activos 😢</h5>
             @endif
-
         </div>
     </section>
-
 
 @endsection
 
@@ -270,9 +269,6 @@
             }else{
                 console.log("no es igual")
             }
-
-
-
             console.log("drop");
         }
 

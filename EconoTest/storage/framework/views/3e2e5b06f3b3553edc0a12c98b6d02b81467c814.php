@@ -1,10 +1,8 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+        <img src="<?php echo e(asset('images/logo.png')); ?>" alt="logo" width="50" height="50"/>
         <div class="sidebar-brand-text mx-3">Econotest <sup>Admin</sup></div>
     </a>
 
@@ -38,13 +36,13 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/admin/tematicas">
-            <i class="fas fa-images"></i>
+            <i class="far fa-file-alt"></i>
             <span>Tematicas</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/admin/albums">
-            <i class="fas fa-images"></i>
+            <i class="far fa-address-book"></i>
             <span>Album</span>
         </a>
     </li>

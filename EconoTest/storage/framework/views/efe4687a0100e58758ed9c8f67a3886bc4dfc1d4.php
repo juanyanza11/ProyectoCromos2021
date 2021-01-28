@@ -2,30 +2,26 @@
 
 <?php $__env->startSection('contenido'); ?>
 
-
-
-    <section class="section-md-75 " id="coleccion" style="min-height: 555px">
-        <div class="container ">
+    <section id="quiz" class="p-5">
+        <div class="container">
             <?php if( !isset($albums) || count($albums) <= 0): ?>
-                <h3 class="text-center font-weight-normal" > No tienes ningun album asignado, realiza un test y recibe tu primer album </h3>
+                <h3 id="titulosMitad"> No tienes ningun album asignado, realiza un test y recibe tu primer album </h3>
             <?php else: ?>
                 <h3 class="text-center" >Mis Álbumes</h3>
                 <div class="row">
                     <?php $__currentLoopData = $albums; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $album): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <?php
-                        $tematicaId = $album->pivot->tematica_id;
+                        <?php
+                            $tematicaId = $album->pivot->tematica_id;
 
-                        $tematicaNombre = "";
-                        foreach($tematicas as $tematica){
+                            $tematicaNombre = "";
+                            foreach($tematicas as $tematica){
 
-                            if($tematicaId == $tematica->id){
-                                $tematicaNombre = $tematica->nombre;
+                                if($tematicaId == $tematica->id){
+                                    $tematicaNombre = $tematica->nombre;
+                                }
                             }
-                        }
-
-
-
                         ?>
+
                         <div class="card m-2" style="width: 22rem;">
                             <div class="card-body ">
                                 <h5 class="card-title"><?php echo e($album->nombre); ?> </h5>
@@ -37,11 +33,9 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             <?php endif; ?>
-
         </div>
     </section>
 
-
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.public.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ProyectoCromos2021\EconoTest\resources\views/album/coleccion.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.public.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/album/coleccion.blade.php ENDPATH**/ ?>

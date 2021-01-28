@@ -107,7 +107,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-    <section class="section-md-75" style="min-height: 555px">
+    <section class="section-md-35">
         <div class="container">
             <?php if(count($cromos) > 0): ?>
             <div class="row d-flex justify-content-center m-5">
@@ -121,10 +121,9 @@
                             $percentage = 0;
                         }else{
                         $percentage = ($total  * 100) / count($cromos);
-
                         }
-
                     ?>
+
                     <h5 class="text-center" >Cromos Conseguidos</h5>
                     <h5 class="text-center" > <?php echo e($total); ?> / <?php echo e(count($cromos)); ?></h5>
                     <div class="progress">
@@ -162,10 +161,8 @@
             <?php else: ?>
                 <h5 class="text-center" >Este album aun no tiene cromos activos 😢</h5>
             <?php endif; ?>
-
         </div>
     </section>
-
 
 <?php $__env->stopSection(); ?>
 
@@ -273,13 +270,10 @@
             }else{
                 console.log("no es igual")
             }
-
-
-
             console.log("drop");
         }
 
     </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.public.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ProyectoCromos2021\EconoTest\resources\views/album/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.public.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/album/index.blade.php ENDPATH**/ ?>

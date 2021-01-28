@@ -7,7 +7,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-    <section id="quiz" class="p-5">
+    <section id="quiz" class="p-5" style="min-height: 555px">
         <div class="container">
                 <?php if(count($album->tematicas) > 0): ?>
                 <h3 id="titulos" class="text-center" >Escoge una temática para empezar un Quiz</h3>
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 <?php else: ?>
-                    <h3 id="titulos">Este Album aún no tiene ninguna tematica asociada</h3>
+                    <h3 id="titulos">Este Álbum no dispone de ninguna temática 😥</h3>
                 </div>
 
             <?php endif; ?>

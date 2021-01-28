@@ -20,6 +20,8 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo e(asset('/dash/css/sb-admin-2.min.css')); ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo e(asset('/css/mejora.css')); ?>">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+
     <?php echo $__env->yieldContent('css'); ?>
 
 
@@ -96,20 +98,20 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="<?php echo e(asset('/dash/vendor/jquery/jquery.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('/vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="<?php echo e(asset('/dash/vendor/jquery-easing/jquery.easing.min.js')); ?>"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?php echo e(asset('/js/sb-admin-2.min.js')); ?>"></script>
     <!--
     <script src="<?php echo e(asset('/dash/vendor/datatables/jquery.dataTables.min.js')); ?>" ></script>
     <script src="<?php echo e(asset('/dash/vendor/datatables/dataTables.bootstrap4.js')); ?>" ></script>
     -->
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
-
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 
     <?php echo $__env->yieldContent('scripts-admin'); ?>
 
