@@ -154,7 +154,7 @@
                 <div class="listado-cromos">
                     <?php $__currentLoopData = $cromos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cromo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="vacio filtro" >
-                            <div class="cromos-listos"  data-cromo-id="<?php echo e($cromo->id); ?>"   style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>');position: relative; " ></div>
+                            <div class="cromos-listos"  data-cromo-id="<?php echo e($cromo->id); ?>"  title="" data-toggle="cromo" data-placement="top" style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>');position: relative; " ></div>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
@@ -196,10 +196,14 @@
                     let cromoGanado = cromosGanadosColocados[key];
 
                     if(idCromo == cromoGanado.id){
+                        console.log(cromoGanado);
+                        cromo.dataset.title = cromoGanado.descripcion;
                         cromo.parentElement.style.filter = "grayScale(0%)";
                     }
                 })
             }
+            console.log($('[data-toggle="cromo"]'));
+            $('[data-toggle="cromo"]').tooltip();
         });
         let fills = document.querySelectorAll('.fill');
         let vacios = document.querySelectorAll('.vacio');
@@ -272,6 +276,7 @@
             }
             console.log("drop");
         }
+            
 
     </script>
 <?php $__env->stopSection(); ?>

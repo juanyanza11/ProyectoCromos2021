@@ -86,21 +86,20 @@
             <?php echo $__env->yieldContent('contenido'); ?>
         </main>
         <!-- FIN CONTENIDO -->
-
+        
         <!-- FOOTER -->
-        <footer id="footer">
-                <div class="copyright-text">
-                    <p class="rights text-white"><span class="copyright-year"></span><span>&nbsp;&#169;&nbsp;</span><span>ECONOTEST.&nbsp; Todos los Derechos Reservados.</p>
-                    <ul class="social-icon">
-                        <li><a href="#" class="fab fa-facebook-square"></a></li>
-                        <li><a href="#" class="fab fa-twitter"></a></li>
-                        <li><a href="#" class="fab fa-instagram"></a></li>
-                    </ul>
-                </div>
-            <a href="#" id="ui-to-top" class="ui-to-top fa fa-angle-up active"></a>
-        </footer>
-        <!-- FIN FOOTER -->
-
+        <footer id="footer-log">
+            <div class="copyright-text">
+              <p class="rights text-white"><span class="copyright-year"></span><span>&nbsp;&#169;&nbsp;</span><span>ECONOTEST.&nbsp; Todos los Derechos Reservados.</p>
+              <ul class="social-icon">
+                <li><a href="#" class="fab fa-facebook-square"></a></li>
+                <li><a href="#" class="fab fa-twitter"></a></li>
+                <li><a href="#" class="fab fa-instagram"></a></li>
+              </ul>
+            </div>
+          <?php echo $__env->yieldContent('footer'); ?>
+      </footer>
+      <!-- FIN FOOTER -->
         <script src="<?php echo e(asset('/js/core.min.js')); ?>"></script>
         <script src="<?php echo e(asset('/js/script.js')); ?>"></script>
         <?php echo $__env->yieldContent('scripts-users'); ?>

@@ -1,13 +1,16 @@
 
 
 <?php $__env->startSection('contenido'); ?>
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        descripcion de las temáticas
-
-    </div>
     <div class ="row">
         <?php if($message = Session::get('Listo')): ?>
             <div class = "col-12 alert alert-success alert-dismissable fade show" role = "alert">
+                <h5>Mensaje: </h5>
+                <span><?php echo e($message); ?></span>
+            </div>
+        <?php endif; ?>
+
+        <?php if($message = Session::get('eliminado')): ?>
+            <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                 <h5>Mensaje: </h5>
                 <span><?php echo e($message); ?></span>
             </div>
@@ -47,8 +50,8 @@
                                     <tr>
                                         <td><?php echo e($tematica -> id); ?></td>
                                         <td><?php echo e($tematica -> nombre); ?></td>
-                                        <td><img src='<?php echo e(asset("/img/tematicas/{$tematica->imagen}")); ?>' alt="" style="width:70px"></td>
-                                        <td class="d-flex justify-content-around" >
+                                        <td class="d-flex justify-content-center"><img src='<?php echo e(asset("/img/tematicas/{$tematica->imagen}")); ?>' alt="" style="width:70px"></td>
+                                        <td class="flex justify-content-around" >
                                             <button class= "btn btn-round  btn-primary btnEditar"
                                                     data-id ="<?php echo e($tematica->id); ?>"
                                                     data-name ="<?php echo e($tematica->nombre); ?>"
@@ -105,7 +108,7 @@
                     <div class = "form-group">
                         <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="<?php echo e(old('nombre')); ?>">
                     </div>
-                    
+
                     <div class = "form-group">
                         <p>Imagen de la temática:</p>
                         <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
@@ -213,13 +216,16 @@
         });
 
         $(".btnEditar").click(function(){
-            let id = $(this).data('id');
+            $('#subir_imagen_input').hide();
             $('#imagen_edit').hide();
             $('#imagen_edit').attr( 'src','');
+            let id = $(this).data('id');
             $('#fromEditar').attr('action', `/admin/tematicas/${id}`);
             $("#idEdit").val($(this).data('id'));
             $("#nameEdit").val($(this).data('name'));
+            $("#descripcionEdit").val($(this).data('description'));
             let urlImagen = $(this).data('imagen');
+            console.log(urlImagen);
             if(urlImagen !== ''){
                 $('#imagen_edit').show();
                 $('#imagen_edit').attr( 'src', urlImagen);
@@ -231,6 +237,12 @@
         });
     });
     </script>
+
+    <script>$(document).ready(function() {
+        $.noConflict();
+        $('#cromoTable').DataTable();
+    } );</script>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/tematicas/index.blade.php ENDPATH**/ ?>

@@ -1,13 +1,17 @@
 
 
 <?php $__env->startSection('contenido'); ?>
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        descripciuion de los cromos
-
-    </div>
     <div class ="row">
         <?php if($message = Session::get('Listo')): ?>
             <div class = "col-12 alert alert-success alert-dismissable fade show" role = "alert">
+                <h5>Mensaje: </h5>
+                <span><?php echo e($message); ?></span>
+            </div>
+        <?php endif; ?>
+
+
+        <?php if($message = Session::get('eliminado')): ?>
+            <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                 <h5>Mensaje: </h5>
                 <span><?php echo e($message); ?></span>
             </div>
@@ -22,6 +26,7 @@
                 <a  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  data-toggle="modal" data-target="#modalAgregar"><i
                     class="fas fa-download fa-sm text-white-50"></i> Agregar Cromos</a>
             </div>
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="cromoTable" width="100%" cellspacing="0">
@@ -31,6 +36,7 @@
                                 <td>Nombre</td>
                                 <td>Descripción</td>
                                 <td>Imagen</td>
+                                <td>Temáticas</td>
                                 <td width="200px" >Acciones</td>
                             </tr>
                         </thead>
@@ -40,6 +46,7 @@
                                 <td>Nombre</td>
                                 <td>Descripción</td>
                                 <td>Imagen</td>
+                                <td>Temáticas</td>
                                 <td width="200px" >Acciones</td>
                             </tr>
                         </tfoot>
@@ -47,16 +54,28 @@
                             <?php if(count($cromos) > 0): ?>
                                 <?php $__currentLoopData = $cromos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cromo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td><?php echo e($cromo -> id); ?></td>
-                                        <td><?php echo e($cromo -> nombre); ?></td>
-                                        <td><?php echo e($cromo -> descripcion); ?></td>
-                                        <td><img src='<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>' alt="" style="width:70px"></td>
-                                        <td class="d-flex justify-content-around" >
+                                        <td><?php echo e($cromo->id); ?></td>
+                                        <td><?php echo e($cromo->nombre); ?></td>
+                                        <td><?php echo e($cromo->descripcion); ?></td>
+
+                                        <td class="d-flex justify-content-center"><img src='<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>' alt="" style="width:70px"></td>
+
+                                       <td>
+                                            <ul>
+                                                <?php $__currentLoopData = $cromo->tematicas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <li><?php echo e($tematica->nombre); ?></li>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </ul>
+                                        </td>
+
+                                        <td class="flex justify-content-around" >
                                             <button class= "btn btn-round  btn-primary btnEditar"
                                                     data-id ="<?php echo e($cromo->id); ?>"
                                                     data-name ="<?php echo e($cromo->nombre); ?>"
                                                     data-description ="<?php echo e($cromo->descripcion); ?>"
+                                                    data-album_id ="<?php echo e($cromo->album_id); ?>"
                                                     data-imagen="<?php echo e($cromo->imagen ? asset("/img/cromos/{$cromo->imagen}"): ''); ?>"
+                                                    data-tematicas="<?php echo e($cromo->tematicas); ?>"
                                                     data-toggle="modal" data-target="#modalEditar"
                                             >
                                                 Editar
@@ -107,7 +126,8 @@
                         </div>
                     <?php endif; ?>
                     <div class = "form-group">
-                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="<?php echo e(old('nombre')); ?>">
+                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre" value="<?php echo e(old('nombre')); ?>" onkeyup="javascript:this.value=this.value.toUpperCase();"
+style="text-transform:uppercase;">
                     </div>
                     <div class = "form-group">
                     <p>Descripción:</p>
@@ -116,6 +136,20 @@
                     <div class = "form-group">
                         <p>Imagen del cromo:</p>
                         <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
+                    </div>
+                    <p>Temáticas:</p>
+                    <div class="row">
+                        <?php $__currentLoopData = $tematicas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="<?php echo e($tematica->id); ?>" name="tematicas[]" >
+                                    <label class="form-check-label">
+                                        <?php echo e($tematica->nombre); ?>
+
+                                    </label>
+                                  </div>
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -184,7 +218,8 @@
                     <?php endif; ?>
                     <input type = "hidden" name = "id" id= "idEdit">
                     <div class = "form-group">
-                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre"  id= "nameEdit">
+                        <input  type = "text" class ="form-control" name ="nombre" placeholder="Nombre"  id= "nameEdit" onkeyup="javascript:this.value=this.value.toUpperCase();"
+style="text-transform:uppercase;">
                     </div>
                     <div class = "form-group">
                         <textarea name="descripcion" cols="62" rows="5" class ="form-control" required id="descripcionEdit" style="width: 100%; min-height: 200px; max-height: 200px" ></textarea>
@@ -194,6 +229,20 @@
                     <div class = "form-group"  id="subir_imagen_input" style="display:none" >
                         <p>Imagen del cromo:</p>
                         <input  type = "file" class ="form-control" name ="img" placeholder="Imagen">
+                    </div>
+                    <p>Temáticas:</p>
+                    <div class="row">
+                        <?php $__currentLoopData = $tematicas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input editCheckboxTematicas"   type="checkbox" value="<?php echo e($tematica->id); ?>" name="tematicas[]" >
+                                    <label class="form-check-label">
+                                        <?php echo e($tematica->nombre); ?>
+
+                                    </label>
+                                  </div>
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -240,12 +289,30 @@
                 $('#imagen_edit').attr( 'src', urlImagen);
 
             }
+            let tematicasAsinadas = $(this).data('tematicas');
+            console.log( "tematicas", tematicasAsinadas);
+            let checkboxEdit = $('.editCheckboxTematicas');
+            console.log("check", checkboxEdit);
+            for(const check of checkboxEdit){
+                tematicasAsinadas.forEach(tematica => {
+                    if(tematica.id == check.value){
+                        check.checked = true;
+                        console.log("Si es");
+                    }
+                });
+            }
             $('#subir_imagen_input').show();
-
-
         });
     });
+
+        
+
     </script>
+
+<script>$(document).ready(function() {
+    $.noConflict();
+    $('#cromoTable').DataTable();
+} );</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/cromos/index.blade.php ENDPATH**/ ?>

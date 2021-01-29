@@ -1,12 +1,17 @@
 
 
 <?php $__env->startSection('contenido'); ?>
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        descripciuion de los usuarios
-    </div>
     <div class ="row">
         <?php if($message = Session::get('Listo')): ?>
             <div class = "col-12 alert alert-success alert-dismissable fade show" role = "alert">
+                <h5>Mensaje: </h5>
+                <span><?php echo e($message); ?></span>
+            </div>
+        <?php endif; ?>
+
+
+        <?php if($message = Session::get('eliminado')): ?>
+            <div class = "col-12 alert alert-danger alert-dismissable fade show" role = "alert">
                 <h5>Mensaje: </h5>
                 <span><?php echo e($message); ?></span>
             </div>
@@ -56,7 +61,10 @@
                                                     data-email ="<?php echo e($usuario->email); ?>"
                                                     data-toggle="modal" data-target="#modalEditar">
                                                 Editar</button>
-                                            <button class= "btn btn-round btn-danger btnEliminar" data-id ="<?php echo e($usuario->id); ?>" data-toggle="modal" data-target="#modalEliminar">
+                                            <button class= "btn btn-round btn-danger btnEliminar" 
+                                            data-id ="<?php echo e($usuario->id); ?>" 
+                                            data-toggle="modal" 
+                                            data-target="#modalEliminar">
                                                 Eliminar</button>
                                             <form action = "<?php echo e(url('/admin', ['id'=>$usuario->id])); ?>" method="post" id= "formEli_<?php echo e($usuario->id); ?>">
                                                 <?php echo csrf_field(); ?>
@@ -218,16 +226,17 @@
     </div>
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('scripts'); ?>
+<?php $__env->startSection('scripts-admin'); ?>
     <script>
     var idEliminar = 0;
     $(document).ready(function(){
         <?php if($message = Session::get('ErrorInsert')): ?>
             $('#modalAgregar').modal('show');
         <?php endif; ?>
-        $(".btnEliminar").click(function(){
+         $(".btnEliminar").click(function(){
             idEliminar = $(this).data('id');
         });
+
         $(".btnModalEliminar").click(function(){
             $("#formEli_"+idEliminar).submit();
         });
@@ -241,6 +250,11 @@
         });
     });
     </script>
+
+<script>$(document).ready(function() {
+    $.noConflict();
+    $('#cromoTable').DataTable();
+} );</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Proyectos\ProyectoCromos2021\EconoTest\resources\views/usuarios.blade.php ENDPATH**/ ?>

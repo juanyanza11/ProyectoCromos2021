@@ -101,12 +101,4 @@ class AdministradorController extends Controller
         return view('dashboard', compact('usuarios', 'cromos', 'tematicas', 'preguntas', 'albums'));
     }
 
-
-
-    public function indexPreguntas(){
-        return view('preguntas');
-    }
-    public function indexCromos(){
-        return view('cromos');
-    }
 }

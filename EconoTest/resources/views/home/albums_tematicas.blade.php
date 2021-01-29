@@ -7,10 +7,10 @@
 @endsection
 
 @section('contenido')
-    <section id="quiz" class="p-5" style="min-height: 555px">
+    <section id="quiz" class="p-5">
         <div class="container">
                 @if (count($album->tematicas) > 0)
-                <h3 id="titulos" class="text-center" >Escoge una temática para empezar un Quiz</h3>
+                <h3 id="titulos" class="text-center" >Elige una temática</h3>
 
                 <div class="row row-40">
                     <input type="hidden" id="token_consulta" value="{{ csrf_token()}}" >
@@ -105,6 +105,7 @@
 
         </div>
     </section>
+
 @endsection
 
 @section('scripts-users')
