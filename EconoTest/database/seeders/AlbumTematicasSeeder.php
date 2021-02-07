@@ -32,5 +32,19 @@ class AlbumTematicasSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+
+        DB::table('album_tematica')->insert([
+            'album_id' => 5,
+            'tematica_id' => 7,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('album_tematica')->insert([
+            'album_id' => 5,
+            'tematica_id' => 8,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     }
 }

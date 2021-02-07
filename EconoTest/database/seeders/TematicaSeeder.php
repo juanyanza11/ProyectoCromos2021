@@ -28,6 +28,11 @@ class TematicaSeeder extends Seeder
             'updated_at' => Carbon::now()],
             ['nombre' => 'PRESIDENTES', 'imagen' => 'presidentes.png','created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()],
+            ['nombre' => 'MACROECONOMIA', 'imagen' => 'macroeconomia.jpg','created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()],
+
+            ['nombre' => 'MICROECONOMIA', 'imagen' => 'microeconomia.jpg','created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()],
         ]);
     }
 }
