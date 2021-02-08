@@ -15414,3 +15414,37 @@ html.boxed .rd-navbar--is-clone {
 strong{
     color: #4e4e4e;
 }
+
+.card-link1 + .card-link2 {
+    margin-left: 1.25rem;
+}
+
+.card-link1{
+    text-decoration: none;
+    padding: 8px;
+    font-weight: 600;
+    font-size: 11px;
+    color: #ffffff;
+    background-color: #e4702d;
+    border-radius: 5px;
+    border: 1px solid #9c3a01;
+}
+.card-link1:hover{
+    color: #e4702d;
+    background-color: #ffffff;
+}
+
+.card-link2{
+    text-decoration: none;
+    padding: 8px;
+    font-weight: 600;
+    font-size: 11px;
+    color: #ffffff;
+    background-color: #c70000ba;
+    border-radius: 5px;
+    border: 1px solid #7c0000;
+}
+.card-link2:hover{
+    color: #c70000ba;
+    background-color: #ffffff;
+}

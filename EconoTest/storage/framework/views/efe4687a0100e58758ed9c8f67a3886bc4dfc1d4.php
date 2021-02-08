@@ -26,8 +26,8 @@
                             <div class="card-body ">
                                 <h5 class="card-title"><?php echo e($album->nombre); ?> </h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo e($tematicaNombre); ?></h6>
-                                <a href="<?php echo e(route('album.index', ['album' => $album->pivot->tematica_id])); ?>" class="card-link">Ver mi Álbum</a>
-                                <a href="<?php echo e(route('albums.single', ['album' => $album->id])); ?>" class="card-link">Ir a la temática</a>
+                                <a href="<?php echo e(route('album.index', ['album' => $album->pivot->tematica_id])); ?>" class="card-link1">Ver mi Álbum</a>
+                                <a href="<?php echo e(route('albums.single', ['album' => $album->id])); ?>" class="card-link2">Ir a la temática</a>
                             </div>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

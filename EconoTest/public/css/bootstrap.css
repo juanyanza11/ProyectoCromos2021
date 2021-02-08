@@ -3988,7 +3988,7 @@ tbody.collapse.show {
 	word-wrap: break-word;
 	background-color: #fff;
 	background-clip: border-box;
-	border: 1px solid rgba(0, 0, 0, 0.125);
+	border: 1px solid salmon;
 	border-radius: 0.25rem;
 }
 
@@ -8475,7 +8475,7 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 .text-muted {
-	color: #d9d9d9 !important;
+	color: #505050 !important;
 }
 
 .text-hide {

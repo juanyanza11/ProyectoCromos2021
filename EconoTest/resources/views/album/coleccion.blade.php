@@ -26,8 +26,8 @@
                             <div class="card-body ">
                                 <h5 class="card-title">{{$album->nombre}} </h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{ $tematicaNombre }}</h6>
-                                <a href="{{route('album.index', ['album' => $album->pivot->tematica_id])}}" class="card-link">Ver mi Álbum</a>
-                                <a href="{{route('albums.single', ['album' => $album->id])}}" class="card-link">Ir a la temática</a>
+                                <a href="{{route('album.index', ['album' => $album->pivot->tematica_id])}}" class="card-link1">Ver mi Álbum</a>
+                                <a href="{{route('albums.single', ['album' => $album->id])}}" class="card-link2">Ir a la temática</a>
                             </div>
                         </div>
                     @endforeach
