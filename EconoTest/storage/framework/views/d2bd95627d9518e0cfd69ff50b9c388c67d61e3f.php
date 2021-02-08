@@ -1,5 +1,4 @@
 
-
 <?php $__env->startSection('contenido'); ?>
     <div class="row">
         <?php if($message = Session::get('eliminado')): ?>
@@ -81,6 +80,7 @@
                         </tr>
                         </tfoot>
                     </table>
+                    
                 </div>
 
                 </div>
@@ -88,6 +88,13 @@
 
     </div>
 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts-admin'); ?>
+<script>$(document).ready(function() {
+    $.noConflict();
+    $('#example').DataTable();
+} );</script>
 <?php $__env->stopSection(); ?>
 
 

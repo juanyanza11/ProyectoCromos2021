@@ -1,2 +1,0 @@
-
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\aplicaciones\IntegradorV1\ProyectoCromos\ProyectoCromos2021\EconoTest\resources\views/layouts/header.blade.php ENDPATH**/ ?>

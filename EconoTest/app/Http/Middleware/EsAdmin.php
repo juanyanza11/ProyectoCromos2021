@@ -24,7 +24,7 @@ class EsAdmin
             }
             // en caso de que el usuario NO sea admin 
             if ($user && !$user->esAdmin()){
-                return redirect('home');
+                return redirect('/');
             }
             return redirect('/');
 

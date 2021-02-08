@@ -10,6 +10,9 @@ use function PHPUnit\Framework\isNull;
 
 class CromoController extends Controller
 {
+    public function __construct(){
+            $this->middleware('EsAdmin');
+        }
     /**
      * Display a listing of the resource.
      *

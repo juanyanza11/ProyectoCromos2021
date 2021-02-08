@@ -23,12 +23,12 @@ class CreatePreguntasTable extends Migration
 
         Schema::create('preguntas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('enunciado');
-            $table->string("opcion_correcta");
-            $table->string('opcion_1');
-            $table->string('opcion_2');
-            $table->string('opcion_3');
-            $table->string('opcion_4');
+            $table->string('enunciado',500);
+            $table->string("opcion_correcta",500);
+            $table->string('opcion_1',500);
+            $table->string('opcion_2',500);
+            $table->string('opcion_3',500)->nullable();
+            $table->string('opcion_4',500)->nullable();
             $table->foreignId('tematica_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

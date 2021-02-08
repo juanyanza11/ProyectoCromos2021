@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/dashboard">
         <img src="{{ asset('images/logo.png') }}" alt="logo" width="50" height="50"/>
         <div class="sidebar-brand-text mx-3">Econotest <sup>Admin</sup></div>
     </a>

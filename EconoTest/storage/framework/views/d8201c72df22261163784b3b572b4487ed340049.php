@@ -26,6 +26,7 @@
                 <a  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  data-toggle="modal" data-target="#modalAgregar"><i
                     class="fas fa-download fa-sm text-white-50"></i> Agregar Cromos</a>
             </div>
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="cromoTable" width="100%" cellspacing="0">
@@ -56,9 +57,9 @@
                                         <td><?php echo e($cromo->id); ?></td>
                                         <td><?php echo e($cromo->nombre); ?></td>
                                         <td><?php echo e($cromo->descripcion); ?></td>
-                                        
-                                        <td><img src='<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>' alt="" style="width:70px"></td>
- 
+
+                                        <td class="d-flex justify-content-center"><img src='<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>' alt="" style="width:70px"></td>
+
                                        <td>
                                             <ul>
                                                 <?php $__currentLoopData = $cromo->tematicas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tematica): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -66,8 +67,8 @@
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </ul>
                                         </td>
-                                        
-                                        <td class="d-flex justify-content-around" >
+
+                                        <td class="flex justify-content-around" >
                                             <button class= "btn btn-round  btn-primary btnEditar"
                                                     data-id ="<?php echo e($cromo->id); ?>"
                                                     data-name ="<?php echo e($cromo->nombre); ?>"
@@ -303,7 +304,15 @@ style="text-transform:uppercase;">
             $('#subir_imagen_input').show();
         });
     });
+
+        
+
     </script>
+
+<script>$(document).ready(function() {
+    $.noConflict();
+    $('#cromoTable').DataTable();
+} );</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ProyectoCromos2021\EconoTest\resources\views/cromos/index.blade.php ENDPATH**/ ?>
