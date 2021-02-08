@@ -93,5 +93,42 @@ class PreguntasSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+
+        DB::table('preguntas')->insert([
+            'enunciado' => 'En una economía en Pleno Empleo:',
+            'tematica_id' => 7,
+            'opcion_correcta' => 'Aún así existe el desempleo #',
+            'opcion_1' => 'El PIB real está por debajo del PIB Potencial',
+            'opcion_2' => 'La cantidad demanda de trabajo, es superior a la cantidad ofertada de trabajo',
+            'opcion_3' => 'Aún así existe el desempleo #',
+            'opcion_4' => 'La tasa de desempleo es del 0%',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('preguntas')->insert([
+            'enunciado' => '¿Qué es la Frontera de Posibilidades de Producción?',
+            'tematica_id' => 7,
+            'opcion_correcta' => 'Límite entre aquellas combinaciones de bienes y servicios que se pueden producir y las que no #',
+            'opcion_1' => 'Limite entre aquellas combinaciones de bienes y servicios que no se puedan producir',
+            'opcion_2' => 'Es el punto máximo al que puede llegar para desplazar la demanda agregada a la derecha',
+            'opcion_3' => 'Es el punto máximo al que puede llegar para desplazar la demanda agregada a la izquierda',
+            'opcion_4' => 'Límite entre aquellas combinaciones de bienes y servicios que se pueden producir y las que no #',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('preguntas')->insert([
+            'enunciado' => '¿Cúal de las siguientes NO es una función del dinero?',
+            'tematica_id' => 7,
+            'opcion_correcta' => 'Fomentar el trueque #',
+            'opcion_1' => 'Fomentar el trueque #',
+            'opcion_2' => 'Liquidar deudas',
+            'opcion_3' => 'Presupuestar el ahorro',
+            'opcion_4' => 'Fomentar el ahorro',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        
     }
 }

@@ -177,6 +177,38 @@ class CromoSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
+
+        DB::table('cromos')->insert([
+            'nombre' => 'Adam Smith',
+            'descripcion' => 'Adam Smith fue un economista y filósofo escocés, considerado uno de los mayores exponentes de la economía clásica y de la filosofía de la economía.',
+            'imagen' => 'cromo2-padreeconomia.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]); 
+
+        DB::table('cromos')->insert([
+            'nombre' => 'John Stuart Mill',
+            'descripcion' => 'John Stuart Mill fue un filósofo, político y economista británico, representante de la escuela económica clásica y teórico del utilitarismo.',
+            'imagen' => 'cromo-jsm.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('cromos')->insert([
+            'nombre' => 'Inflación',
+            'descripcion' => 'La inflación, en economía, es el aumento generalizado y sostenido de los precios de los bienes y servicios existentes en el mercado durante un período de tiempo, generalmente un año.',
+            'imagen' => 'cromo3-inflacion.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('cromos')->insert([
+            'nombre' => 'Desarrollo Económico',
+            'descripcion' => 'El desarrollo económico es un concepto que se refiere a la capacidad que tiene un país de generar riqueza. Esto, además, se debe reflejar en la calidad de vida de los habitantes.',
+            'imagen' => 'cromo4-desarrolloEc.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
     
     }
 }

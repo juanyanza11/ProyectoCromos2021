@@ -148,5 +148,33 @@ class CromoTematicasSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('cromo_tematica')->insert([
+            'cromo_id' => 21,
+            'tematica_id' => 7,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('cromo_tematica')->insert([
+            'cromo_id' => 22,
+            'tematica_id' => 7,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        
+        DB::table('cromo_tematica')->insert([
+            'cromo_id' => 23,
+            'tematica_id' => 7,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        
+        DB::table('cromo_tematica')->insert([
+            'cromo_id' => 24,
+            'tematica_id' => 7,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
     }
 }
