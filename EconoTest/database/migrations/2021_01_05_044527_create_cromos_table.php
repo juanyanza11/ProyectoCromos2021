@@ -16,7 +16,7 @@ class CreateCromosTable extends Migration
         Schema::create('cromos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('descripcion')->nullable();
+            $table->string('descripcion',500)->nullable();
             $table->string('imagen')->nullable();      
             $table->timestamps();
         });

@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class AlbumController extends Controller
 {
+    
     public function __construct()
     {
         $this->middleware('auth');

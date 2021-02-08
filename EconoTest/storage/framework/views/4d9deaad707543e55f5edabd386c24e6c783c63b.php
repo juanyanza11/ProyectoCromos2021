@@ -24,8 +24,8 @@
     <?php echo $__env->yieldContent('css'); ?>
 
   </head>
-  <body>
 
+  <body>
       <!-- NAVBAR -->
       <header class="page-head">
         <div class="rd-navbar-wrap">
@@ -56,14 +56,13 @@
         <?php echo $__env->yieldContent('header'); ?>
       </header>
       <!-- FIN NAVBAR -->
-        <main class="py-4">
-            <?php echo $__env->yieldContent('content'); ?>
-        </main>
+        
+      <main class="contenido1">
+        <?php echo $__env->yieldContent('content'); ?>
+      </main>
 
       <!-- FOOTER -->
       <footer id="footer-log">
-          <div class="container">
-
             <div class="copyright-text">
               <p class="rights text-white"><span class="copyright-year"></span><span>&nbsp;&#169;&nbsp;</span><span>ECONOTEST.&nbsp; Todos los Derechos Reservados.</p>
               <ul class="social-icon">
@@ -72,13 +71,10 @@
                 <li><a href="#" class="fab fa-instagram"></a></li>
               </ul>
             </div>
-
-          </div>
           <?php echo $__env->yieldContent('footer'); ?>
       </footer>
       <!-- FIN FOOTER -->
-
-    </div>
+      
     <script src="<?php echo e(asset('/js/core.min.js')); ?>"></script>
     <script src="<?php echo e(asset('/js/script.js')); ?>"></script>
     <?php echo $__env->yieldContent('scripts'); ?>

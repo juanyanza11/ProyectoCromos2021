@@ -107,7 +107,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
-    <section class="section-md-75" style="min-height: 555px">
+    <section class="section-md-35">
         <div class="container">
             <?php if(count($cromos) > 0): ?>
             <div class="row d-flex justify-content-center m-5">
@@ -121,10 +121,9 @@
                             $percentage = 0;
                         }else{
                         $percentage = ($total  * 100) / count($cromos);
-
                         }
-
                     ?>
+
                     <h5 class="text-center" >Cromos Conseguidos</h5>
                     <h5 class="text-center" > <?php echo e($total); ?> / <?php echo e(count($cromos)); ?></h5>
                     <div class="progress">
@@ -155,17 +154,15 @@
                 <div class="listado-cromos">
                     <?php $__currentLoopData = $cromos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cromo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="vacio filtro" >
-                            <div class="cromos-listos"  data-cromo-id="<?php echo e($cromo->id); ?>"   style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>');position: relative; " ></div>
+                            <div class="cromos-listos"  data-cromo-id="<?php echo e($cromo->id); ?>"  title="" data-toggle="cromo" data-placement="top" style="background-image:url('<?php echo e(asset("/img/cromos/{$cromo->imagen}")); ?>');position: relative; " ></div>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             <?php else: ?>
                 <h5 class="text-center" >Este album aun no tiene cromos activos 😢</h5>
             <?php endif; ?>
-
         </div>
     </section>
-
 
 <?php $__env->stopSection(); ?>
 
@@ -199,10 +196,14 @@
                     let cromoGanado = cromosGanadosColocados[key];
 
                     if(idCromo == cromoGanado.id){
+                        console.log(cromoGanado);
+                        cromo.dataset.title = cromoGanado.descripcion;
                         cromo.parentElement.style.filter = "grayScale(0%)";
                     }
                 })
             }
+            console.log($('[data-toggle="cromo"]'));
+            $('[data-toggle="cromo"]').tooltip();
         });
         let fills = document.querySelectorAll('.fill');
         let vacios = document.querySelectorAll('.vacio');
@@ -273,11 +274,9 @@
             }else{
                 console.log("no es igual")
             }
-
-
-
             console.log("drop");
         }
+            
 
     </script>
 <?php $__env->stopSection(); ?>

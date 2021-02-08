@@ -10,6 +10,9 @@ use Validator;
 
 class AlbumAdminController extends Controller
 {
+    public function __construct(){
+            $this->middleware('EsAdmin');
+        }
     /**
      * Display a listing of the resource.
      *
